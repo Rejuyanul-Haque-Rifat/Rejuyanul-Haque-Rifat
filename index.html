@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rejuyanul Haque Rifat | Portfolio</title>
+    <title>Rejuyanul Haque Rifat | Advanced Portfolio</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Hind+Siliguri:wght@300;400;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -135,6 +135,18 @@
             pointer-events: none;
             z-index: 999;
         }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            background: rgba(251, 191, 36, 0.1);
+            color: #fbbf24;
+            border: 1px solid rgba(251, 191, 36, 0.3);
+            margin: 0.25rem;
+        }
     </style>
 </head>
 <body class="bg-lightBg text-slate-900 dark:bg-darkBg dark:text-gray-100">
@@ -142,187 +154,253 @@
     <div id="custom-cursor"></div>
     <div class="noise"></div>
     <div class="mesh-gradient">
-        <div class="orb w-[500px] h-[500px] bg-amber-500/20 top-[-10%] left-[-10%]"></div>
-        <div class="orb w-[400px] h-[400px] bg-orange-600/20 bottom-[-10%] right-[-10%]"></div>
-        <div class="orb w-[300px] h-[300px] bg-yellow-400/20 top-[40%] right-[10%]"></div>
+        <div class="orb w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-amber-500/20 top-[-10%] left-[-10%]"></div>
+        <div class="orb w-[250px] md:w-[400px] h-[250px] md:h-[400px] bg-orange-600/20 bottom-[-10%] right-[-10%]"></div>
+        <div class="orb w-[200px] md:w-[300px] h-[200px] md:h-[300px] bg-yellow-400/20 top-[40%] right-[10%]"></div>
     </div>
 
-    <nav class="fixed w-full z-[100] px-6 py-6">
-        <div class="max-w-6xl mx-auto flex justify-between items-center bento-card px-8 py-4">
-            <a href="#" class="text-2xl font-extrabold tracking-tighter uppercase flex items-center gap-2">
+    <nav class="fixed w-full z-[100] px-4 md:px-6 py-4 md:py-6">
+        <div class="max-w-7xl mx-auto flex justify-between items-center bento-card px-4 md:px-8 py-3 md:py-4">
+            <a href="#" class="text-xl md:text-2xl font-extrabold tracking-tighter uppercase flex items-center gap-2">
                 <i class="fas fa-bolt text-amber-500"></i> Rifat
             </a>
-            <div class="hidden md:flex items-center space-x-8 font-medium text-sm tracking-widest">
+            <div class="hidden lg:flex items-center space-x-8 font-medium text-sm tracking-widest">
                 <a href="#home" class="hover:text-amber-500 transition">HOME</a>
                 <a href="#skills" class="hover:text-amber-500 transition">SKILLS</a>
-                <a href="#projects" class="hover:text-amber-500 transition">WORK</a>
+                <a href="#projects" class="hover:text-amber-500 transition">PROJECTS</a>
                 <button id="themeToggle" class="text-xl hover:text-amber-500 transition">
                     <i class="fas fa-moon dark:hidden"></i>
                     <i class="fas fa-sun hidden dark:block text-amber-400"></i>
                 </button>
                 <a href="#contact" class="px-5 py-2 bg-amber-500 text-slate-900 rounded-full hover:bg-amber-400 transition font-bold shadow-lg shadow-amber-500/20">LET'S TALK</a>
             </div>
-            <div class="md:hidden flex items-center gap-4">
+            <div class="lg:hidden flex items-center gap-4">
                 <button id="themeToggleMobile" class="text-xl hover:text-amber-500 transition">
                     <i class="fas fa-moon dark:hidden"></i>
                     <i class="fas fa-sun hidden dark:block text-amber-400"></i>
                 </button>
+                <a href="#contact" class="px-4 py-2 text-xs bg-amber-500 text-slate-900 rounded-full font-bold">TALK</a>
             </div>
         </div>
     </nav>
 
-    <main id="home" class="min-h-screen flex flex-col justify-center items-center pt-20 px-6 relative overflow-hidden">
-        <div class="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-            <div class="z-10" data-aos="fade-right">
-                <span class="inline-block py-1 px-4 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold tracking-widest mb-6"><i class="fas fa-microchip mr-2"></i> TECH ENTHUSIAST</span>
-                <h1 class="text-5xl md:text-7xl font-extrabold leading-none mb-6">
-                    Powering The <span class="text-glow">Future.</span>
+    <main id="home" class="min-h-screen flex flex-col justify-center items-center pt-24 px-4 md:px-6 relative overflow-hidden">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+            <div class="z-10 order-2 lg:order-1 text-center lg:text-left" data-aos="fade-right">
+                <span class="inline-block py-1 px-4 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold tracking-widest mb-6">
+                    <i class="fas fa-microchip mr-2"></i> IOT INNOVATOR & FULL STACK DEV
+                </span>
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6">
+                    Engineering The <span class="text-glow">Impossible.</span>
                 </h1>
-                <p class="text-slate-600 dark:text-gray-400 text-lg md:text-xl max-w-lg mb-10 leading-relaxed font-medium">
-                    আমি <span class="dark:text-white text-slate-900 font-bold">রেজুয়ানুল হক রিফাত</span>। ইলেকট্রিক্যাল ইঞ্জিনিয়ারিং, আইওটি এবং আধুনিক ওয়েব প্রযুক্তির সমন্বয়ে বাস্তব দুনিয়ার সমস্যা সমাধানে কাজ করছি।
+                <p class="text-slate-600 dark:text-gray-400 text-base md:text-lg max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed font-medium">
+                    আমি <span class="dark:text-white text-slate-900 font-bold">রেজুয়ানুল হক রিফাত</span>। প্রোডাকশন লেভেলের ওয়েব অ্যাপ, অ্যাডভান্সড রোবোটিক্স এবং ইন্ডাস্ট্রিয়াল আইওটি সিস্টেম ডেভেলপমেন্টে কাজ করছি। বর্তমানে Science And Robotics Club Bogura-এর Robotics Secretary হিসেবে যুক্ত আছি।
                 </p>
-                <div class="flex flex-wrap gap-5">
-                    <a href="#projects" class="px-8 py-4 bg-amber-500 text-slate-900 rounded-2xl font-bold hover:scale-105 transition-transform flex items-center gap-3">
-                        My Work <i class="fas fa-arrow-right"></i>
+                <div class="flex flex-wrap justify-center lg:justify-start gap-4">
+                    <a href="#projects" class="px-6 md:px-8 py-3 md:py-4 bg-amber-500 text-slate-900 rounded-2xl font-bold hover:scale-105 transition-transform flex items-center gap-3">
+                        Explore Work <i class="fas fa-arrow-right"></i>
                     </a>
-                    <a href="#contact" class="px-8 py-4 bento-card font-bold hover:bg-amber-500/10 transition-colors">
-                        Connect
+                    <a href="#contact" class="px-6 md:px-8 py-3 md:py-4 bento-card font-bold hover:bg-amber-500/10 transition-colors">
+                        Hire Me
                     </a>
                 </div>
             </div>
             
-            <div class="relative flex justify-center items-center" data-aos="zoom-out">
-                <div class="hero-floating relative z-10 w-full max-w-md">
+            <div class="relative flex justify-center items-center order-1 lg:order-2 mt-10 lg:mt-0" data-aos="zoom-out">
+                <div class="hero-floating relative z-10 w-full max-w-xs md:max-w-md">
                     <div class="bento-card p-3 rotate-3 hover:rotate-0 transition-transform duration-700">
-                        <img src="https://i.ibb.co.com/fdmK296p/rifat-img.jpg" 
-                             alt="Rifat" class="rounded-xl grayscale hover:grayscale-0 transition-all duration-700 w-full object-cover aspect-square border border-amber-500/20">
+                        <img src="https://i.ibb.co.com/fdmK296p/rifat-img.jpg" alt="Rifat" class="rounded-xl grayscale hover:grayscale-0 transition-all duration-700 w-full object-cover aspect-square border border-amber-500/20">
                     </div>
-                    <div class="absolute -bottom-10 -right-5 bento-card p-6 shadow-2xl animate-pulse border-amber-500/30">
-                        <i class="fas fa-plug text-3xl text-amber-500 mb-2"></i>
-                        <p class="text-xs text-slate-500 dark:text-gray-400 tracking-tighter uppercase font-bold">EE Diploma</p>
-                        <p class="text-xs font-bold">Session 23-24</p>
+                    <div class="absolute -bottom-6 md:-bottom-10 -right-4 md:-right-5 bento-card p-4 md:p-6 shadow-2xl animate-pulse border-amber-500/30">
+                        <i class="fas fa-robot text-2xl md:text-3xl text-amber-500 mb-2"></i>
+                        <p class="text-[10px] md:text-xs text-slate-500 dark:text-gray-400 tracking-tighter uppercase font-bold">Robotics Sec</p>
+                        <p class="text-xs md:text-sm font-bold">SRCB</p>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <section id="skills" class="py-32 px-6 relative z-10">
-        <div class="max-w-6xl mx-auto">
-            <div class="mb-16 text-center">
-                <h2 class="text-4xl md:text-5xl font-black mb-4">Core <span class="text-amber-500">Expertise</span></h2>
-                <p class="text-slate-500 dark:text-gray-400 uppercase tracking-widest text-sm font-bold">ইঞ্জিনিয়ারিং থেকে সফটওয়্যার ডেভেলপমেন্ট</p>
+    <section id="skills" class="py-20 md:py-32 px-4 md:px-6 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-12 md:mb-16 text-center">
+                <h2 class="text-3xl md:text-5xl font-black mb-4">Advanced <span class="text-amber-500">Expertise</span></h2>
+                <p class="text-slate-500 dark:text-gray-400 uppercase tracking-widest text-xs md:text-sm font-bold">হার্ডওয়্যার থেকে প্রোডাকশন গ্রেড সফটওয়্যার</p>
             </div>
 
-            <div class="grid md:grid-cols-4 gap-6">
-                <div class="md:col-span-2 bento-card p-8 flex flex-col justify-between group" data-aos="fade-up">
-                    <div>
-                        <i class="fas fa-robot text-5xl text-amber-500 mb-6 group-hover:scale-110 transition-transform"></i>
-                        <h3 class="text-2xl font-bold mb-2">Industrial Automation & IoT</h3>
-                        <p class="text-slate-600 dark:text-gray-400">রোবোটিক্স, মেকাট্রনিক্স এবং আইওটি বেসড সিস্টেম নিয়ে বাস্তবমুখী কাজ করার দক্ষতা।</p>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                
+                <div class="bento-card p-6 md:p-8 lg:col-span-2 group" data-aos="fade-up">
+                    <div class="flex items-center gap-4 mb-6">
+                        <i class="fas fa-bolt text-4xl text-amber-500 group-hover:scale-110 transition-transform"></i>
+                        <h3 class="text-2xl font-bold">Industrial Electrical & Electronics</h3>
                     </div>
-                    <div class="mt-8 pt-8 border-t border-slate-200 dark:border-white/10">
-                        <div class="flex justify-between mb-2 text-xs font-bold">
-                            <span>HARDWARE & SENSORS</span>
-                            <i class="fas fa-network-wired text-amber-500"></i>
-                        </div>
+                    <p class="text-sm text-slate-600 dark:text-gray-400 mb-6 leading-relaxed">
+                        প্ল্যানিং, এস্টিমেটিং থেকে শুরু করে ইন্ডাস্ট্রিয়াল লেভেলের মেইনটেনেন্স এবং ইনোভেশন। ৩ ফেজ মোটর কন্ট্রোলিং, স্টার-ডেল্টা, এবং পাওয়ার ডিস্ট্রিবিউশনে প্র্যাকটিক্যাল দক্ষতা।
+                    </p>
+                    <div class="flex flex-wrap">
+                        <span class="badge">Transistor</span><span class="badge">MOSFET & IGBT</span><span class="badge">TRIAC/DIAC/SCR</span>
+                        <span class="badge">Digital Electronics</span><span class="badge">Op-Amp</span><span class="badge">Servo/Stepper</span>
+                        <span class="badge">3-Phase Systems</span><span class="badge">Power Generation</span>
                     </div>
                 </div>
 
-                <div class="bento-card p-8 group" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-code text-4xl text-blue-500 mb-4 group-hover:-rotate-12 transition-transform duration-500"></i>
-                    <h3 class="text-xl font-bold mb-2">Web Dev</h3>
-                    <p class="text-sm text-slate-600 dark:text-gray-400 leading-relaxed">মডার্ন ফুল স্ট্যাক ডেভেলপমেন্ট এবং ক্লিন ইউআই/ইউএক্স।</p>
+                <div class="bento-card p-6 md:p-8 group" data-aos="fade-up" data-aos-delay="100">
+                    <i class="fas fa-microchip text-4xl text-green-500 mb-4 group-hover:rotate-12 transition-transform"></i>
+                    <h3 class="text-xl font-bold mb-2">Microcontrollers & IoT</h3>
+                    <p class="text-sm text-slate-600 dark:text-gray-400 mb-4 leading-relaxed">অ্যাডভান্সড হার্ডওয়্যার এবং আইওটি সিস্টেম ডিজাইন।</p>
+                    <div class="flex flex-wrap">
+                        <span class="badge">Arduino All</span><span class="badge">ESP32 & NodeMCU</span><span class="badge">Raspberry Pi</span><span class="badge">Custom PCB</span>
+                    </div>
                 </div>
 
-                <div class="bento-card p-8 group" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-hammer text-4xl text-orange-500 mb-4 group-hover:rotate-12 transition-transform duration-500"></i>
-                    <h3 class="text-xl font-bold mb-2">Fabrication</h3>
-                    <p class="text-sm text-slate-600 dark:text-gray-400 leading-relaxed">ওয়েল্ডিং, স্টিল ফার্নিচার এবং প্র্যাকটিক্যাল ডিজাইন।</p>
+                <div class="bento-card p-6 md:p-8 group" data-aos="fade-up" data-aos-delay="200">
+                    <i class="fas fa-code text-4xl text-blue-500 mb-4 group-hover:-rotate-12 transition-transform"></i>
+                    <h3 class="text-xl font-bold mb-2">Production Web Dev</h3>
+                    <p class="text-sm text-slate-600 dark:text-gray-400 mb-4 leading-relaxed">ফুল স্ট্যাক ডেভেলপমেন্ট এবং রেসপন্সিভ ইউজার ইন্টারফেস।</p>
+                    <div class="flex flex-wrap">
+                        <span class="badge">Frontend UI/UX</span><span class="badge">API Integration</span><span class="badge">Dashboard Auth</span>
+                    </div>
                 </div>
 
-                <div class="md:col-span-2 bento-card p-8 bg-gradient-to-br from-amber-500/10 to-transparent" data-aos="fade-up" data-aos-delay="300">
-                    <div class="flex items-center gap-6">
-                        <div class="w-20 h-20 rounded-2xl bg-slate-200 dark:bg-white/5 flex items-center justify-center text-4xl">
-                            <i class="fas fa-camera text-amber-500"></i>
+                <div class="bento-card p-6 md:p-8 lg:col-span-2 bg-gradient-to-br from-amber-500/10 to-transparent group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="flex flex-col md:flex-row md:items-center gap-6">
+                        <div class="w-16 h-16 md:w-20 md:h-20 shrink-0 rounded-2xl bg-slate-200 dark:bg-white/5 flex items-center justify-center text-3xl md:text-4xl group-hover:bg-amber-500 transition-colors">
+                            <i class="fas fa-hammer text-slate-800 dark:text-amber-500 group-hover:text-slate-900 transition-colors"></i>
                         </div>
                         <div>
-                            <h3 class="text-2xl font-bold">Creative Multimedia</h3>
-                            <p class="text-slate-600 dark:text-gray-400">ফটোগ্রাফি, ভিডিও এডিটিং এবং বেসিক গ্রাফিক্স ডিজাইন।</p>
+                            <h3 class="text-xl md:text-2xl font-bold mb-2">Hardware Fabrication & Business</h3>
+                            <p class="text-sm text-slate-600 dark:text-gray-400 mb-3">ওয়েল্ডিং, গ্রাইন্ডিং, অ্যালুমিনিয়াম, এসএস এবং টিন শেডের কাজের পাশাপাশি ডিজিটাল মার্কেটিং ও কম্পোনেন্ট সেলিং।</p>
+                            <div class="flex flex-wrap">
+                                <span class="badge border-blue-500/30 text-blue-500">Digital Marketing</span>
+                                <span class="badge border-green-500/30 text-green-500">Gadget Selling</span>
+                                <span class="badge border-orange-500/30 text-orange-500">Fabrication</span>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                <div class="md:col-span-2 bento-card p-8 flex flex-wrap items-center justify-around gap-4" data-aos="fade-up" data-aos-delay="400">
-                    <div class="text-center"><i class="fas fa-bolt text-3xl mb-2 text-yellow-500"></i><span class="text-xs font-bold block">Electrical</span></div>
-                    <div class="text-center"><i class="fab fa-js text-3xl mb-2 text-yellow-400"></i><span class="text-xs font-bold block">JavaScript</span></div>
-                    <div class="text-center"><i class="fas fa-microchip text-3xl mb-2 text-green-500"></i><span class="text-xs font-bold block">Arduino</span></div>
-                    <div class="text-center"><i class="fas fa-object-group text-3xl mb-2 text-purple-500"></i><span class="text-xs font-bold block">UI/UX</span></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="projects" class="py-32 px-6 dark:bg-black/20 bg-slate-100 relative z-10">
-        <div class="max-w-6xl mx-auto">
-            <div class="flex flex-col md:flex-row justify-between items-end mb-20">
+    <section id="projects" class="py-20 md:py-32 px-4 md:px-6 dark:bg-black/30 bg-slate-100/50 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-12 md:mb-16 text-center md:text-left">
+                <h2 class="text-3xl md:text-5xl font-black mb-4">Production <span class="text-glow">Projects</span></h2>
+                <p class="text-slate-500 dark:text-gray-400 font-bold uppercase text-xs md:text-sm tracking-widest">ওয়েব, আইওটি এবং রোবোটিক্স</p>
+            </div>
+
+            <h3 class="text-2xl font-bold mb-8 border-l-4 border-amber-500 pl-4">IoT Web Systems</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
+                <a href="https://smart-fish-breeder-aqunar.vercel.app" target="_blank" class="bento-card p-6 block group" data-aos="zoom-in-up">
+                    <div class="flex justify-between items-start mb-4">
+                        <i class="fas fa-fish text-3xl text-blue-400"></i>
+                        <i class="fas fa-external-link-alt text-slate-400 group-hover:text-amber-500 transition-colors"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">Smart Fish Breeder</h4>
+                    <p class="text-xs text-slate-500 dark:text-gray-400 mb-4">Automated aquaculture monitoring and control system.</p>
+                </a>
+                
+                <a href="https://smart-energy-meter-electro-ix.vercel.app" target="_blank" class="bento-card p-6 block group" data-aos="zoom-in-up" data-aos-delay="100">
+                    <div class="flex justify-between items-start mb-4">
+                        <i class="fas fa-bolt text-3xl text-yellow-400"></i>
+                        <i class="fas fa-external-link-alt text-slate-400 group-hover:text-amber-500 transition-colors"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">Smart Energy Meter</h4>
+                    <p class="text-xs text-slate-500 dark:text-gray-400 mb-4">Real-time power consumption and billing monitor.</p>
+                </a>
+
+                <a href="https://smart-traffic-solving.vercel.app" target="_blank" class="bento-card p-6 block group" data-aos="zoom-in-up" data-aos-delay="200">
+                    <div class="flex justify-between items-start mb-4">
+                        <i class="fas fa-traffic-light text-3xl text-red-400"></i>
+                        <i class="fas fa-external-link-alt text-slate-400 group-hover:text-amber-500 transition-colors"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">Traffic Solving Model</h4>
+                    <p class="text-xs text-slate-500 dark:text-gray-400 mb-4">IoT based smart traffic management system.</p>
+                </a>
+
+                <div class="bento-card p-6 col-span-1 lg:col-span-2 group" data-aos="zoom-in-up" data-aos-delay="300">
+                    <div class="flex items-start gap-4 mb-4">
+                        <i class="fas fa-train text-3xl text-emerald-400"></i>
+                        <div>
+                            <h4 class="text-xl font-bold mb-1">Railway Ticketing System</h4>
+                            <p class="text-xs text-slate-500 dark:text-gray-400">Complete smart ticketing management ecosystem.</p>
+                        </div>
+                    </div>
+                    <div class="flex flex-wrap gap-3 mt-4">
+                        <a href="https://smart-rail-passenger.vercel.app" target="_blank" class="text-xs font-bold bg-white/10 px-4 py-2 rounded-lg hover:bg-amber-500 hover:text-slate-900 transition"><i class="fas fa-user mr-1"></i> Passenger</a>
+                        <a href="https://smart-rail-passenger.vercel.app/counter.html" target="_blank" class="text-xs font-bold bg-white/10 px-4 py-2 rounded-lg hover:bg-amber-500 hover:text-slate-900 transition"><i class="fas fa-ticket-alt mr-1"></i> Counter</a>
+                        <a href="https://smart-rail-passenger.vercel.app/tte.html" target="_blank" class="text-xs font-bold bg-white/10 px-4 py-2 rounded-lg hover:bg-amber-500 hover:text-slate-900 transition"><i class="fas fa-id-badge mr-1"></i> TTE Panel</a>
+                    </div>
+                </div>
+
+                <a href="https://smart-irrigation-system-srcb.vercel.app" target="_blank" class="bento-card p-6 block group" data-aos="zoom-in-up" data-aos-delay="400">
+                    <div class="flex justify-between items-start mb-4">
+                        <i class="fas fa-seedling text-3xl text-green-400"></i>
+                        <i class="fas fa-external-link-alt text-slate-400 group-hover:text-amber-500 transition-colors"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-2">Smart Irrigation (SRCB)</h4>
+                    <p class="text-xs text-slate-500 dark:text-gray-400 mb-4">Automated agriculture watering logic system.</p>
+                </a>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                 <div>
-                    <h2 class="text-5xl font-black mb-4">Project <span class="text-glow">Showcase</span></h2>
-                    <p class="text-slate-500 dark:text-gray-400 font-bold">টেকনিক্যাল এবং ডিজিটাল প্রজেক্টস</p>
-                </div>
-            </div>
-
-            <div class="grid md:grid-cols-2 gap-12">
-                <div class="group" data-aos="zoom-in-up">
-                    <div class="bento-card aspect-video mb-6 overflow-hidden bg-slate-800 flex items-center justify-center relative">
-                        <i class="fas fa-home text-7xl text-amber-500 opacity-50 group-hover:scale-110 transition-transform duration-700"></i>
-                        <div class="absolute inset-0 bg-amber-500/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 backdrop-blur-sm">
-                             <span class="px-6 py-2 bg-slate-900 text-amber-500 font-bold rounded-full">Details Soon</span>
-                        </div>
+                    <h3 class="text-2xl font-bold mb-6 border-l-4 border-amber-500 pl-4">Web Apps</h3>
+                    <div class="space-y-4">
+                        <div class="bento-card p-5 flex items-center gap-4"><i class="fas fa-laptop-code text-2xl text-indigo-400 w-8"></i><div><h4 class="font-bold">BPI Blood Finder</h4></div></div>
+                        <div class="bento-card p-5 flex items-center gap-4"><i class="fas fa-laptop-code text-2xl text-indigo-400 w-8"></i><div><h4 class="font-bold">Khetlal Online Service's</h4></div></div>
+                        <div class="bento-card p-5 flex items-center gap-4"><i class="fas fa-laptop-code text-2xl text-indigo-400 w-8"></i><div><h4 class="font-bold">Board Result Zone</h4></div></div>
+                        <div class="bento-card p-5 flex items-center gap-4"><i class="fas fa-laptop-code text-2xl text-indigo-400 w-8"></i><div><h4 class="font-bold">Easy Tool's</h4></div></div>
                     </div>
-                    <h3 class="text-2xl font-bold">Smart Home Automation</h3>
-                    <p class="text-slate-500 dark:text-gray-400 mb-4 uppercase tracking-tighter text-xs font-bold mt-2">IoT • Microcontroller • Relays</p>
                 </div>
 
-                <div class="group" data-aos="zoom-in-up" data-aos-delay="200">
-                    <div class="bento-card aspect-video mb-6 overflow-hidden bg-slate-800 flex items-center justify-center relative">
-                        <i class="fas fa-laptop-code text-7xl text-blue-500 opacity-50 group-hover:scale-110 transition-transform duration-700"></i>
-                        <div class="absolute inset-0 bg-blue-500/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-500 backdrop-blur-sm">
-                             <span class="px-6 py-2 bg-slate-900 text-blue-500 font-bold rounded-full">Details Soon</span>
-                        </div>
+                <div>
+                    <h3 class="text-2xl font-bold mb-6 border-l-4 border-amber-500 pl-4">Robotics & Hardware</h3>
+                    <div class="flex flex-wrap gap-3">
+                        <span class="bg-slate-200 dark:bg-white/5 border border-slate-300 dark:border-white/10 px-4 py-2 rounded-lg text-sm font-semibold">Rescue Robot</span>
+                        <span class="bg-slate-200 dark:bg-white/5 border border-slate-300 dark:border-white/10 px-4 py-2 rounded-lg text-sm font-semibold">Fire Extinguisher Robot</span>
+                        <span class="bg-slate-200 dark:bg-white/5 border border-slate-300 dark:border-white/10 px-4 py-2 rounded-lg text-sm font-semibold">Border Monitoring Robot</span>
+                        <span class="bg-slate-200 dark:bg-white/5 border border-slate-300 dark:border-white/10 px-4 py-2 rounded-lg text-sm font-semibold">Sample Collecting Robot</span>
+                        <span class="bg-slate-200 dark:bg-white/5 border border-slate-300 dark:border-white/10 px-4 py-2 rounded-lg text-sm font-semibold">Smart Home Security</span>
+                        <span class="bg-slate-200 dark:bg-white/5 border border-slate-300 dark:border-white/10 px-4 py-2 rounded-lg text-sm font-semibold">Transmission Fault Detector</span>
+                        <span class="bg-slate-200 dark:bg-white/5 border border-slate-300 dark:border-white/10 px-4 py-2 rounded-lg text-sm font-semibold">U Turn Management</span>
+                        <span class="bg-slate-200 dark:bg-white/5 border border-slate-300 dark:border-white/10 px-4 py-2 rounded-lg text-sm font-semibold">Solar Tracking Model</span>
+                        <span class="bg-slate-200 dark:bg-white/5 border border-slate-300 dark:border-white/10 px-4 py-2 rounded-lg text-sm font-semibold">Footstep Power Generation</span>
                     </div>
-                    <h3 class="text-2xl font-bold">Modern Web Dashboard</h3>
-                    <p class="text-slate-500 dark:text-gray-400 mb-4 uppercase tracking-tighter text-xs font-bold mt-2">Frontend • UI/UX • API Integration</p>
                 </div>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-32 px-6 relative z-10">
-        <div class="max-w-4xl mx-auto bento-card p-12 text-center" data-aos="flip-up">
-            <h2 class="text-4xl md:text-6xl font-black mb-8">Start a <span class="text-amber-500">Connection</span></h2>
-            <p class="text-slate-600 dark:text-gray-400 text-lg mb-12 max-w-xl mx-auto leading-relaxed font-medium">
-                যেকোনো প্রজেক্ট, আইডিয়া বা কোলাবোরেশনের জন্য সরাসরি মেসেজ দিতে পারো।
+    <section id="contact" class="py-20 md:py-32 px-4 md:px-6 relative z-10">
+        <div class="max-w-4xl mx-auto bento-card p-6 md:p-12 text-center" data-aos="flip-up">
+            <h2 class="text-3xl md:text-5xl font-black mb-6">Let's <span class="text-amber-500">Collaborate</span></h2>
+            <p class="text-slate-600 dark:text-gray-400 text-sm md:text-lg mb-10 max-w-xl mx-auto leading-relaxed font-medium">
+                ইন্টারন্যাশনাল প্রজেক্ট, হার্ডওয়্যার ইনোভেশন বা প্রোডাকশন লেভেল অ্যাপ ডেভেলপমেন্টের জন্য সরাসরি যোগাযোগ করুন।
             </p>
             
-            <form id="contactForm" class="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
-                <input type="text" placeholder="Your Name" class="bg-slate-100 dark:bg-white/5 border border-slate-300 dark:border-white/10 rounded-xl px-6 py-4 outline-none focus:border-amber-500 dark:focus:border-amber-500 transition w-full" required>
-                <input type="email" placeholder="Your Email" class="bg-slate-100 dark:bg-white/5 border border-slate-300 dark:border-white/10 rounded-xl px-6 py-4 outline-none focus:border-amber-500 dark:focus:border-amber-500 transition w-full" required>
-                <textarea placeholder="Tell me about your project..." rows="4" class="md:col-span-2 bg-slate-100 dark:bg-white/5 border border-slate-300 dark:border-white/10 rounded-xl px-6 py-4 outline-none focus:border-amber-500 dark:focus:border-amber-500 transition w-full" required></textarea>
-                <button type="submit" class="md:col-span-2 py-5 bg-amber-500 text-slate-900 rounded-xl font-black uppercase tracking-widest hover:bg-amber-400 transition-all shadow-xl shadow-amber-500/20">Send Message</button>
+            <form id="contactForm" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 text-left mb-12">
+                <input type="text" placeholder="Your Name" class="bg-slate-100 dark:bg-white/5 border border-slate-300 dark:border-white/10 rounded-xl px-4 md:px-6 py-3 md:py-4 outline-none focus:border-amber-500 dark:focus:border-amber-500 transition w-full" required>
+                <input type="email" placeholder="Your Email" class="bg-slate-100 dark:bg-white/5 border border-slate-300 dark:border-white/10 rounded-xl px-4 md:px-6 py-3 md:py-4 outline-none focus:border-amber-500 dark:focus:border-amber-500 transition w-full" required>
+                <textarea placeholder="Discuss your requirements..." rows="4" class="md:col-span-2 bg-slate-100 dark:bg-white/5 border border-slate-300 dark:border-white/10 rounded-xl px-4 md:px-6 py-3 md:py-4 outline-none focus:border-amber-500 dark:focus:border-amber-500 transition w-full" required></textarea>
+                <button type="submit" class="md:col-span-2 py-4 md:py-5 bg-amber-500 text-slate-900 rounded-xl font-black uppercase tracking-widest hover:bg-amber-400 transition-all shadow-xl shadow-amber-500/20">Direct Message</button>
             </form>
 
-            <div class="mt-16 flex justify-center gap-8 text-3xl">
-                <a href="#" class="hover:text-amber-500 transition-colors"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="hover:text-amber-500 transition-colors"><i class="fab fa-github"></i></a>
-                <a href="#" class="hover:text-amber-500 transition-colors"><i class="fab fa-linkedin"></i></a>
-                <a href="#" class="hover:text-amber-500 transition-colors"><i class="fab fa-telegram"></i></a>
+            <div class="flex flex-wrap justify-center gap-6 text-2xl md:text-3xl">
+                <a href="https://github.com/rejuyanul-haque-rifat" target="_blank" class="hover:text-amber-500 transition-colors"><i class="fab fa-github"></i></a>
+                <a href="https://facebook.com/rejuyanul.haque.rifat.r" target="_blank" class="hover:text-amber-500 transition-colors"><i class="fab fa-facebook"></i></a>
+                <a href="https://m.me/rejuyanul.haque.rifat.r" target="_blank" class="hover:text-amber-500 transition-colors"><i class="fab fa-facebook-messenger"></i></a>
+                <a href="https://t.me/+8801522138626" target="_blank" class="hover:text-amber-500 transition-colors"><i class="fab fa-telegram"></i></a>
+                <a href="https://wa.me/+8801522138626" target="_blank" class="hover:text-green-500 transition-colors"><i class="fab fa-whatsapp"></i></a>
+                <a href="mailto:mdrifat7464@gmail.com" class="hover:text-red-500 transition-colors"><i class="fas fa-envelope"></i></a>
             </div>
+            <p class="mt-6 text-sm font-bold text-slate-500 dark:text-gray-400"><i class="fas fa-phone-alt mr-2 text-amber-500"></i>01522138626</p>
         </div>
     </section>
 
-    <footer class="py-12 border-t border-slate-200 dark:border-white/5 text-center text-slate-500 dark:text-gray-600 relative z-10">
-        <p class="text-sm uppercase tracking-widest font-bold">&copy; 2026 Rejuyanul Haque Rifat. Built with Passion.</p>
+    <footer class="py-8 md:py-12 border-t border-slate-200 dark:border-white/5 text-center text-slate-500 dark:text-gray-600 relative z-10 px-4">
+        <p class="text-xs md:text-sm uppercase tracking-widest font-bold">&copy; 2026 Rejuyanul Haque Rifat. Engineered with Precision.</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -338,23 +416,27 @@
         });
 
         const cursor = document.getElementById('custom-cursor');
-        document.addEventListener('mousemove', (e) => {
-            gsap.to(cursor, {
-                x: e.clientX - 10,
-                y: e.clientY - 10,
-                duration: 0.2,
-                ease: "power2.out"
+        if (window.matchMedia("(min-width: 768px)").matches) {
+            document.addEventListener('mousemove', (e) => {
+                gsap.to(cursor, {
+                    x: e.clientX - 10,
+                    y: e.clientY - 10,
+                    duration: 0.2,
+                    ease: "power2.out"
+                });
             });
-        });
 
-        document.querySelectorAll('a, button, input, textarea').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                gsap.to(cursor, { scale: 3, opacity: 0.3, background: '#fbbf24' });
+            document.querySelectorAll('a, button, input, textarea').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                    gsap.to(cursor, { scale: 3, opacity: 0.3, background: '#fbbf24' });
+                });
+                el.addEventListener('mouseleave', () => {
+                    gsap.to(cursor, { scale: 1, opacity: 1, background: '#fbbf24' });
+                });
             });
-            el.addEventListener('mouseleave', () => {
-                gsap.to(cursor, { scale: 1, opacity: 1, background: '#fbbf24' });
-            });
-        });
+        } else {
+            cursor.style.display = 'none';
+        }
 
         const form = document.getElementById('contactForm');
         form.addEventListener('submit', async (e) => {
@@ -368,7 +450,7 @@
             const email = form.querySelectorAll('input')[1].value;
             const message = form.querySelector('textarea').value;
 
-            const text = `Portfolio Message:\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`;
+            const text = `Advanced Portfolio Message:\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`;
             const token = '8863449813:AAEGCyv77o9_2erL_rnb3d6ddkdkJ_ZnDkA';
             const chatId = '7380295803';
             const url = `https://api.telegram.org/bot${token}/sendMessage`;
@@ -379,11 +461,11 @@
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ chat_id: chatId, text: text })
                 });
-                btn.innerHTML = "MESSAGE SENT! <i class='fas fa-check'></i>";
+                btn.innerHTML = "SENT SUCCESSFULLY! <i class='fas fa-check'></i>";
                 btn.classList.replace('bg-amber-500', 'bg-green-500');
                 form.reset();
             } catch (error) {
-                btn.innerHTML = "FAILED TO SEND!";
+                btn.innerHTML = "FAILED!";
                 btn.classList.replace('bg-amber-500', 'bg-red-500');
             }
 
@@ -396,16 +478,17 @@
         });
 
         AOS.init({
-            duration: 1200,
-            once: false,
-            mirror: true
+            duration: 1000,
+            once: true,
+            mirror: false,
+            offset: 50
         });
 
         gsap.from('nav .bento-card', {
             y: -100,
             opacity: 0,
-            duration: 1.5,
-            ease: "expo.out"
+            duration: 1.2,
+            ease: "power3.out"
         });
     </script>
 </body>
