@@ -3,492 +3,635 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rejuyanul Haque Rifat | Advanced Portfolio</title>
+    <title>Rejuyanul Haque Rifat | System Creator</title>
     
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Hind+Siliguri:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+
     <script>
         tailwind.config = {
             darkMode: 'class',
             theme: {
                 extend: {
+                    fontFamily: {
+                        sans: ['Hind Siliguri', 'sans-serif'],
+                    },
                     colors: {
-                        electric: '#fbbf24',
-                        darkBg: '#020617',
-                        lightBg: '#f8fafc',
+                        electric: '#0ea5e9',
+                        neon: '#06b6d4',
+                        energy: '#eab308',
+                        circuit: '#10b981',
+                        darkBase: '#020617',
+                        darkSurface: '#0f172a',
+                        lightBase: '#f8fafc',
+                        lightSurface: '#ffffff',
                     }
                 }
             }
         }
     </script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
         body {
-            font-family: 'Inter', 'Hind Siliguri', sans-serif;
             cursor: none;
-            transition: background-color 0.3s, color 0.3s;
+            overflow-x: hidden;
+            transition: background-color 0.4s ease, color 0.4s ease;
         }
 
-        .mesh-gradient {
+        .bg-grid-pattern {
+            position: fixed;
+            top: 0; left: 0; width: 100vw; height: 100vh;
+            z-index: -2;
+            opacity: 0.15;
+            background-size: 40px 40px;
+            background-image: linear-gradient(to right, rgba(14, 165, 233, 0.2) 1px, transparent 1px),
+                              linear-gradient(to bottom, rgba(14, 165, 233, 0.2) 1px, transparent 1px);
+        }
+
+        .circuit-lines {
             position: fixed;
             top: 0; left: 0; width: 100%; height: 100%;
             z-index: -1;
-            overflow: hidden;
-            transition: all 0.3s ease;
+            background: 
+                radial-gradient(circle at 15% 50%, rgba(6, 182, 212, 0.08) 0%, transparent 50%),
+                radial-gradient(circle at 85% 30%, rgba(234, 179, 8, 0.05) 0%, transparent 50%);
+            pointer-events: none;
         }
 
-        .dark .mesh-gradient {
-            background: radial-gradient(circle at 50% 50%, #1e1b4b 0%, #020617 100%);
-        }
-
-        .light .mesh-gradient {
-            background: radial-gradient(circle at 50% 50%, #fef3c7 0%, #f8fafc 100%);
-        }
-
-        .orb {
-            position: absolute;
-            border-radius: 50%;
-            filter: blur(80px);
-            opacity: 0.3;
-            animation: float 20s infinite alternate;
-        }
-
-        @keyframes float {
-            0% { transform: translate(0, 0) scale(1); }
-            100% { transform: translate(100px, 50px) scale(1.2); }
-        }
-
-        .bento-card {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            border-radius: 24px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .dark .bento-card {
-            background: rgba(15, 23, 42, 0.6);
+        .neo-glass {
+            background: rgba(15, 23, 42, 0.4);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
             border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
-        .light .bento-card {
+        .light .neo-glass {
             background: rgba(255, 255, 255, 0.7);
             border: 1px solid rgba(0, 0, 0, 0.05);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
         }
 
-        .bento-card:hover {
-            border-color: #fbbf24;
-            transform: translateY(-5px);
+        .hover-glow:hover {
+            box-shadow: 0 0 20px rgba(14, 165, 233, 0.4), inset 0 0 10px rgba(14, 165, 233, 0.2);
+            border-color: rgba(14, 165, 233, 0.5);
+            transform: translateY(-4px);
         }
 
-        .dark .bento-card:hover {
-            box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 20px rgba(251, 191, 36, 0.2);
+        .light .hover-glow:hover {
+            box-shadow: 0 10px 30px rgba(14, 165, 233, 0.15);
         }
 
-        .light .bento-card:hover {
-            box-shadow: 0 20px 40px rgba(0,0,0,0.1), 0 0 20px rgba(251, 191, 36, 0.3);
+        .text-gradient {
+            background: linear-gradient(to right, #0ea5e9, #06b6d4, #eab308);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-size: 200% auto;
+            animation: textShine 4s linear infinite;
+        }
+
+        @keyframes textShine {
+            to { background-position: 200% center; }
         }
 
         #custom-cursor {
-            width: 20px; height: 20px;
-            background: #fbbf24;
+            width: 8px; height: 8px;
+            background: #0ea5e9;
             border-radius: 50%;
             position: fixed;
             pointer-events: none;
             z-index: 9999;
-            mix-blend-mode: difference;
-            transition: transform 0.1s;
+            box-shadow: 0 0 10px #0ea5e9, 0 0 20px #0ea5e9;
+            transition: width 0.2s, height 0.2s, background 0.2s;
+            transform: translate(-50%, -50%);
         }
 
-        .text-glow {
-            background: linear-gradient(135deg, #f59e0b 0%, #fbbf24 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            filter: drop-shadow(0 0 10px rgba(251, 191, 36, 0.4));
-        }
-
-        .hero-floating {
-            animation: heroBounce 6s ease-in-out infinite;
-        }
-
-        @keyframes heroBounce {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-20px); }
-        }
-
-        ::-webkit-scrollbar { width: 5px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #fbbf24; border-radius: 10px; }
-
-        .noise {
+        #cursor-ring {
+            width: 30px; height: 30px;
+            border: 1px solid rgba(14, 165, 233, 0.5);
+            border-radius: 50%;
             position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: url('https://grainy-gradients.vercel.app/noise.svg');
-            opacity: 0.04;
             pointer-events: none;
-            z-index: 999;
+            z-index: 9998;
+            transform: translate(-50%, -50%);
+            transition: transform 0.1s ease-out, width 0.2s, height 0.2s, border-color 0.2s;
         }
 
-        .badge {
-            display: inline-block;
-            padding: 0.25rem 0.75rem;
-            border-radius: 9999px;
-            font-size: 0.75rem;
-            font-weight: 700;
-            background: rgba(251, 191, 36, 0.1);
-            color: #fbbf24;
-            border: 1px solid rgba(251, 191, 36, 0.3);
-            margin: 0.25rem;
+        .pulse-node {
+            width: 12px; height: 12px;
+            background: #eab308;
+            border-radius: 50%;
+            box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.7);
+            animation: pulse 2s infinite;
         }
+
+        @keyframes pulse {
+            0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(234, 179, 8, 0.7); }
+            70% { transform: scale(1); box-shadow: 0 0 0 10px rgba(234, 179, 8, 0); }
+            100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(234, 179, 8, 0); }
+        }
+
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #0ea5e9; border-radius: 10px; }
     </style>
 </head>
-<body class="bg-lightBg text-slate-900 dark:bg-darkBg dark:text-gray-100">
+<body class="bg-lightBase text-slate-800 dark:bg-darkBase dark:text-slate-100 antialiased selection:bg-electric selection:text-white">
 
     <div id="custom-cursor"></div>
-    <div class="noise"></div>
-    <div class="mesh-gradient">
-        <div class="orb w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-amber-500/20 top-[-10%] left-[-10%]"></div>
-        <div class="orb w-[250px] md:w-[400px] h-[250px] md:h-[400px] bg-orange-600/20 bottom-[-10%] right-[-10%]"></div>
-        <div class="orb w-[200px] md:w-[300px] h-[200px] md:h-[300px] bg-yellow-400/20 top-[40%] right-[10%]"></div>
-    </div>
+    <div id="cursor-ring"></div>
+    <div class="bg-grid-pattern"></div>
+    <div class="circuit-lines"></div>
 
-    <nav class="fixed w-full z-[100] px-4 md:px-6 py-4 md:py-6">
-        <div class="max-w-7xl mx-auto flex justify-between items-center bento-card px-4 md:px-8 py-3 md:py-4">
-            <a href="#" class="text-xl md:text-2xl font-extrabold tracking-tighter uppercase flex items-center gap-2">
-                <i class="fas fa-bolt text-amber-500"></i> Rifat
+    <nav class="fixed top-0 w-full z-50 px-6 py-4 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto neo-glass rounded-full px-6 py-3 flex justify-between items-center">
+            <a href="#" class="text-xl font-bold flex items-center gap-2 group">
+                <i class="fas fa-microchip text-electric group-hover:rotate-90 transition-transform duration-500"></i>
+                <span class="tracking-widest">RIFAT<span class="text-energy">.</span></span>
             </a>
-            <div class="hidden lg:flex items-center space-x-8 font-medium text-sm tracking-widest">
-                <a href="#home" class="hover:text-amber-500 transition">HOME</a>
-                <a href="#skills" class="hover:text-amber-500 transition">SKILLS</a>
-                <a href="#projects" class="hover:text-amber-500 transition">PROJECTS</a>
-                <button id="themeToggle" class="text-xl hover:text-amber-500 transition">
-                    <i class="fas fa-moon dark:hidden"></i>
-                    <i class="fas fa-sun hidden dark:block text-amber-400"></i>
-                </button>
-                <a href="#contact" class="px-5 py-2 bg-amber-500 text-slate-900 rounded-full hover:bg-amber-400 transition font-bold shadow-lg shadow-amber-500/20">LET'S TALK</a>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wider">
+                <a href="#about" class="hover:text-electric transition-colors">সম্পর্কে</a>
+                <a href="#skills" class="hover:text-electric transition-colors">স্কিলস</a>
+                <a href="#projects" class="hover:text-electric transition-colors">প্রজেক্টস</a>
+                <a href="#achievements" class="hover:text-electric transition-colors">অর্জন</a>
             </div>
-            <div class="lg:hidden flex items-center gap-4">
-                <button id="themeToggleMobile" class="text-xl hover:text-amber-500 transition">
+
+            <div class="flex items-center gap-4">
+                <button id="themeToggle" class="w-10 h-10 rounded-full neo-glass flex items-center justify-center hover:text-energy transition-colors">
                     <i class="fas fa-moon dark:hidden"></i>
-                    <i class="fas fa-sun hidden dark:block text-amber-400"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
                 </button>
-                <a href="#contact" class="px-4 py-2 text-xs bg-amber-500 text-slate-900 rounded-full font-bold">TALK</a>
+                <a href="#contact" class="hidden md:flex px-6 py-2 bg-electric text-white rounded-full font-bold hover:bg-neon hover:shadow-[0_0_15px_rgba(6,182,212,0.5)] transition-all">যোগাযোগ</a>
+                <button class="md:hidden text-2xl" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
             </div>
         </div>
     </nav>
 
-    <main id="home" class="min-h-screen flex flex-col justify-center items-center pt-24 px-4 md:px-6 relative overflow-hidden">
-        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-            <div class="z-10 order-2 lg:order-1 text-center lg:text-left" data-aos="fade-right">
-                <span class="inline-block py-1 px-4 rounded-full border border-amber-500/30 bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold tracking-widest mb-6">
-                    <i class="fas fa-microchip mr-2"></i> IOT INNOVATOR & FULL STACK DEV
-                </span>
-                <h1 class="text-4xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6">
-                    Engineering The <span class="text-glow">Impossible.</span>
+    <main class="min-h-screen pt-32 pb-20 px-6 flex items-center relative" id="home">
+        <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center w-full">
+            <div class="z-10 gs-reveal">
+                <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full neo-glass text-xs font-bold text-electric mb-6 border border-electric/20">
+                    <span class="pulse-node w-2 h-2"></span>
+                    সিস্টেম অনলাইনে রয়েছে
+                </div>
+                
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4">
+                    REJUYANUL HAQUE<br>
+                    <span class="text-gradient">RiFAT</span>
                 </h1>
-                <p class="text-slate-600 dark:text-gray-400 text-base md:text-lg max-w-xl mx-auto lg:mx-0 mb-8 leading-relaxed font-medium">
-                    আমি <span class="dark:text-white text-slate-900 font-bold">রেজুয়ানুল হক রিফাত</span>। প্রোডাকশন লেভেলের ওয়েব অ্যাপ, অ্যাডভান্সড রোবোটিক্স এবং ইন্ডাস্ট্রিয়াল আইওটি সিস্টেম ডেভেলপমেন্টে কাজ করছি। বর্তমানে Science And Robotics Club Bogura-এর Robotics Secretary হিসেবে যুক্ত আছি।
+                
+                <div class="h-12 md:h-16 mb-6 text-xl md:text-3xl font-semibold text-slate-600 dark:text-slate-300">
+                    <span id="typed-text"></span>
+                </div>
+
+                <p class="text-lg md:text-xl max-w-xl text-slate-500 dark:text-slate-400 mb-10 leading-relaxed">
+                    "I build real systems, not just concepts." <br>
+                    ইলেকট্রিক্যাল অটোমেশন থেকে শুরু করে আইওটি এবং মডার্ন ওয়েব ডেভেলপমেন্ট , আমি আইডিয়াকে বাস্তবে রূপ দিই।
                 </p>
-                <div class="flex flex-wrap justify-center lg:justify-start gap-4">
-                    <a href="#projects" class="px-6 md:px-8 py-3 md:py-4 bg-amber-500 text-slate-900 rounded-2xl font-bold hover:scale-105 transition-transform flex items-center gap-3">
-                        Explore Work <i class="fas fa-arrow-right"></i>
+
+                <div class="flex flex-wrap gap-4">
+                    <a href="#projects" class="px-8 py-4 bg-electric text-white rounded-xl font-bold flex items-center gap-2 hover:bg-neon transition-all hover:scale-105 shadow-[0_0_20px_rgba(14,165,233,0.3)] magnetic-btn">
+                        ওয়ার্ক দেখুন <i class="fas fa-arrow-right"></i>
                     </a>
-                    <a href="#contact" class="px-6 md:px-8 py-3 md:py-4 bento-card font-bold hover:bg-amber-500/10 transition-colors">
-                        Hire Me
+                    <a href="#contact" class="px-8 py-4 neo-glass rounded-xl font-bold hover:border-electric transition-all magnetic-btn">
+                        <i class="fas fa-paper-plane mr-2 text-energy"></i> কানেক্ট করুন
                     </a>
                 </div>
             </div>
-            
-            <div class="relative flex justify-center items-center order-1 lg:order-2 mt-10 lg:mt-0" data-aos="zoom-out">
-                <div class="hero-floating relative z-10 w-full max-w-xs md:max-w-md">
-                    <div class="bento-card p-3 rotate-3 hover:rotate-0 transition-transform duration-700">
-                        <img src="https://i.ibb.co.com/fdmK296p/rifat-img.jpg" alt="Rifat" class="rounded-xl grayscale hover:grayscale-0 transition-all duration-700 w-full object-cover aspect-square border border-amber-500/20">
-                    </div>
-                    <div class="absolute -bottom-6 md:-bottom-10 -right-4 md:-right-5 bento-card p-4 md:p-6 shadow-2xl animate-pulse border-amber-500/30">
-                        <i class="fas fa-robot text-2xl md:text-3xl text-amber-500 mb-2"></i>
-                        <p class="text-[10px] md:text-xs text-slate-500 dark:text-gray-400 tracking-tighter uppercase font-bold">Robotics Sec</p>
-                        <p class="text-xs md:text-sm font-bold">SRCB</p>
+
+            <div class="relative flex justify-center items-center gs-reveal">
+                <div class="absolute inset-0 bg-gradient-to-tr from-electric/20 to-energy/20 blur-3xl rounded-full"></div>
+                <div class="neo-glass p-2 rounded-2xl relative z-10 transform rotate-2 hover:rotate-0 transition-transform duration-700 w-full max-w-md border border-electric/30">
+                    <img src="https://i.ibb.co.com/fdmK296p/rifat-img.jpg" alt="Rifat" class="rounded-xl w-full object-cover aspect-[4/5] grayscale hover:grayscale-0 transition-all duration-700">
+                    <div class="absolute -bottom-6 -left-6 neo-glass p-4 rounded-xl shadow-xl flex items-center gap-4 animate-bounce">
+                        <i class="fas fa-robot text-3xl text-energy"></i>
+                        <div>
+                            <p class="text-xs font-bold text-slate-400">IoT & Robotics</p>
+                            <p class="font-bold text-sm">Secretary, SRCB</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </main>
 
-    <section id="skills" class="py-20 md:py-32 px-4 md:px-6 relative z-10">
+    <section id="about" class="py-24 px-6 relative z-10">
         <div class="max-w-7xl mx-auto">
-            <div class="mb-12 md:mb-16 text-center">
-                <h2 class="text-3xl md:text-5xl font-black mb-4">Advanced <span class="text-amber-500">Expertise</span></h2>
-                <p class="text-slate-500 dark:text-gray-400 uppercase tracking-widest text-xs md:text-sm font-bold">হার্ডওয়্যার থেকে প্রোডাকশন গ্রেড সফটওয়্যার</p>
+            <div class="flex flex-col items-center mb-16 text-center gs-reveal">
+                <i class="fas fa-bolt text-energy text-3xl mb-4"></i>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">আমার <span class="text-electric">জার্নি</span></h2>
+                <p class="text-slate-500 dark:text-slate-400 max-w-2xl">ইঞ্জিনিয়ারিং, টেকনোলজি এবং ইনোভেশনের এক অনন্য সমন্বয়।</p>
             </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                
-                <div class="bento-card p-6 md:p-8 lg:col-span-2 group" data-aos="fade-up">
-                    <div class="flex items-center gap-4 mb-6">
-                        <i class="fas fa-bolt text-4xl text-amber-500 group-hover:scale-110 transition-transform"></i>
-                        <h3 class="text-2xl font-bold">Industrial Electrical & Electronics</h3>
-                    </div>
-                    <p class="text-sm text-slate-600 dark:text-gray-400 mb-6 leading-relaxed">
-                        প্ল্যানিং, এস্টিমেটিং থেকে শুরু করে ইন্ডাস্ট্রিয়াল লেভেলের মেইনটেনেন্স এবং ইনোভেশন। ৩ ফেজ মোটর কন্ট্রোলিং, স্টার-ডেল্টা, এবং পাওয়ার ডিস্ট্রিবিউশনে প্র্যাকটিক্যাল দক্ষতা।
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="neo-glass p-8 rounded-2xl hover-glow gs-reveal">
+                    <p class="text-lg leading-relaxed text-slate-700 dark:text-slate-300 mb-6">
+                        আমি বর্তমানে ডিপ্লোমা ইন ইলেকট্রিক্যাল ইঞ্জিনিয়ারিং , বগুড়া পলিটেকনিক ইনস্টিটিউটে (সেশন ২৩-২৪) পড়াশুনা করছি । তবে আমার দক্ষতা শুধু প্রথাগত পড়াশোনার মধ্যে সীমাবদ্ধ নয়। 
                     </p>
-                    <div class="flex flex-wrap">
-                        <span class="badge">Transistor</span><span class="badge">MOSFET & IGBT</span><span class="badge">TRIAC/DIAC/SCR</span>
-                        <span class="badge">Digital Electronics</span><span class="badge">Op-Amp</span><span class="badge">Servo/Stepper</span>
-                        <span class="badge">3-Phase Systems</span><span class="badge">Power Generation</span>
-                    </div>
-                </div>
-
-                <div class="bento-card p-6 md:p-8 group" data-aos="fade-up" data-aos-delay="100">
-                    <i class="fas fa-microchip text-4xl text-green-500 mb-4 group-hover:rotate-12 transition-transform"></i>
-                    <h3 class="text-xl font-bold mb-2">Microcontrollers & IoT</h3>
-                    <p class="text-sm text-slate-600 dark:text-gray-400 mb-4 leading-relaxed">অ্যাডভান্সড হার্ডওয়্যার এবং আইওটি সিস্টেম ডিজাইন।</p>
-                    <div class="flex flex-wrap">
-                        <span class="badge">Arduino All</span><span class="badge">ESP32 & NodeMCU</span><span class="badge">Raspberry Pi</span><span class="badge">Custom PCB</span>
-                    </div>
-                </div>
-
-                <div class="bento-card p-6 md:p-8 group" data-aos="fade-up" data-aos-delay="200">
-                    <i class="fas fa-code text-4xl text-blue-500 mb-4 group-hover:-rotate-12 transition-transform"></i>
-                    <h3 class="text-xl font-bold mb-2">Production Web Dev</h3>
-                    <p class="text-sm text-slate-600 dark:text-gray-400 mb-4 leading-relaxed">ফুল স্ট্যাক ডেভেলপমেন্ট এবং রেসপন্সিভ ইউজার ইন্টারফেস।</p>
-                    <div class="flex flex-wrap">
-                        <span class="badge">Frontend UI/UX</span><span class="badge">API Integration</span><span class="badge">Dashboard Auth</span>
-                    </div>
-                </div>
-
-                <div class="bento-card p-6 md:p-8 lg:col-span-2 bg-gradient-to-br from-amber-500/10 to-transparent group" data-aos="fade-up" data-aos-delay="300">
-                    <div class="flex flex-col md:flex-row md:items-center gap-6">
-                        <div class="w-16 h-16 md:w-20 md:h-20 shrink-0 rounded-2xl bg-slate-200 dark:bg-white/5 flex items-center justify-center text-3xl md:text-4xl group-hover:bg-amber-500 transition-colors">
-                            <i class="fas fa-hammer text-slate-800 dark:text-amber-500 group-hover:text-slate-900 transition-colors"></i>
+                    <p class="text-lg leading-relaxed text-slate-700 dark:text-slate-300 mb-6">
+                        ফিল্ড লেভেলের ইলেকট্রিক্যাল কাজ থেকে শুরু করে ইলেকট্রনিক্স, রোবোটিক্স, মেকাট্রনিক্স, এমবেডেড সিস্টেম, ফুল-স্ট্যাক ওয়েব ডেভেলপমেন্ট, গ্রাফিক্স , ফটো-ভিডিও এডিটিং, ডিজিটাল মার্কেটিং এবং ইন্ডাস্ট্রিয়াল ফ্যাব্রিকেশন পর্যন্ত বিস্তৃত আমার কাজের পরিধি। আর সম্পূর্ণ কিছু শিখেছি আমি আমার নিজের ইচ্ছাশক্তি, ফ্রি টুলস আর পরিশ্রমের মধ্য দিয়ে, আমি এখন পর্যন্ত কোনো বিষয়েই কোনধরনের কোর্স করিনাই ।
+                    </p>
+                    <div class="flex items-center gap-4 pt-6 border-t border-slate-200 dark:border-slate-800">
+                        <div class="w-12 h-12 rounded-full bg-electric/10 flex items-center justify-center text-electric text-xl">
+                            <i class="fas fa-graduation-cap"></i>
                         </div>
                         <div>
-                            <h3 class="text-xl md:text-2xl font-bold mb-2">Hardware Fabrication & Business</h3>
-                            <p class="text-sm text-slate-600 dark:text-gray-400 mb-3">ওয়েল্ডিং, গ্রাইন্ডিং, অ্যালুমিনিয়াম, এসএস এবং টিন শেডের কাজের পাশাপাশি ডিজিটাল মার্কেটিং ও কম্পোনেন্ট সেলিং।</p>
-                            <div class="flex flex-wrap">
-                                <span class="badge border-blue-500/30 text-blue-500">Digital Marketing</span>
-                                <span class="badge border-green-500/30 text-green-500">Gadget Selling</span>
-                                <span class="badge border-orange-500/30 text-orange-500">Fabrication</span>
+                            <h4 class="font-bold text-lg">ডিপ্লোমা ইন ইলেকট্রিক্যাল ইঞ্জিনিয়ারিং</h4>
+                            <p class="text-sm text-slate-500">প্র্যাকটিক্যাল ও থিওরিটিক্যাল নলেজ</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 dark:before:via-slate-700 before:to-transparent">
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active gs-reveal">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-lightBase dark:border-darkBase bg-electric text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                            <i class="fas fa-cogs text-xs"></i>
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] neo-glass p-4 rounded-xl hover-glow">
+                            <div class="flex items-center justify-between space-x-2 mb-1">
+                                <div class="font-bold text-electric">ইন্ডাস্ট্রিয়াল স্কিলস</div>
+                            </div>
+                            <div class="text-slate-600 dark:text-slate-400 text-sm">পাওয়ার সিস্টেম, ফ্যাব্রিকেশন এবং ওয়েল্ডিংয়ের বাস্তব অভিজ্ঞতা।</div>
+                        </div>
+                    </div>
+                    
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active gs-reveal">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-lightBase dark:border-darkBase bg-neon text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                            <i class="fas fa-network-wired text-xs"></i>
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] neo-glass p-4 rounded-xl hover-glow">
+                            <div class="flex items-center justify-between space-x-2 mb-1">
+                                <div class="font-bold text-neon">অটোমেশন ও আইওটি</div>
+                            </div>
+                            <div class="text-slate-600 dark:text-slate-400 text-sm">স্মার্ট ডিভাইস ও রোবোটিক্স ইন্টিগ্রেশন।</div>
+                        </div>
+                    </div>
+
+                    <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active gs-reveal">
+                        <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-lightBase dark:border-darkBase bg-energy text-slate-900 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                            <i class="fas fa-code text-xs"></i>
+                        </div>
+                        <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] neo-glass p-4 rounded-xl hover-glow">
+                            <div class="flex items-center justify-between space-x-2 mb-1">
+                                <div class="font-bold text-energy">সফটওয়্যার ও ওয়েব</div>
+                            </div>
+                            <div class="text-slate-600 dark:text-slate-400 text-sm">মডার্ন ফুল স্ট্যাক অ্যাপ এবং ইউআই/ইউএক্স ডিজাইন।</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="mb-16 gs-reveal">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">কোর <span class="text-neon">টেকনোলজি</span></h2>
+                <div class="h-1 w-20 bg-electric rounded"></div>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-6" id="skillsContainer"></div>
+        </div>
+    </section>
+
+    <section id="projects" class="py-24 px-6 relative z-10">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-16 gs-reveal">
+                <div>
+                    <h2 class="text-4xl md:text-5xl font-bold mb-4">ফিচার্ড <span class="text-energy">সিস্টেমস</span></h2>
+                    <p class="text-slate-500 font-medium">থিওরি নয়, বাস্তব প্রজেক্ট ইমপ্লিমেন্টেশন</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-8" id="projectsContainer"></div>
+        </div>
+    </section>
+
+    <section id="achievements" class="py-24 px-6 relative z-10 border-t border-b border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-900/50">
+        <div class="max-w-7xl mx-auto gs-reveal text-center">
+            <h2 class="text-4xl font-bold mb-12">অর্জন ও <span class="text-electric">অ্যাক্টিভিটি</span></h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                <div class="neo-glass p-6 rounded-2xl hover-glow">
+                    <i class="fas fa-globe text-4xl text-electric mb-4"></i>
+                    <h3 class="font-bold text-lg">আন্তর্জাতিক ইভেন্ট</h3>
+                    <p class="text-sm text-slate-500 mt-2">কম্পিটিশনে অংশগ্রহণ</p>
+                </div>
+                <div class="neo-glass p-6 rounded-2xl hover-glow">
+                    <i class="fas fa-users text-4xl text-neon mb-4"></i>
+                    <h3 class="font-bold text-lg">মেন্টরিং</h3>
+                    <p class="text-sm text-slate-500 mt-2">সহপাঠীদের টেকনিক্যাল গাইডেন্স</p>
+                </div>
+                <div class="neo-glass p-6 rounded-2xl hover-glow">
+                    <i class="fas fa-microchip text-4xl text-energy mb-4"></i>
+                    <h3 class="font-bold text-lg">ইনোভেশন</h3>
+                    <p class="text-sm text-slate-500 mt-2">বাস্তব সমস্যার টেক সমাধান</p>
+                </div>
+                <div class="neo-glass p-6 rounded-2xl hover-glow">
+                    <i class="fas fa-project-diagram text-4xl text-circuit mb-4"></i>
+                    <h3 class="font-bold text-lg">সিস্টেম ডেভেলপমেন্ট</h3>
+                    <p class="text-sm text-slate-500 mt-2">মাল্টিডিসিপ্লিনারি প্রজেক্টস</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="py-24 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid md:grid-cols-2 gap-12 bg-white dark:bg-slate-900 rounded-3xl p-8 md:p-12 shadow-2xl border border-slate-100 dark:border-slate-800 gs-reveal relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-64 h-64 bg-electric/10 rounded-full blur-3xl"></div>
+                
+                <div class="relative z-10">
+                    <h2 class="text-4xl font-bold mb-4">লেটস <span class="text-electric">কানেক্ট</span></h2>
+                    <p class="text-slate-500 dark:text-slate-400 mb-8 text-lg">নতুন প্রজেক্ট বা কোলাবোরেশনের জন্য মেসেজ দিন।</p>
+
+                    <div class="space-y-6 mb-8">
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center text-electric">
+                                <i class="fas fa-phone"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-slate-500">ফোন / হোয়াটসঅ্যাপ</p>
+                                <p class="font-bold text-lg">01522138626</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center text-neon">
+                                <i class="fas fa-envelope"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-slate-500">ইমেইল</p>
+                                <p class="font-bold text-lg">mdrifat7464@gmail.com</p>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-4">
+                            <div class="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center text-energy">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div>
+                                <p class="text-sm text-slate-500">লোকেশন</p>
+                                <p class="font-bold text-lg">বগুড়া</p>
                             </div>
                         </div>
                     </div>
+
+                    <div class="flex gap-4 text-2xl" id="socialLinksContainer"></div>
                 </div>
-            </div>
-        </div>
-    </section>
 
-    <section id="projects" class="py-20 md:py-32 px-4 md:px-6 dark:bg-black/30 bg-slate-100/50 relative z-10">
-        <div class="max-w-7xl mx-auto">
-            <div class="mb-12 md:mb-16 text-center md:text-left">
-                <h2 class="text-3xl md:text-5xl font-black mb-4">Production <span class="text-glow">Projects</span></h2>
-                <p class="text-slate-500 dark:text-gray-400 font-bold uppercase text-xs md:text-sm tracking-widest">ওয়েব, আইওটি এবং রোবোটিক্স</p>
-            </div>
-
-            <h3 class="text-2xl font-bold mb-8 border-l-4 border-amber-500 pl-4">IoT Web Systems</h3>
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
-                <a href="https://smart-fish-breeder-aqunar.vercel.app" target="_blank" class="bento-card p-6 block group" data-aos="zoom-in-up">
-                    <div class="flex justify-between items-start mb-4">
-                        <i class="fas fa-fish text-3xl text-blue-400"></i>
-                        <i class="fas fa-external-link-alt text-slate-400 group-hover:text-amber-500 transition-colors"></i>
-                    </div>
-                    <h4 class="text-xl font-bold mb-2">Smart Fish Breeder</h4>
-                    <p class="text-xs text-slate-500 dark:text-gray-400 mb-4">Automated aquaculture monitoring and control system.</p>
-                </a>
-                
-                <a href="https://smart-energy-meter-electro-ix.vercel.app" target="_blank" class="bento-card p-6 block group" data-aos="zoom-in-up" data-aos-delay="100">
-                    <div class="flex justify-between items-start mb-4">
-                        <i class="fas fa-bolt text-3xl text-yellow-400"></i>
-                        <i class="fas fa-external-link-alt text-slate-400 group-hover:text-amber-500 transition-colors"></i>
-                    </div>
-                    <h4 class="text-xl font-bold mb-2">Smart Energy Meter</h4>
-                    <p class="text-xs text-slate-500 dark:text-gray-400 mb-4">Real-time power consumption and billing monitor.</p>
-                </a>
-
-                <a href="https://smart-traffic-solving.vercel.app" target="_blank" class="bento-card p-6 block group" data-aos="zoom-in-up" data-aos-delay="200">
-                    <div class="flex justify-between items-start mb-4">
-                        <i class="fas fa-traffic-light text-3xl text-red-400"></i>
-                        <i class="fas fa-external-link-alt text-slate-400 group-hover:text-amber-500 transition-colors"></i>
-                    </div>
-                    <h4 class="text-xl font-bold mb-2">Traffic Solving Model</h4>
-                    <p class="text-xs text-slate-500 dark:text-gray-400 mb-4">IoT based smart traffic management system.</p>
-                </a>
-
-                <div class="bento-card p-6 col-span-1 lg:col-span-2 group" data-aos="zoom-in-up" data-aos-delay="300">
-                    <div class="flex items-start gap-4 mb-4">
-                        <i class="fas fa-train text-3xl text-emerald-400"></i>
+                <div class="relative z-10">
+                    <form id="contactForm" class="space-y-6">
                         <div>
-                            <h4 class="text-xl font-bold mb-1">Railway Ticketing System</h4>
-                            <p class="text-xs text-slate-500 dark:text-gray-400">Complete smart ticketing management ecosystem.</p>
+                            <label class="block text-sm font-semibold mb-2">আপনার নাম</label>
+                            <input type="text" id="senderName" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 outline-none focus:border-electric focus:ring-1 focus:ring-electric transition-all" required>
                         </div>
-                    </div>
-                    <div class="flex flex-wrap gap-3 mt-4">
-                        <a href="https://smart-rail-passenger.vercel.app" target="_blank" class="text-xs font-bold bg-white/10 px-4 py-2 rounded-lg hover:bg-amber-500 hover:text-slate-900 transition"><i class="fas fa-user mr-1"></i> Passenger</a>
-                        <a href="https://smart-rail-passenger.vercel.app/counter.html" target="_blank" class="text-xs font-bold bg-white/10 px-4 py-2 rounded-lg hover:bg-amber-500 hover:text-slate-900 transition"><i class="fas fa-ticket-alt mr-1"></i> Counter</a>
-                        <a href="https://smart-rail-passenger.vercel.app/tte.html" target="_blank" class="text-xs font-bold bg-white/10 px-4 py-2 rounded-lg hover:bg-amber-500 hover:text-slate-900 transition"><i class="fas fa-id-badge mr-1"></i> TTE Panel</a>
-                    </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">কন্টাক্ট নাম্বার</label>
+                            <input type="text" id="senderPhone" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 outline-none focus:border-electric focus:ring-1 focus:ring-electric transition-all" required>
+                        </div>
+                        <div>
+                            <label class="block text-sm font-semibold mb-2">প্রয়োজনীয়তা / মেসেজ</label>
+                            <textarea id="senderMsg" rows="4" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 outline-none focus:border-electric focus:ring-1 focus:ring-electric transition-all" required></textarea>
+                        </div>
+                        <button type="submit" id="submitBtn" class="w-full py-4 bg-gradient-to-r from-electric to-neon text-white rounded-xl font-bold text-lg hover:shadow-lg hover:shadow-electric/30 transition-all active:scale-95">
+                            মেসেজ পাঠান <i class="fas fa-paper-plane ml-2"></i>
+                        </button>
+                    </form>
                 </div>
-
-                <a href="https://smart-irrigation-system-srcb.vercel.app" target="_blank" class="bento-card p-6 block group" data-aos="zoom-in-up" data-aos-delay="400">
-                    <div class="flex justify-between items-start mb-4">
-                        <i class="fas fa-seedling text-3xl text-green-400"></i>
-                        <i class="fas fa-external-link-alt text-slate-400 group-hover:text-amber-500 transition-colors"></i>
-                    </div>
-                    <h4 class="text-xl font-bold mb-2">Smart Irrigation (SRCB)</h4>
-                    <p class="text-xs text-slate-500 dark:text-gray-400 mb-4">Automated agriculture watering logic system.</p>
-                </a>
             </div>
 
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
-                <div>
-                    <h3 class="text-2xl font-bold mb-6 border-l-4 border-amber-500 pl-4">Web Apps</h3>
-                    <div class="space-y-4">
-                        <div class="bento-card p-5 flex items-center gap-4"><i class="fas fa-laptop-code text-2xl text-indigo-400 w-8"></i><div><h4 class="font-bold">BPI Blood Finder</h4></div></div>
-                        <div class="bento-card p-5 flex items-center gap-4"><i class="fas fa-laptop-code text-2xl text-indigo-400 w-8"></i><div><h4 class="font-bold">Khetlal Online Service's</h4></div></div>
-                        <div class="bento-card p-5 flex items-center gap-4"><i class="fas fa-laptop-code text-2xl text-indigo-400 w-8"></i><div><h4 class="font-bold">Board Result Zone</h4></div></div>
-                        <div class="bento-card p-5 flex items-center gap-4"><i class="fas fa-laptop-code text-2xl text-indigo-400 w-8"></i><div><h4 class="font-bold">Easy Tool's</h4></div></div>
-                    </div>
-                </div>
-
-                <div>
-                    <h3 class="text-2xl font-bold mb-6 border-l-4 border-amber-500 pl-4">Robotics & Hardware</h3>
-                    <div class="flex flex-wrap gap-3">
-                        <span class="bg-slate-200 dark:bg-white/5 border border-slate-300 dark:border-white/10 px-4 py-2 rounded-lg text-sm font-semibold">Rescue Robot</span>
-                        <span class="bg-slate-200 dark:bg-white/5 border border-slate-300 dark:border-white/10 px-4 py-2 rounded-lg text-sm font-semibold">Fire Extinguisher Robot</span>
-                        <span class="bg-slate-200 dark:bg-white/5 border border-slate-300 dark:border-white/10 px-4 py-2 rounded-lg text-sm font-semibold">Border Monitoring Robot</span>
-                        <span class="bg-slate-200 dark:bg-white/5 border border-slate-300 dark:border-white/10 px-4 py-2 rounded-lg text-sm font-semibold">Sample Collecting Robot</span>
-                        <span class="bg-slate-200 dark:bg-white/5 border border-slate-300 dark:border-white/10 px-4 py-2 rounded-lg text-sm font-semibold">Smart Home Security</span>
-                        <span class="bg-slate-200 dark:bg-white/5 border border-slate-300 dark:border-white/10 px-4 py-2 rounded-lg text-sm font-semibold">Transmission Fault Detector</span>
-                        <span class="bg-slate-200 dark:bg-white/5 border border-slate-300 dark:border-white/10 px-4 py-2 rounded-lg text-sm font-semibold">U Turn Management</span>
-                        <span class="bg-slate-200 dark:bg-white/5 border border-slate-300 dark:border-white/10 px-4 py-2 rounded-lg text-sm font-semibold">Solar Tracking Model</span>
-                        <span class="bg-slate-200 dark:bg-white/5 border border-slate-300 dark:border-white/10 px-4 py-2 rounded-lg text-sm font-semibold">Footstep Power Generation</span>
-                    </div>
-                </div>
+            <div class="mt-12 neo-glass rounded-3xl overflow-hidden h-96 gs-reveal">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14502.937213895521!2d89.143242!3d24.975471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fc9c004d7c049b%3A0x6b7db0101b7a2d48!2sKhetlal!5e0!3m2!1sen!2sbd!4v1716568549000!5m2!1sen!2sbd" width="100%" height="100%" style="border:0; filter: contrast(1.2) opacity(0.8);" allowfullscreen="" loading="lazy"></iframe>
             </div>
         </div>
     </section>
 
-    <section id="contact" class="py-20 md:py-32 px-4 md:px-6 relative z-10">
-        <div class="max-w-4xl mx-auto bento-card p-6 md:p-12 text-center" data-aos="flip-up">
-            <h2 class="text-3xl md:text-5xl font-black mb-6">Let's <span class="text-amber-500">Collaborate</span></h2>
-            <p class="text-slate-600 dark:text-gray-400 text-sm md:text-lg mb-10 max-w-xl mx-auto leading-relaxed font-medium">
-                ইন্টারন্যাশনাল প্রজেক্ট, হার্ডওয়্যার ইনোভেশন বা প্রোডাকশন লেভেল অ্যাপ ডেভেলপমেন্টের জন্য সরাসরি যোগাযোগ করুন।
-            </p>
-            
-            <form id="contactForm" class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 text-left mb-12">
-                <input type="text" placeholder="Your Name" class="bg-slate-100 dark:bg-white/5 border border-slate-300 dark:border-white/10 rounded-xl px-4 md:px-6 py-3 md:py-4 outline-none focus:border-amber-500 dark:focus:border-amber-500 transition w-full" required>
-                <input type="email" placeholder="Your Email" class="bg-slate-100 dark:bg-white/5 border border-slate-300 dark:border-white/10 rounded-xl px-4 md:px-6 py-3 md:py-4 outline-none focus:border-amber-500 dark:focus:border-amber-500 transition w-full" required>
-                <textarea placeholder="Discuss your requirements..." rows="4" class="md:col-span-2 bg-slate-100 dark:bg-white/5 border border-slate-300 dark:border-white/10 rounded-xl px-4 md:px-6 py-3 md:py-4 outline-none focus:border-amber-500 dark:focus:border-amber-500 transition w-full" required></textarea>
-                <button type="submit" class="md:col-span-2 py-4 md:py-5 bg-amber-500 text-slate-900 rounded-xl font-black uppercase tracking-widest hover:bg-amber-400 transition-all shadow-xl shadow-amber-500/20">Direct Message</button>
-            </form>
-
-            <div class="flex flex-wrap justify-center gap-6 text-2xl md:text-3xl">
-                <a href="https://github.com/rejuyanul-haque-rifat" target="_blank" class="hover:text-amber-500 transition-colors"><i class="fab fa-github"></i></a>
-                <a href="https://facebook.com/rejuyanul.haque.rifat.r" target="_blank" class="hover:text-amber-500 transition-colors"><i class="fab fa-facebook"></i></a>
-                <a href="https://m.me/rejuyanul.haque.rifat.r" target="_blank" class="hover:text-amber-500 transition-colors"><i class="fab fa-facebook-messenger"></i></a>
-                <a href="https://t.me/+8801522138626" target="_blank" class="hover:text-amber-500 transition-colors"><i class="fab fa-telegram"></i></a>
-                <a href="https://wa.me/+8801522138626" target="_blank" class="hover:text-green-500 transition-colors"><i class="fab fa-whatsapp"></i></a>
-                <a href="mailto:mdrifat7464@gmail.com" class="hover:text-red-500 transition-colors"><i class="fas fa-envelope"></i></a>
-            </div>
-            <p class="mt-6 text-sm font-bold text-slate-500 dark:text-gray-400"><i class="fas fa-phone-alt mr-2 text-amber-500"></i>01522138626</p>
-        </div>
-    </section>
-
-    <footer class="py-8 md:py-12 border-t border-slate-200 dark:border-white/5 text-center text-slate-500 dark:text-gray-600 relative z-10 px-4">
-        <p class="text-xs md:text-sm uppercase tracking-widest font-bold">&copy; 2026 Rejuyanul Haque Rifat. Engineered with Precision.</p>
+    <footer class="py-8 border-t border-slate-200 dark:border-slate-800 text-center relative z-10 bg-lightBase dark:bg-darkBase">
+        <p class="text-slate-500 font-semibold tracking-wider text-sm uppercase">
+            &copy; 2026 Rejuyanul Haque Rifat. Engineered with Passion.
+        </p>
     </footer>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script>
+        const CONFIG = {
+            telegram: {
+                botToken: "8863449813:AAEGCyv77o9_2erL_rnb3d6ddkdkJ_ZnDkA",
+                chatId: "7380295803"
+            },
+            googleSheetUrl: "", 
+            roles: [
+                "Electrical Engineer",
+                "IoT Innovator",
+                "Robotics Builder",
+                "Industrial Creator",
+                "Full Stack Developer"
+            ],
+            socialLinks: [
+                { icon: 'fa-github', url: 'https://github.com/rejuyanul-haque-rifat', color: 'hover:text-slate-400' },
+                { icon: 'fa-facebook', url: 'https://facebook.com/rejuyanul.haque.rifat.r', color: 'hover:text-blue-500' },
+                { icon: 'fa-telegram', url: 'https://t.me/+8801522138626', color: 'hover:text-blue-400' },
+                { icon: 'fa-whatsapp', url: 'https://wa.me/+8801522138626', color: 'hover:text-green-500' }
+            ],
+            skills: [
+                {
+                    title: "ইলেকট্রিক্যাল ইঞ্জিনিয়ারিং",
+                    icon: "fa-bolt",
+                    color: "text-energy",
+                    items: ["Planning", "Installation", "Testing", "Maintenance", "Industrial Works", "Power System"]
+                },
+                {
+                    title: "ইলেকট্রনিক্স",
+                    icon: "fa-microchip",
+                    color: "text-electric",
+                    items: ["MOSFET", "IGBT", "TRIAC", "SCR", "Amplifier", "Microprocessor"]
+                },
+                {
+                    title: "এমবেডেড সিস্টেম",
+                    icon: "fa-memory",
+                    color: "text-neon",
+                    items: ["Arduino", "ESP32", "NodeMCU", "Raspberry Pi"]
+                },
+                {
+                    title: "ডেভেলপমেন্ট",
+                    icon: "fa-laptop-code",
+                    color: "text-purple-500",
+                    items: ["Full Stack", "UI UX", "Web App"]
+                },
+                {
+                    title: "ইন্ডাস্ট্রিয়াল",
+                    icon: "fa-industry",
+                    color: "text-orange-500",
+                    items: ["Welding", "Fabrication", "Workshop"]
+                },
+                {
+                    title: "ক্রিয়েটিভ",
+                    icon: "fa-camera-retro",
+                    color: "text-pink-500",
+                    items: ["Photography", "Editing", "Graphics"]
+                }
+            ],
+            projects: [
+                { name: "SMART FISH BREEDER", link: "https://smart-fish-breeder-aqunar.vercel.app", type: "IoT & Web", icon: "fa-fish" },
+                { name: "SMART ENERGY METER", link: "https://smart-energy-meter-electro-ix.vercel.app", type: "Electrical & IoT", icon: "fa-tachometer-alt" },
+                { name: "SMART TRAFFIC SOLVING", link: "https://smart-traffic-solving.vercel.app", type: "Automation", icon: "fa-traffic-light" },
+                { name: "SMART RAIL PASSENGER", link: "https://smart-rail-passenger.vercel.app", type: "Full System", icon: "fa-train" },
+                { name: "SMART IRRIGATION", link: "https://smart-irrigation-system-srcb.vercel.app", type: "Agri-Tech", icon: "fa-seedling" },
+                { name: "BPI BLOOD FINDER", link: "#", type: "Web App", icon: "fa-heartbeat" },
+                { name: "RESCUE ROBOT", link: "#", type: "Robotics", icon: "fa-robot" },
+                { name: "SMART HOME SECURITY", link: "#", type: "IoT Security", icon: "fa-shield-alt" }
+            ]
+        };
+
         const html = document.documentElement;
-        const themeToggles = document.querySelectorAll('#themeToggle, #themeToggleMobile');
+        const themeToggle = document.getElementById('themeToggle');
         
-        themeToggles.forEach(btn => {
-            btn.addEventListener('click', () => {
-                html.classList.toggle('dark');
-                html.classList.toggle('light');
-            });
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            html.classList.toggle('light');
         });
 
         const cursor = document.getElementById('custom-cursor');
-        if (window.matchMedia("(min-width: 768px)").matches) {
-            document.addEventListener('mousemove', (e) => {
-                gsap.to(cursor, {
-                    x: e.clientX - 10,
-                    y: e.clientY - 10,
-                    duration: 0.2,
-                    ease: "power2.out"
-                });
-            });
+        const cursorRing = document.getElementById('cursor-ring');
+        
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            setTimeout(() => {
+                cursorRing.style.left = e.clientX + 'px';
+                cursorRing.style.top = e.clientY + 'px';
+            }, 50);
+        });
 
-            document.querySelectorAll('a, button, input, textarea').forEach(el => {
-                el.addEventListener('mouseenter', () => {
-                    gsap.to(cursor, { scale: 3, opacity: 0.3, background: '#fbbf24' });
-                });
-                el.addEventListener('mouseleave', () => {
-                    gsap.to(cursor, { scale: 1, opacity: 1, background: '#fbbf24' });
-                });
+        document.querySelectorAll('a, button, input, textarea, .magnetic-btn').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                cursorRing.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                cursorRing.style.borderColor = '#eab308';
             });
-        } else {
-            cursor.style.display = 'none';
-        }
+            el.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                cursorRing.style.transform = 'translate(-50%, -50%) scale(1)';
+                cursorRing.style.borderColor = 'rgba(14, 165, 233, 0.5)';
+            });
+        });
+
+        new Typed('#typed-text', {
+            strings: CONFIG.roles,
+            typeSpeed: 50,
+            backSpeed: 30,
+            backDelay: 2000,
+            loop: true,
+            cursorChar: '_'
+        });
+
+        const skillsContainer = document.getElementById('skillsContainer');
+        CONFIG.skills.forEach(skill => {
+            let itemsHtml = skill.items.map(item => `<span class="px-3 py-1 bg-slate-200 dark:bg-slate-800 rounded-full text-xs font-semibold">${item}</span>`).join('');
+            skillsContainer.innerHTML += `
+                <div class="neo-glass p-6 rounded-2xl hover-glow group">
+                    <div class="flex items-center gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-2xl ${skill.color} group-hover:scale-110 transition-transform">
+                            <i class="fas ${skill.icon}"></i>
+                        </div>
+                        <h3 class="font-bold text-xl">${skill.title}</h3>
+                    </div>
+                    <div class="flex flex-wrap gap-2">${itemsHtml}</div>
+                </div>
+            `;
+        });
+
+        const projectsContainer = document.getElementById('projectsContainer');
+        CONFIG.projects.forEach(project => {
+            let linkAttr = project.link !== "#" ? `href="${project.link}" target="_blank"` : `href="#"`;
+            projectsContainer.innerHTML += `
+                <div class="neo-glass rounded-2xl p-6 hover-glow group relative overflow-hidden">
+                    <div class="absolute -right-10 -top-10 text-9xl opacity-5 group-hover:scale-110 group-hover:opacity-10 transition-all duration-700 ${project.link !== '#' ? 'text-electric' : 'text-slate-500'}">
+                        <i class="fas ${project.icon}"></i>
+                    </div>
+                    <div class="relative z-10">
+                        <p class="text-xs font-bold text-electric mb-2 uppercase tracking-widest">${project.type}</p>
+                        <h3 class="text-2xl font-bold mb-4">${project.name}</h3>
+                        <div class="flex gap-4 mt-6">
+                            <a ${linkAttr} class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center hover:bg-electric hover:text-white transition-colors">
+                                <i class="fas ${project.link !== '#' ? 'fa-external-link-alt' : 'fa-lock'}"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        });
+
+        const socialContainer = document.getElementById('socialLinksContainer');
+        CONFIG.socialLinks.forEach(link => {
+            socialContainer.innerHTML += `<a href="${link.url}" target="_blank" class="text-slate-400 transition-colors ${link.color}"><i class="fab ${link.icon}"></i></a>`;
+        });
+
+        gsap.registerPlugin(ScrollTrigger);
+        gsap.utils.toArray('.gs-reveal').forEach(function(elem) {
+            gsap.fromTo(elem, 
+                { y: 50, opacity: 0 }, 
+                { 
+                    y: 0, opacity: 1, duration: 1, ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: elem,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+        });
 
         const form = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+
         form.addEventListener('submit', async (e) => {
             e.preventDefault();
-            const btn = e.target.querySelector('button');
-            const originalText = btn.innerText;
-            btn.innerHTML = "<i class='fas fa-spinner fa-spin'></i> Sending...";
-            btn.disabled = true;
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> প্রসেসিং...';
+            submitBtn.disabled = true;
 
-            const name = form.querySelectorAll('input')[0].value;
-            const email = form.querySelectorAll('input')[1].value;
-            const message = form.querySelector('textarea').value;
+            const name = document.getElementById('senderName').value;
+            const phone = document.getElementById('senderPhone').value;
+            const msg = document.getElementById('senderMsg').value;
 
-            const text = `Advanced Portfolio Message:\n\nName: ${name}\nEmail: ${email}\nMessage: ${message}`;
-            const token = '8863449813:AAEGCyv77o9_2erL_rnb3d6ddkdkJ_ZnDkA';
-            const chatId = '7380295803';
-            const url = `https://api.telegram.org/bot${token}/sendMessage`;
+            const text = `🚀 *New Portfolio Lead*\n\n👤 *Name:* ${name}\n📞 *Phone:* ${phone}\n💬 *Message:* ${msg}`;
+            const tgUrl = `https://api.telegram.org/bot${CONFIG.telegram.botToken}/sendMessage`;
 
             try {
-                await fetch(url, {
+                await fetch(tgUrl, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ chat_id: chatId, text: text })
+                    body: JSON.stringify({ chat_id: CONFIG.telegram.chatId, text: text, parse_mode: 'Markdown' })
                 });
-                btn.innerHTML = "SENT SUCCESSFULLY! <i class='fas fa-check'></i>";
-                btn.classList.replace('bg-amber-500', 'bg-green-500');
+
+                if(CONFIG.googleSheetUrl !== "") {
+                    let formData = new FormData();
+                    formData.append('Name', name);
+                    formData.append('Phone', phone);
+                    formData.append('Message', msg);
+                    fetch(CONFIG.googleSheetUrl, { method: 'POST', body: formData }).catch(e => console.log(e));
+                }
+
+                submitBtn.innerHTML = 'সাকসেস! <i class="fas fa-check-circle ml-2"></i>';
+                submitBtn.classList.replace('from-electric', 'from-circuit');
+                submitBtn.classList.replace('to-neon', 'to-circuit');
                 form.reset();
             } catch (error) {
-                btn.innerHTML = "FAILED!";
-                btn.classList.replace('bg-amber-500', 'bg-red-500');
+                submitBtn.innerHTML = 'ব্যর্থ হয়েছে! আবার চেষ্টা করুন';
+                submitBtn.classList.replace('from-electric', 'from-red-500');
+                submitBtn.classList.replace('to-neon', 'to-red-600');
             }
 
             setTimeout(() => {
-                btn.innerText = originalText;
-                btn.classList.remove('bg-green-500', 'bg-red-500');
-                btn.classList.add('bg-amber-500');
-                btn.disabled = false;
+                submitBtn.innerHTML = originalText;
+                submitBtn.className = 'w-full py-4 bg-gradient-to-r from-electric to-neon text-white rounded-xl font-bold text-lg hover:shadow-lg hover:shadow-electric/30 transition-all active:scale-95';
+                submitBtn.disabled = false;
             }, 3000);
-        });
-
-        AOS.init({
-            duration: 1000,
-            once: true,
-            mirror: false,
-            offset: 50
-        });
-
-        gsap.from('nav .bento-card', {
-            y: -100,
-            opacity: 0,
-            duration: 1.2,
-            ease: "power3.out"
         });
     </script>
 </body>
