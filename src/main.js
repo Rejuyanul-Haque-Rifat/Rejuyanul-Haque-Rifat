@@ -114,7 +114,7 @@ const fullPageContent = `
             <div class="relative flex justify-center items-center gs-reveal">
                 <div class="absolute inset-0 bg-gradient-to-tr from-electric/20 to-energy/20 blur-3xl rounded-full"></div>
                 <div class="neo-glass p-2 rounded-2xl relative z-10 transform rotate-2 hover:rotate-0 transition-transform duration-700 w-full max-w-md border border-electric/30">
-                    <img src="https://i.ibb.co.com/fdmK296p/rifat-img.jpg" alt="Rifat" class="rounded-xl w-full object-cover aspect-[4/5] grayscale hover:grayscale-0 transition-all duration-700">
+                    <img id="profileImg" src="https://i.ibb.co.com/fdmK296p/rifat-img.jpg" alt="Rifat" class="rounded-xl w-full object-cover aspect-[4/5] grayscale md:hover:grayscale-0 transition-all duration-700 cursor-pointer">
                     <div class="absolute -bottom-6 -left-6 neo-glass p-4 rounded-xl shadow-xl flex items-center gap-4 animate-bounce">
                         <i class="fas fa-robot text-3xl text-energy"></i>
                         <div>
@@ -359,6 +359,7 @@ const themeToggle = document.getElementById('themeToggle');
 const themeIcon = document.getElementById('themeIcon');
 const mobileMenuBtn = document.getElementById('mobileMenuBtn');
 const navLinks = document.getElementById('navLinks');
+const profileImg = document.getElementById('profileImg');
 
 if (html.classList.contains('dark')) {
     themeIcon.classList.replace('fa-moon', 'fa-sun');
@@ -386,6 +387,12 @@ mobileMenuBtn.addEventListener('click', () => {
     }
 });
 
+if (profileImg) {
+    profileImg.addEventListener('click', () => {
+        profileImg.classList.toggle('grayscale');
+    });
+}
+
 const cursor = document.getElementById('custom-cursor');
 const cursorRing = document.getElementById('cursor-ring');
 if (cursor && cursorRing) {
@@ -398,7 +405,7 @@ if (cursor && cursorRing) {
         }, 50);
     });
 
-    document.querySelectorAll('a, button, input, textarea, .magnetic-btn').forEach(el => {
+    document.querySelectorAll('a, button, input, textarea, .magnetic-btn, #profileImg').forEach(el => {
         el.addEventListener('mouseenter', () => {
             cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
             cursorRing.style.transform = 'translate(-50%, -50%) scale(1.5)';
