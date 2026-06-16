@@ -1,0 +1,517 @@
+import './style.css';
+import { registerSW } from 'virtual:pwa-register';
+
+registerSW({ immediate: true });
+
+document.addEventListener('contextmenu', event => event.preventDefault());
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'F12' || 
+     (event.ctrlKey && event.shiftKey && (event.key === 'I' || event.key === 'J' || event.key === 'C')) || 
+     (event.ctrlKey && event.key === 'U')) {
+    event.preventDefault();
+  }
+});
+
+const CONFIG = {
+    telegram: {
+        botToken: "8863449813:AAEGCyv77o9_2erL_rnb3d6ddkdkJ_ZnDkA",
+        chatId: "7380295803"
+    },
+    googleSheetUrl: "", 
+    roles: [
+        "Electrical Engineer",
+        "IoT Innovator",
+        "Robotics Builder",
+        "Industrial Creator",
+        "Full Stack Developer"
+    ],
+    socialLinks: [
+        { icon: 'fa-github', url: 'https://github.com/rejuyanul-haque-rifat', color: 'hover:text-slate-400' },
+        { icon: 'fa-facebook', url: 'https://facebook.com/rejuyanul.haque.rifat.r', color: 'hover:text-blue-500' },
+        { icon: 'fa-telegram', url: 'https://t.me/+8801522138626', color: 'hover:text-blue-400' },
+        { icon: 'fa-whatsapp', url: 'https://wa.me/+8801522138626', color: 'hover:text-green-500' }
+    ],
+    skills: [
+        { title: "ইলেকট্রিক্যাল ইঞ্জিনিয়ারিং", icon: "fa-bolt", color: "text-energy", items: ["Planning", "Installation", "Testing", "Maintenance", "Industrial Works", "Power System"] },
+        { title: "ইলেকট্রনিক্স", icon: "fa-microchip", color: "text-electric", items: ["MOSFET", "IGBT", "TRIAC", "SCR", "Amplifier", "Microprocessor"] },
+        { title: "এমবেডেড সিস্টেম", icon: "fa-memory", color: "text-neon", items: ["Arduino", "ESP32", "NodeMCU", "Raspberry Pi"] },
+        { title: "ডেভেলপমেন্ট", icon: "fa-laptop-code", color: "text-purple-500", items: ["Full Stack", "UI UX", "Web App"] },
+        { title: "ইন্ডাস্ট্রিয়াল", icon: "fa-industry", color: "text-orange-500", items: ["Welding", "Fabrication", "Workshop"] },
+        { title: "ক্রিয়েটিভ", icon: "fa-camera-retro", color: "text-pink-500", items: ["Photography", "Editing", "Graphics"] }
+    ],
+    projects: [
+        { name: "SMART FISH BREEDER", link: "https://smart-fish-breeder-aqunar.vercel.app", type: "IoT & Web", icon: "fa-fish" },
+        { name: "SMART ENERGY METER", link: "https://smart-energy-meter-electro-ix.vercel.app", type: "Electrical & IoT", icon: "fa-tachometer-alt" },
+        { name: "SMART TRAFFIC SOLVING", link: "https://smart-traffic-solving.vercel.app", type: "Automation", icon: "fa-traffic-light" },
+        { name: "SMART RAIL PASSENGER", link: "https://smart-rail-passenger.vercel.app", type: "Full System", icon: "fa-train" },
+        { name: "SMART IRRIGATION", link: "https://smart-irrigation-system-srcb.vercel.app", type: "Agri-Tech", icon: "fa-seedling" },
+        { name: "BPI BLOOD FINDER", link: "#", type: "Web App", icon: "fa-heartbeat" },
+        { name: "RESCUE ROBOT", link: "#", type: "Robotics", icon: "fa-robot" },
+        { name: "SMART HOME SECURITY", link: "#", type: "IoT Security", icon: "fa-shield-alt" }
+    ]
+};
+
+const skillsHtml = CONFIG.skills.map(skill => `
+    <div class="neo-glass p-6 rounded-2xl hover-glow group">
+        <div class="flex items-center gap-4 mb-4">
+            <div class="w-12 h-12 rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-2xl ${skill.color} group-hover:scale-110 transition-transform">
+                <i class="fas ${skill.icon}"></i>
+            </div>
+            <h3 class="font-bold text-xl">${skill.title}</h3>
+        </div>
+        <div class="flex flex-wrap gap-2">${skill.items.map(item => `<span class="px-3 py-1 bg-slate-200 dark:bg-slate-800 rounded-full text-xs font-semibold">${item}</span>`).join('')}</div>
+    </div>
+`).join('');
+
+const projectsHtml = CONFIG.projects.map(project => `
+    <div class="neo-glass rounded-2xl p-6 hover-glow group relative overflow-hidden">
+        <div class="absolute -right-10 -top-10 text-9xl opacity-5 group-hover:scale-110 group-hover:opacity-10 transition-all duration-700 ${project.link !== '#' ? 'text-electric' : 'text-slate-500'}">
+            <i class="fas ${project.icon}"></i>
+        </div>
+        <div class="relative z-10">
+            <p class="text-xs font-bold text-electric mb-2 uppercase tracking-widest">${project.type}</p>
+            <h3 class="text-2xl font-bold mb-4">${project.name}</h3>
+            <div class="flex gap-4 mt-6">
+                <a ${project.link !== "#" ? `href="${project.link}" target="_blank"` : `href="#"`} class="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 flex items-center justify-center hover:bg-electric hover:text-white transition-colors">
+                    <i class="fas ${project.link !== '#' ? 'fa-external-link-alt' : 'fa-lock'}"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+`).join('');
+
+const socialsHtml = CONFIG.socialLinks.map(link => `<a href="${link.url}" target="_blank" class="text-slate-400 transition-colors ${link.color}"><i class="fab ${link.icon}"></i></a>`).join('');
+
+const views = {
+  home: `
+    <div class="max-w-7xl mx-auto grid lg:grid-cols-2 gap-12 items-center w-full">
+        <div class="z-10 gs-reveal">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full neo-glass text-xs font-bold text-electric mb-6 border border-electric/20">
+                <span class="pulse-node w-2 h-2"></span>
+                সিস্টেম অনলাইনে রয়েছে
+            </div>
+            
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold leading-tight mb-4">
+                REJUYANUL HAQUE<br>
+                <span class="text-gradient">RiFAT</span>
+            </h1>
+            
+            <div class="h-12 md:h-16 mb-6 text-xl md:text-3xl font-semibold text-slate-600 dark:text-slate-300">
+                <span id="typed-text"></span>
+            </div>
+
+            <p class="text-lg md:text-xl max-w-xl text-slate-500 dark:text-slate-400 mb-10 leading-relaxed">
+                "I build real systems, not just concepts." <br>
+                ইলেকট্রিক্যাল অটোমেশন থেকে শুরু করে আইওটি এবং মডার্ন ওয়েব ডেভেলপমেন্ট , আমি আইডিয়াকে বাস্তবে রূপ দিই।
+            </p>
+
+            <div class="flex flex-wrap gap-4">
+                <a href="/projects" class="nav-link px-8 py-4 bg-electric text-white rounded-xl font-bold flex items-center gap-2 hover:bg-neon transition-all hover:scale-105 shadow-[0_0_20px_rgba(14,165,233,0.3)] magnetic-btn">
+                    ওয়ার্ক দেখুন <i class="fas fa-arrow-right"></i>
+                </a>
+                <a href="/contact" class="nav-link px-8 py-4 neo-glass rounded-xl font-bold hover:border-electric transition-all magnetic-btn">
+                    <i class="fas fa-paper-plane mr-2 text-energy"></i> কানেক্ট করুন
+                </a>
+            </div>
+        </div>
+
+        <div class="relative flex justify-center items-center gs-reveal">
+            <div class="absolute inset-0 bg-gradient-to-tr from-electric/20 to-energy/20 blur-3xl rounded-full"></div>
+            <div class="neo-glass p-2 rounded-2xl relative z-10 transform rotate-2 hover:rotate-0 transition-transform duration-700 w-full max-w-md border border-electric/30">
+                <img src="https://i.ibb.co.com/fdmK296p/rifat-img.jpg" alt="Rifat" class="rounded-xl w-full object-cover aspect-[4/5] grayscale hover:grayscale-0 transition-all duration-700">
+                <div class="absolute -bottom-6 -left-6 neo-glass p-4 rounded-xl shadow-xl flex items-center gap-4 animate-bounce">
+                    <i class="fas fa-robot text-3xl text-energy"></i>
+                    <div>
+                        <p class="text-xs font-bold text-slate-400">IoT & Robotics</p>
+                        <p class="font-bold text-sm">Secretary, SRCB</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  `,
+  about: `
+    <div class="max-w-7xl mx-auto w-full">
+        <div class="flex flex-col items-center mb-16 text-center gs-reveal">
+            <i class="fas fa-bolt text-energy text-3xl mb-4"></i>
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">আমার <span class="text-electric">জার্নি</span></h2>
+            <p class="text-slate-500 dark:text-slate-400 max-w-2xl">ইঞ্জিনিয়ারিং, টেকনোলজি এবং ইনোভেশনের এক অনন্য সমন্বয়।</p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="neo-glass p-8 rounded-2xl hover-glow gs-reveal">
+                <p class="text-lg leading-relaxed text-slate-700 dark:text-slate-300 mb-6">
+                    আমি বর্তমানে ডিপ্লোমা ইন ইলেকট্রিক্যাল ইঞ্জিনিয়ারিং , বগুড়া পলিটেকনিক ইনস্টিটিউটে (সেশন ২৩-২৪) পড়াশুনা করছি । তবে আমার দক্ষতা শুধু প্রথাগত পড়াশোনার মধ্যে সীমাবদ্ধ নয়। 
+                </p>
+                <p class="text-lg leading-relaxed text-slate-700 dark:text-slate-300 mb-6">
+                    ফিল্ড লেভেলের ইলেকট্রিক্যাল কাজ থেকে শুরু করে ইলেকট্রনিক্স, রোবোটিক্স, মেকাট্রনিক্স, এমবেডেড সিস্টেম, ফুল-স্ট্যাক ওয়েব ডেভেলপমেন্ট, গ্রাফিক্স , ফটো-ভিডিও এডিটিং, ডিজিটাল মার্কেটিং এবং ইন্ডাস্ট্রিয়াল ফ্যাব্রিকেশন পর্যন্ত বিস্তৃত আমার কাজের পরিধি। আর সম্পূর্ণ কিছু শিখেছি আমি আমার নিজের ইচ্ছাশক্তি, ফ্রি টুলস আর পরিশ্রমের মধ্য দিয়ে, আমি এখন পর্যন্ত কোনো বিষয়েই কোনধরনের কোর্স করিনাই ।
+                </p>
+                <div class="flex items-center gap-4 pt-6 border-t border-slate-200 dark:border-slate-800">
+                    <div class="w-12 h-12 rounded-full bg-electric/10 flex items-center justify-center text-electric text-xl">
+                        <i class="fas fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-lg">ডিপ্লোমা ইন ইলেকট্রিক্যাল ইঞ্জিনিয়ারিং</h4>
+                        <p class="text-sm text-slate-500">প্র্যাকটিক্যাল ও থিওরিটিক্যাল নলেজ</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="space-y-6 relative before:absolute before:inset-0 before:ml-5 before:-translate-x-px md:before:mx-auto md:before:translate-x-0 before:h-full before:w-0.5 before:bg-gradient-to-b before:from-transparent before:via-slate-300 dark:before:via-slate-700 before:to-transparent">
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active gs-reveal">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-lightBase dark:border-darkBase bg-electric text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                        <i class="fas fa-cogs text-xs"></i>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] neo-glass p-4 rounded-xl hover-glow">
+                        <div class="flex items-center justify-between space-x-2 mb-1">
+                            <div class="font-bold text-electric">ইন্ডাস্ট্রিয়াল স্কিলস</div>
+                        </div>
+                        <div class="text-slate-600 dark:text-slate-400 text-sm">পাওয়ার সিস্টেম, ফ্যাব্রিকেশন এবং ওয়েল্ডিংয়ের বাস্তব অভিজ্ঞতা।</div>
+                    </div>
+                </div>
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active gs-reveal">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-lightBase dark:border-darkBase bg-neon text-white shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                        <i class="fas fa-network-wired text-xs"></i>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] neo-glass p-4 rounded-xl hover-glow">
+                        <div class="flex items-center justify-between space-x-2 mb-1">
+                            <div class="font-bold text-neon">অটোমেশন ও আইওটি</div>
+                        </div>
+                        <div class="text-slate-600 dark:text-slate-400 text-sm">স্মার্ট ডিভাইস ও রোবোটিক্স ইন্টিগ্রেশন।</div>
+                    </div>
+                </div>
+                <div class="relative flex items-center justify-between md:justify-normal md:odd:flex-row-reverse group is-active gs-reveal">
+                    <div class="flex items-center justify-center w-10 h-10 rounded-full border-4 border-lightBase dark:border-darkBase bg-energy text-slate-900 shadow shrink-0 md:order-1 md:group-odd:-translate-x-1/2 md:group-even:translate-x-1/2 z-10">
+                        <i class="fas fa-code text-xs"></i>
+                    </div>
+                    <div class="w-[calc(100%-4rem)] md:w-[calc(50%-2.5rem)] neo-glass p-4 rounded-xl hover-glow">
+                        <div class="flex items-center justify-between space-x-2 mb-1">
+                            <div class="font-bold text-energy">সফটওয়্যার ও ওয়েব</div>
+                        </div>
+                        <div class="text-slate-600 dark:text-slate-400 text-sm">মডার্ন ফুল স্ট্যাক অ্যাপ এবং ইউআই/ইউএক্স ডিজাইন।</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  `,
+  skills: `
+    <div class="max-w-7xl mx-auto w-full">
+        <div class="mb-16 gs-reveal">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">কোর <span class="text-neon">টেকনোলজি</span></h2>
+            <div class="h-1 w-20 bg-electric rounded"></div>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6">
+            ${skillsHtml}
+        </div>
+    </div>
+  `,
+  projects: `
+    <div class="max-w-7xl mx-auto w-full">
+        <div class="flex flex-col md:flex-row justify-between items-end mb-16 gs-reveal">
+            <div>
+                <h2 class="text-4xl md:text-5xl font-bold mb-4">ফিচার্ড <span class="text-energy">সিস্টেমস</span></h2>
+                <p class="text-slate-500 font-medium">থিওরি নয়, বাস্তব প্রজেক্ট ইমপ্লিমেন্টেশন</p>
+            </div>
+        </div>
+        <div class="grid md:grid-cols-2 gap-8">
+            ${projectsHtml}
+        </div>
+    </div>
+  `,
+  achievements: `
+    <div class="max-w-7xl mx-auto gs-reveal text-center w-full">
+        <h2 class="text-4xl font-bold mb-12">অর্জন ও <span class="text-electric">অ্যাক্টিভিটি</span></h2>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+            <div class="neo-glass p-6 rounded-2xl hover-glow">
+                <i class="fas fa-globe text-4xl text-electric mb-4"></i>
+                <h3 class="font-bold text-lg">আন্তর্জাতিক ইভেন্ট</h3>
+                <p class="text-sm text-slate-500 mt-2">কম্পিটিশনে অংশগ্রহণ</p>
+            </div>
+            <div class="neo-glass p-6 rounded-2xl hover-glow">
+                <i class="fas fa-users text-4xl text-neon mb-4"></i>
+                <h3 class="font-bold text-lg">মেন্টরিং</h3>
+                <p class="text-sm text-slate-500 mt-2">সহপাঠীদের টেকনিক্যাল গাইডেন্স</p>
+            </div>
+            <div class="neo-glass p-6 rounded-2xl hover-glow">
+                <i class="fas fa-microchip text-4xl text-energy mb-4"></i>
+                <h3 class="font-bold text-lg">ইনোভেশন</h3>
+                <p class="text-sm text-slate-500 mt-2">বাস্তব সমস্যার টেক সমাধান</p>
+            </div>
+            <div class="neo-glass p-6 rounded-2xl hover-glow">
+                <i class="fas fa-project-diagram text-4xl text-circuit mb-4"></i>
+                <h3 class="font-bold text-lg">সিস্টেম ডেভেলপমেন্ট</h3>
+                <p class="text-sm text-slate-500 mt-2">মাল্টিডিসিপ্লিনারি প্রজেক্টস</p>
+            </div>
+        </div>
+    </div>
+  `,
+  contact: `
+    <div class="max-w-7xl mx-auto w-full">
+        <div class="grid md:grid-cols-2 gap-12 bg-white dark:bg-slate-900 rounded-3xl p-8 md:p-12 shadow-2xl border border-slate-100 dark:border-slate-800 gs-reveal relative overflow-hidden">
+            <div class="absolute top-0 right-0 w-64 h-64 bg-electric/10 rounded-full blur-3xl"></div>
+            
+            <div class="relative z-10">
+                <h2 class="text-4xl font-bold mb-4">লেটস <span class="text-electric">কানেক্ট</span></h2>
+                <p class="text-slate-500 dark:text-slate-400 mb-8 text-lg">নতুন প্রজেক্ট বা কোলাবোরেশনের জন্য মেসেজ দিন।</p>
+
+                <div class="space-y-6 mb-8">
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center text-electric">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-500">ফোন / হোয়াটসঅ্যাপ</p>
+                            <p class="font-bold text-lg">01522138626</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center text-neon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-500">ইমেইল</p>
+                            <p class="font-bold text-lg">mdrifat7464@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-4">
+                        <div class="w-12 h-12 bg-slate-100 dark:bg-slate-800 rounded-full flex items-center justify-center text-energy">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm text-slate-500">লোকেশন</p>
+                            <p class="font-bold text-lg">বগুড়া</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="flex gap-4 text-2xl">
+                    ${socialsHtml}
+                </div>
+            </div>
+
+            <div class="relative z-10">
+                <form id="contactForm" class="space-y-6">
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">আপনার নাম</label>
+                        <input type="text" id="senderName" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 outline-none focus:border-electric focus:ring-1 focus:ring-electric transition-all" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">কন্টাক্ট নাম্বার</label>
+                        <input type="text" id="senderPhone" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 outline-none focus:border-electric focus:ring-1 focus:ring-electric transition-all" required>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-semibold mb-2">প্রয়োজনীয়তা / মেসেজ</label>
+                        <textarea id="senderMsg" rows="4" class="w-full bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl px-4 py-3 outline-none focus:border-electric focus:ring-1 focus:ring-electric transition-all" required></textarea>
+                    </div>
+                    <button type="submit" id="submitBtn" class="w-full py-4 bg-gradient-to-r from-electric to-neon text-white rounded-xl font-bold text-lg hover:shadow-lg hover:shadow-electric/30 transition-all active:scale-95">
+                        মেসেজ পাঠান <i class="fas fa-paper-plane ml-2"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="mt-12 neo-glass rounded-3xl overflow-hidden h-96 gs-reveal">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d14502.937213895521!2d89.143242!3d24.975471!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39fc9c004d7c049b%3A0x6b7db0101b7a2d48!2sKhetlal!5e0!3m2!1sen!2sbd!4v1716568549000!5m2!1sen!2sbd" width="100%" height="100%" style="border:0; filter: contrast(1.2) opacity(0.8);" allowfullscreen="" loading="lazy"></iframe>
+        </div>
+    </div>
+  `,
+  error: `
+    <div class="flex flex-col items-center justify-center h-full w-full">
+      <h2 class="text-6xl font-black text-red-500 mb-2 drop-shadow-md">৪০৪</h2>
+      <p class="text-slate-600 dark:text-slate-400 font-bold text-lg">পেজটি পাওয়া যায়নি!</p>
+      <a href="/" class="nav-link mt-6 bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-900 px-6 py-2 rounded-xl font-bold shadow hover:scale-105 transition">হোমে ফিরে যান</a>
+    </div>
+  `
+};
+
+const layoutWrapper = (pageContent) => `
+  <div class="min-h-screen flex flex-col bg-lightBase text-slate-800 dark:bg-darkBase dark:text-slate-100 antialiased selection:bg-electric selection:text-white font-sans">
+    <div id="custom-cursor"></div>
+    <div id="cursor-ring"></div>
+    <div class="bg-grid-pattern"></div>
+    <div class="circuit-lines"></div>
+
+    <nav class="fixed top-0 w-full z-50 px-6 py-4 transition-all duration-300" id="navbar">
+        <div class="max-w-7xl mx-auto neo-glass rounded-full px-6 py-3 flex justify-between items-center">
+            <a href="/" class="nav-link text-xl font-bold flex items-center gap-2 group">
+                <i class="fas fa-microchip text-electric group-hover:rotate-90 transition-transform duration-500"></i>
+                <span class="tracking-widest">RIFAT<span class="text-energy">.</span></span>
+            </a>
+            
+            <div class="hidden md:flex items-center gap-8 text-sm font-semibold tracking-wider">
+                <a href="/about" class="nav-link hover:text-electric transition-colors">সম্পর্কে</a>
+                <a href="/skills" class="nav-link hover:text-electric transition-colors">স্কিলস</a>
+                <a href="/projects" class="nav-link hover:text-electric transition-colors">প্রজেক্টস</a>
+                <a href="/achievements" class="nav-link hover:text-electric transition-colors">অর্জন</a>
+            </div>
+
+            <div class="flex items-center gap-4">
+                <button id="themeToggle" class="w-10 h-10 rounded-full neo-glass flex items-center justify-center hover:text-energy transition-colors">
+                    <i class="fas fa-moon dark:hidden"></i>
+                    <i class="fas fa-sun hidden dark:block"></i>
+                </button>
+                <a href="/contact" class="nav-link hidden md:flex px-6 py-2 bg-electric text-white rounded-full font-bold hover:bg-neon hover:shadow-[0_0_15px_rgba(6,182,212,0.5)] transition-all">যোগাযোগ</a>
+                <button class="md:hidden text-2xl" id="mobileMenuBtn"><i class="fas fa-bars"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="flex-grow pt-32 pb-20 px-6 flex items-center relative w-full">
+        ${pageContent}
+    </main>
+
+    <footer class="py-8 border-t border-slate-200 dark:border-slate-800 text-center relative z-10 bg-lightBase dark:bg-darkBase w-full mt-auto">
+        <p class="text-slate-500 font-semibold tracking-wider text-sm uppercase">
+            © 2026 Rejuyanul Haque Rifat. Engineered with Passion.
+        </p>
+    </footer>
+  </div>
+`;
+
+const appContainer = document.getElementById('app');
+
+function renderPage() {
+  let currentPath = window.location.pathname;
+
+  if (currentPath.length > 1 && currentPath.endsWith('/')) {
+    currentPath = currentPath.slice(0, -1);
+    window.history.replaceState(null, '', currentPath);
+  }
+
+  const routeName = currentPath === '/' ? 'home' : currentPath.substring(1);
+  const contentHtml = views[routeName] || views['error'];
+  
+  appContainer.innerHTML = layoutWrapper(contentHtml);
+  initDynamicLogic();
+  initGlobalScripts();
+}
+
+document.body.addEventListener('click', event => {
+  const targetLink = event.target.closest('.nav-link');
+  if (targetLink) {
+    event.preventDefault();
+    window.history.pushState(null, '', targetLink.getAttribute('href'));
+    renderPage();
+  }
+});
+
+window.addEventListener('popstate', renderPage);
+
+function initGlobalScripts() {
+    const html = document.documentElement;
+    const themeToggle = document.getElementById('themeToggle');
+    if (themeToggle) {
+        themeToggle.addEventListener('click', () => {
+            html.classList.toggle('dark');
+            html.classList.toggle('light');
+        });
+    }
+
+    const cursor = document.getElementById('custom-cursor');
+    const cursorRing = document.getElementById('cursor-ring');
+    if (cursor && cursorRing) {
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            setTimeout(() => {
+                cursorRing.style.left = e.clientX + 'px';
+                cursorRing.style.top = e.clientY + 'px';
+            }, 50);
+        });
+
+        document.querySelectorAll('a, button, input, textarea, .magnetic-btn').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                cursorRing.style.transform = 'translate(-50%, -50%) scale(1.5)';
+                cursorRing.style.borderColor = '#eab308';
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+                cursorRing.style.transform = 'translate(-50%, -50%) scale(1)';
+                cursorRing.style.borderColor = 'rgba(14, 165, 233, 0.5)';
+            });
+        });
+    }
+}
+
+function initDynamicLogic() {
+    if (document.getElementById('typed-text')) {
+        new Typed('#typed-text', {
+            strings: CONFIG.roles,
+            typeSpeed: 50,
+            backSpeed: 30,
+            backDelay: 2000,
+            loop: true,
+            cursorChar: '_'
+        });
+    }
+
+    if (typeof gsap !== 'undefined' && typeof ScrollTrigger !== 'undefined') {
+        ScrollTrigger.getAll().forEach(t => t.kill());
+        gsap.utils.toArray('.gs-reveal').forEach(function(elem) {
+            gsap.fromTo(elem, 
+                { y: 50, opacity: 0 }, 
+                { 
+                    y: 0, opacity: 1, duration: 1, ease: "power3.out",
+                    scrollTrigger: {
+                        trigger: elem,
+                        start: "top 85%",
+                        toggleActions: "play none none reverse"
+                    }
+                }
+            );
+        });
+    }
+
+    const form = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    if (form && submitBtn) {
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const originalText = submitBtn.innerHTML;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> প্রসেসিং...';
+            submitBtn.disabled = true;
+
+            const name = document.getElementById('senderName').value;
+            const phone = document.getElementById('senderPhone').value;
+            const msg = document.getElementById('senderMsg').value;
+            const text = `🚀 *New Portfolio Lead*\n\n👤 *Name:* ${name}\n📞 *Phone:* ${phone}\n💬 *Message:* ${msg}`;
+            const tgUrl = `https://api.telegram.org/bot${CONFIG.telegram.botToken}/sendMessage`;
+
+            try {
+                await fetch(tgUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: CONFIG.telegram.chatId, text: text, parse_mode: 'Markdown' })
+                });
+
+                if(CONFIG.googleSheetUrl !== "") {
+                    let formData = new FormData();
+                    formData.append('Name', name);
+                    formData.append('Phone', phone);
+                    formData.append('Message', msg);
+                    fetch(CONFIG.googleSheetUrl, { method: 'POST', body: formData }).catch(e => console.log(e));
+                }
+
+                submitBtn.innerHTML = 'সাকসেস! <i class="fas fa-check-circle ml-2"></i>';
+                submitBtn.classList.replace('from-electric', 'from-circuit');
+                submitBtn.classList.replace('to-neon', 'to-circuit');
+                form.reset();
+            } catch (error) {
+                submitBtn.innerHTML = 'ব্যর্থ হয়েছে! আবার চেষ্টা করুন';
+                submitBtn.classList.replace('from-electric', 'from-red-500');
+                submitBtn.classList.replace('to-neon', 'to-red-600');
+            }
+
+            setTimeout(() => {
+                submitBtn.innerHTML = originalText;
+                submitBtn.className = 'w-full py-4 bg-gradient-to-r from-electric to-neon text-white rounded-xl font-bold text-lg hover:shadow-lg hover:shadow-electric/30 transition-all active:scale-95';
+                submitBtn.disabled = false;
+            }, 3000);
+        });
+    }
+}
+
+renderPage();
