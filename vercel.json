@@ -1,0 +1,15 @@
+{
+"redirects": [
+{
+"source": "/(.*)",
+"has": [
+{
+"type": "host",
+"value": "rejuyanul-haque-rifat.bro.bd"
+}
+],
+"destination": "https://www.rejuyanul-haque-rifat.bro.bd/$1",
+"permanent": true
+}
+]
+}
