@@ -198,7 +198,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-slate-50 dark:bg-[#00020a] text-slate-900 dark:text-slate-100 antialiased selection:bg-neon selection:text-white dark:selection:text-black font-sans overflow-x-hidden transition-colors duration-500">
+    <div className="min-h-screen flex flex-col w-full relative">
       <div id="custom-cursor" ref={cursorRef} className="hidden md:block"></div>
       <div id="cursor-ring" ref={cursorRingRef} className="hidden md:block"></div>
       <div className="bg-grid-pattern"></div>
@@ -268,7 +268,7 @@ export default function App() {
             
             <h1 className="text-4xl md:text-6xl lg:text-8xl font-black leading-[1.1] mb-4 md:mb-6 tracking-tighter text-slate-900 dark:text-white">
               REJUYANUL <br className="hidden md:block" /> HAQUE <br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-electric via-neon to-energy drop-shadow-[0_2px_10px_rgba(6,182,212,0.2)] dark:drop-shadow-[0_0_30px_rgba(6,182,212,0.4)] ml-2 md:ml-0">RIFAT</span>
+              <span className="text-gradient drop-shadow-[0_2px_10px_rgba(6,182,212,0.2)] dark:drop-shadow-[0_0_30px_rgba(6,182,212,0.4)] ml-2 md:ml-0">RIFAT</span>
             </h1>
             
             <div className="h-8 md:h-16 mb-4 md:mb-8 text-lg md:text-3xl lg:text-4xl font-bold text-slate-700 dark:text-slate-300 flex justify-center lg:justify-start items-center gap-2">
