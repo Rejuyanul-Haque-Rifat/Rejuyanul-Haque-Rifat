@@ -138,3 +138,13 @@ body {
 .light ::-webkit-scrollbar-track { background: #f4f7fb; }
 ::-webkit-scrollbar-thumb { background: #06b6d4; border-radius: 10px; border: 2px solid #00020a; }
 .light ::-webkit-scrollbar-thumb { border-color: #f4f7fb; }
+
+@keyframes toastSlide {
+  0% { transform: translateX(120%); }
+  10% { transform: translateX(0); }
+  90% { transform: translateX(0); }
+  100% { transform: translateX(120%); }
+}
+.animate-toast-slide {
+  animation: toastSlide 4s ease-in-out forwards;
+}
