@@ -241,7 +241,7 @@ export default function App() {
       </div>
 
       <nav className="fixed top-0 w-full z-50 px-4 py-4 transition-all duration-500" id="navbar">
-        <div className="max-w-7xl mx-auto bg-white/80 dark:bg-[#04091a]/80 backdrop-blur-md md:backdrop-blur-2xl rounded-2xl md:rounded-[2rem] px-4 md:px-8 py-3 md:py-4 flex justify-between items-center relative border border-slate-200/50 dark:border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.05)] dark:shadow-[0_10px_40px_rgba(0,0,0,0.5)] transition-all duration-500">
+        <div className="max-w-6xl mx-auto bg-white/80 dark:bg-[#04091a]/80 backdrop-blur-md md:backdrop-blur-2xl rounded-2xl md:rounded-[2rem] px-4 md:px-8 py-3 md:py-4 flex justify-between items-center relative border border-slate-200/50 dark:border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.05)] dark:shadow-[0_10px_40px_rgba(0,0,0,0.5)] transition-all duration-500">
           <Link to="/" className="nav-link text-xl md:text-3xl font-black flex items-center gap-2 md:gap-3 group tracking-tighter">
             <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-electric/10 border border-electric/30 flex items-center justify-center group-hover:bg-electric/20 group-hover:shadow-[0_0_15px_rgba(14,165,233,0.2)] dark:group-hover:shadow-[0_0_15px_rgba(14,165,233,0.5)] transition-all">
                <i className="fas fa-microchip text-electric group-hover:rotate-180 transition-transform duration-700"></i>
@@ -272,7 +272,7 @@ export default function App() {
         <div className="hidden md:block absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-electric/20 rounded-full blur-[120px] animate-pulse mix-blend-multiply dark:mix-blend-screen pointer-events-none"></div>
         <div className="hidden md:block absolute bottom-1/4 left-1/4 w-[600px] h-[600px] bg-neon/10 rounded-full blur-[150px] animate-pulse delay-1000 mix-blend-multiply dark:mix-blend-screen pointer-events-none"></div>
         
-        <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-12 items-center w-full mt-6 md:mt-0 relative z-10">
+        <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-12 items-center w-full mt-6 md:mt-0 relative z-10">
           <div className="gs-reveal order-2 lg:order-1 text-center lg:text-left">
             <div className="inline-flex items-center gap-2 md:gap-3 px-4 py-2 md:px-6 md:py-2.5 rounded-full bg-white/60 dark:bg-slate-900/60 backdrop-blur-md border border-electric/30 shadow-[0_0_15px_rgba(14,165,233,0.1)] dark:shadow-[0_0_20px_rgba(14,165,233,0.2)] mx-auto lg:mx-0 mb-6 md:mb-10">
               <span className="relative flex h-2 w-2 md:h-3 md:w-3">
@@ -326,7 +326,7 @@ export default function App() {
       </main>
 
       <section id="about" className="py-20 md:py-32 px-4 md:px-6 relative z-10">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="flex flex-col items-center mb-16 md:mb-24 text-center gs-reveal">
             <div className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 rounded-full bg-electric/10 border border-electric/30 mb-4 md:mb-6 shadow-[0_0_15px_rgba(14,165,233,0.1)] dark:shadow-[0_0_20px_rgba(14,165,233,0.2)]">
               <i className="fas fa-bolt text-electric text-2xl md:text-3xl"></i>
@@ -388,7 +388,7 @@ export default function App() {
 
       <section id="skills" className="py-20 md:py-32 px-4 md:px-6 relative z-10">
         <div className="absolute inset-0 bg-slate-100/30 dark:bg-slate-900/30 backdrop-blur-sm md:backdrop-blur-md skew-y-3 origin-top-left -z-10 border-y border-slate-200 dark:border-white/5"></div>
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="mb-12 md:mb-20 gs-reveal flex flex-col md:flex-row items-end justify-between">
             <div>
               <h2 className="text-3xl md:text-5xl lg:text-7xl font-black mb-2 md:mb-4 tracking-tighter text-slate-900 dark:text-white">CORE <span className="text-neon">TECH</span></h2>
@@ -418,7 +418,7 @@ export default function App() {
       </section>
 
       <section id="projects" className="py-20 md:py-32 px-4 md:px-6 relative z-10">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-20 gs-reveal">
             <div>
               <h2 className="text-3xl md:text-5xl lg:text-7xl font-black mb-2 md:mb-4 tracking-tighter text-slate-900 dark:text-white">FEATURED <span className="text-transparent bg-clip-text bg-gradient-to-r from-energy to-orange-500">SYSTEMS</span></h2>
@@ -468,7 +468,7 @@ export default function App() {
 
       <section id="achievements" className="py-20 md:py-32 px-4 md:px-6 relative z-10">
         <div className="absolute inset-0 bg-slate-100/40 dark:bg-slate-900/40 backdrop-blur-sm md:backdrop-blur-lg -skew-y-2 origin-bottom-right -z-10 border-y border-slate-200 dark:border-white/10"></div>
-        <div className="max-w-7xl mx-auto gs-reveal text-center">
+        <div className="max-w-6xl mx-auto gs-reveal text-center">
           <h2 className="text-3xl md:text-5xl lg:text-7xl font-black mb-12 md:mb-20 tracking-tighter text-slate-900 dark:text-white">IMPACT & <span className="text-electric">AWARDS</span></h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
             <div className="neo-glass p-4 md:p-8 rounded-3xl md:rounded-[2rem] md:hover-glow group">
@@ -504,7 +504,7 @@ export default function App() {
       </section>
 
       <section id="contact" className="py-20 md:py-32 px-4 md:px-6 relative z-10">
-        <div className="max-w-7xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <div className="grid lg:grid-cols-2 gap-10 md:gap-16 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl md:backdrop-blur-2xl rounded-3xl md:rounded-[3rem] p-6 md:p-16 shadow-[0_10px_30px_rgba(0,0,0,0.05)] dark:shadow-[0_0_40px_rgba(0,0,0,0.6)] border border-slate-200 dark:border-white/10 gs-reveal relative overflow-hidden">
             <div className="hidden md:block absolute top-0 right-0 w-[500px] h-[500px] bg-electric/10 dark:bg-electric/20 rounded-full blur-[100px] pointer-events-none"></div>
             <div className="hidden md:block absolute bottom-0 left-0 w-[300px] h-[300px] bg-neon/5 dark:bg-neon/10 rounded-full blur-[80px] pointer-events-none"></div>
