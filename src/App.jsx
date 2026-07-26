@@ -341,7 +341,7 @@ export default function App() {
           <div className="relative flex justify-center items-center hero-reveal order-1 lg:order-2 mb-6 lg:mb-0 mt-4 lg:mt-0">
             <div className="hidden md:block absolute inset-0 bg-gradient-to-tr from-electric/30 to-neon/30 blur-[100px] rounded-full scale-125 animate-pulse mix-blend-multiply dark:mix-blend-screen"></div>
             <div className="relative z-10 w-full max-w-[200px] sm:max-w-[250px] md:max-w-[400px] group flex justify-center">
-              <img onClick={() => setProfileGrayscale(!profileGrayscale)} src="https://i.ibb.co.com/Q7mHDNC6/IMG-20260427-163628.jpg" alt="Rifat" className={`w-full h-auto object-cover ${profileGrayscale ? 'grayscale' : 'grayscale-0'} md:group-hover:grayscale-0 transition-all duration-1000 cursor-pointer drop-shadow-xl md:drop-shadow-2xl rounded-t-[2rem] md:rounded-t-[3rem] rounded-b-xl md:rounded-b-2xl`} style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)', maskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)' }} />
+              <img onClick={() => setProfileGrayscale(!profileGrayscale)} src="/rifat.jpg" alt="Rifat" className={`w-full h-auto object-cover ${profileGrayscale ? 'grayscale' : 'grayscale-0'} md:group-hover:grayscale-0 transition-all duration-1000 cursor-pointer drop-shadow-xl md:drop-shadow-2xl rounded-t-[2rem] md:rounded-t-[3rem] rounded-b-xl md:rounded-b-2xl`} style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)', maskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)' }} />
             </div>
           </div>
         </div>
