@@ -13,6 +13,7 @@ const withPWA = withPWAInit({
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  productionBrowserSourceMaps: false,
   webpack: (config, { isServer, dev }) => {
     if (!dev && !isServer) {
       const WebpackObfuscator = require('webpack-obfuscator');
