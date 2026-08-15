@@ -1,5 +1,8 @@
+"use client";
+
 import React, { useState, useEffect, useRef } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 
 const CONFIG = {
     telegram: {
@@ -50,10 +53,10 @@ export default function App() {
   const cursorRef = useRef(null);
   const cursorRingRef = useRef(null);
   const typedRef = useRef(null);
-  const location = useLocation();
+  const pathname = usePathname();
 
   useEffect(() => {
-    const path = location.pathname.replace('/', '');
+    const path = pathname?.replace('/', '');
     if (path) {
       const el = document.getElementById(path);
       if (el) {
@@ -64,7 +67,7 @@ export default function App() {
     } else {
       window.scrollTo({ top: 0, behavior: 'smooth' });
     }
-  }, [location.pathname]);
+  }, [pathname]);
 
   useEffect(() => {
     const html = document.documentElement;
@@ -263,7 +266,7 @@ export default function App() {
 
       <nav className="fixed top-0 w-full z-50 px-4 py-4 transition-all duration-500" id="navbar">
         <div className="max-w-5xl mx-auto bg-white/80 dark:bg-[#04091a]/80 backdrop-blur-md md:backdrop-blur-2xl rounded-2xl md:rounded-[2rem] px-4 md:px-8 py-3 md:py-4 flex justify-between items-center relative border border-slate-200/50 dark:border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.05)] dark:shadow-[0_10px_40px_rgba(0,0,0,0.5)] transition-all duration-500">
-          <Link to="/" onClick={scrollToTop} className="nav-link text-xl md:text-3xl font-black flex items-center gap-2 md:gap-3 group tracking-tighter">
+          <Link href="/" onClick={scrollToTop} className="nav-link text-xl md:text-3xl font-black flex items-center gap-2 md:gap-3 group tracking-tighter">
             <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-electric/10 border border-electric/30 flex items-center justify-center group-hover:bg-electric/20 group-hover:shadow-[0_0_15px_rgba(14,165,233,0.2)] dark:group-hover:shadow-[0_0_15px_rgba(14,165,233,0.5)] transition-all">
                <i className="fas fa-microchip text-electric group-hover:rotate-180 transition-transform duration-700"></i>
             </div>
@@ -271,17 +274,17 @@ export default function App() {
           </Link>
           
           <div className={`absolute top-full left-0 mt-4 w-full bg-white/95 dark:bg-[#04091a]/95 backdrop-blur-xl rounded-3xl flex flex-col p-6 gap-6 md:static md:w-auto md:bg-transparent md:border-none md:p-0 md:flex md:flex-row items-center md:gap-10 text-xs md:text-sm font-black tracking-widest uppercase transition-all duration-300 shadow-2xl md:shadow-none border border-slate-200/50 dark:border-white/5 md:border-none z-50 ${menuOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible md:opacity-100 md:visible translate-y-4 md:translate-y-0'}`}>
-            <Link to="/about" className="nav-link text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors relative after:absolute after:-bottom-2 md:after:-bottom-3 after:left-0 after:w-0 after:h-1 after:bg-neon hover:after:w-full after:transition-all after:duration-300 w-fit dark:hover:drop-shadow-[0_0_10px_rgba(6,182,212,0.8)] hover:-translate-y-0.5 inline-block" onClick={() => setMenuOpen(false)}>ABOUT</Link>
-            <Link to="/skills" className="nav-link text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors relative after:absolute after:-bottom-2 md:after:-bottom-3 after:left-0 after:w-0 after:h-1 after:bg-electric hover:after:w-full after:transition-all after:duration-300 w-fit dark:hover:drop-shadow-[0_0_10px_rgba(14,165,233,0.8)] hover:-translate-y-0.5 inline-block" onClick={() => setMenuOpen(false)}>SKILLS</Link>
-            <Link to="/projects" className="nav-link text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors relative after:absolute after:-bottom-2 md:after:-bottom-3 after:left-0 after:w-0 after:h-1 after:bg-energy hover:after:w-full after:transition-all after:duration-300 w-fit dark:hover:drop-shadow-[0_0_10px_rgba(234,179,8,0.8)] hover:-translate-y-0.5 inline-block" onClick={() => setMenuOpen(false)}>PROJECTS</Link>
-            <Link to="/achievements" className="nav-link text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors relative after:absolute after:-bottom-2 md:after:-bottom-3 after:left-0 after:w-0 after:h-1 after:bg-circuit hover:after:w-full after:transition-all after:duration-300 w-fit dark:hover:drop-shadow-[0_0_10px_rgba(16,185,129,0.8)] hover:-translate-y-0.5 inline-block" onClick={() => setMenuOpen(false)}>LOGS</Link>
+            <Link href="/about" className="nav-link text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors relative after:absolute after:-bottom-2 md:after:-bottom-3 after:left-0 after:w-0 after:h-1 after:bg-neon hover:after:w-full after:transition-all after:duration-300 w-fit dark:hover:drop-shadow-[0_0_10px_rgba(6,182,212,0.8)] hover:-translate-y-0.5 inline-block" onClick={() => setMenuOpen(false)}>ABOUT</Link>
+            <Link href="/skills" className="nav-link text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors relative after:absolute after:-bottom-2 md:after:-bottom-3 after:left-0 after:w-0 after:h-1 after:bg-electric hover:after:w-full after:transition-all after:duration-300 w-fit dark:hover:drop-shadow-[0_0_10px_rgba(14,165,233,0.8)] hover:-translate-y-0.5 inline-block" onClick={() => setMenuOpen(false)}>SKILLS</Link>
+            <Link href="/projects" className="nav-link text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors relative after:absolute after:-bottom-2 md:after:-bottom-3 after:left-0 after:w-0 after:h-1 after:bg-energy hover:after:w-full after:transition-all after:duration-300 w-fit dark:hover:drop-shadow-[0_0_10px_rgba(234,179,8,0.8)] hover:-translate-y-0.5 inline-block" onClick={() => setMenuOpen(false)}>PROJECTS</Link>
+            <Link href="/achievements" className="nav-link text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors relative after:absolute after:-bottom-2 md:after:-bottom-3 after:left-0 after:w-0 after:h-1 after:bg-circuit hover:after:w-full after:transition-all after:duration-300 w-fit dark:hover:drop-shadow-[0_0_10px_rgba(16,185,129,0.8)] hover:-translate-y-0.5 inline-block" onClick={() => setMenuOpen(false)}>LOGS</Link>
           </div>
           
           <div className="flex items-center gap-3 md:gap-6">
             <button onClick={toggleTheme} className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-white/10 flex items-center justify-center hover:text-energy hover:rotate-12 hover:scale-110 transition-all text-slate-700 dark:text-white">
                 <i className={`fas ${isDark ? 'fa-sun' : 'fa-moon'}`}></i>
             </button>
-            <Link to="/contact" className="nav-link hidden md:flex px-8 py-3 bg-transparent border-2 border-electric dark:border-white/20 hover:border-neon text-electric dark:text-white rounded-xl font-black hover:bg-neon hover:text-white dark:hover:text-black hover:shadow-[0_5px_20px_rgba(6,182,212,0.3)] dark:hover:shadow-[0_0_20px_rgba(6,182,212,0.6)] hover:-translate-y-1 hover:scale-105 transition-all uppercase tracking-widest text-sm">INIT.COMMS</Link>
+            <Link href="/contact" className="nav-link hidden md:flex px-8 py-3 bg-transparent border-2 border-electric dark:border-white/20 hover:border-neon text-electric dark:text-white rounded-xl font-black hover:bg-neon hover:text-white dark:hover:text-black hover:shadow-[0_5px_20px_rgba(6,182,212,0.3)] dark:hover:shadow-[0_0_20px_rgba(6,182,212,0.6)] hover:-translate-y-1 hover:scale-105 transition-all uppercase tracking-widest text-sm">INIT.COMMS</Link>
             <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden text-xl w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-white/10 flex items-center justify-center focus:outline-none text-slate-700 dark:text-white hover:text-neon transition-colors">
                 <i className={`fas transition-transform duration-300 ${menuOpen ? 'fa-times rotate-90' : 'fa-bars'}`}></i>
             </button>
@@ -319,10 +322,10 @@ export default function App() {
             </p>
             
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4 md:gap-6">
-              <Link to="/projects" className="nav-link px-6 py-4 md:px-10 md:py-5 bg-transparent border-2 border-neon text-neon rounded-2xl font-black flex items-center justify-center gap-3 hover:bg-neon hover:text-white dark:hover:text-black transition-all duration-300 hover:shadow-[0_0_30px_rgba(6,182,212,0.4)] md:hover:-translate-y-1 md:hover:scale-105 uppercase tracking-wider relative overflow-hidden group text-sm md:text-base">
+              <Link href="/projects" className="nav-link px-6 py-4 md:px-10 md:py-5 bg-transparent border-2 border-neon text-neon rounded-2xl font-black flex items-center justify-center gap-3 hover:bg-neon hover:text-white dark:hover:text-black transition-all duration-300 hover:shadow-[0_0_30px_rgba(6,182,212,0.4)] md:hover:-translate-y-1 md:hover:scale-105 uppercase tracking-wider relative overflow-hidden group text-sm md:text-base">
                 <span className="relative z-10 flex items-center gap-2">Explore Work <i className="fas fa-arrow-right md:group-hover:translate-x-1 transition-transform"></i></span>
               </Link>
-              <Link to="/contact" className="nav-link px-6 py-4 md:px-10 md:py-5 neo-glass rounded-2xl font-black transition-all duration-300 md:hover:hover-glow flex items-center justify-center gap-3 text-slate-900 dark:text-white uppercase tracking-wider text-sm md:text-base">
+              <Link href="/contact" className="nav-link px-6 py-4 md:px-10 md:py-5 neo-glass rounded-2xl font-black transition-all duration-300 md:hover:hover-glow flex items-center justify-center gap-3 text-slate-900 dark:text-white uppercase tracking-wider text-sm md:text-base">
                 <i className="fas fa-satellite-dish text-electric animate-pulse"></i> Connect
               </Link>
             </div>
