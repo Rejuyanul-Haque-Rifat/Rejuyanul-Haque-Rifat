@@ -340,10 +340,10 @@ export default function App() {
             </div>
           </div>
           
-          <div className="relative flex justify-center items-center hero-reveal order-1 lg:order-2 mb-6 lg:mb-0 mt-4 lg:mt-0">
-            <div className="hidden md:block absolute inset-0 bg-gradient-to-tr from-electric/30 to-neon/30 blur-[100px] rounded-full scale-125 animate-pulse mix-blend-multiply dark:mix-blend-screen"></div>
-            <div className="relative z-10 w-full max-w-[200px] sm:max-w-[250px] md:max-w-[400px] group flex justify-center">
-              <img src="/rifat.jpg" alt="Rifat" className="w-full h-auto object-cover transition-all duration-1000 cursor-pointer drop-shadow-xl md:drop-shadow-2xl rounded-t-[2rem] md:rounded-t-[3rem] rounded-b-xl md:rounded-b-2xl hover:scale-105" style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)', maskImage: 'linear-gradient(to bottom, black 70%, transparent 100%)' }} />
+          <div className="relative flex justify-center items-center hero-reveal order-1 lg:order-2 mb-6 lg:mb-0 mt-8 lg:mt-0">
+            <div className="hidden md:block absolute inset-0 bg-gradient-to-tr from-electric/30 to-neon/30 blur-[100px] rounded-full scale-110 animate-pulse mix-blend-multiply dark:mix-blend-screen"></div>
+            <div className="relative z-10 w-[80%] max-w-[220px] sm:max-w-[280px] md:max-w-[320px] lg:max-w-[360px] group flex justify-center mx-auto lg:ml-auto lg:mr-8 transform md:hover:-translate-y-4 transition-transform duration-700">
+              <img src="/rifat.jpg" alt="Rifat" className="w-full h-auto object-cover transition-all duration-1000 cursor-pointer drop-shadow-2xl rounded-t-[2.5rem] md:rounded-t-[3.5rem] rounded-b-[1.5rem] border-4 border-white/10 dark:border-white/5" style={{ WebkitMaskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)', maskImage: 'linear-gradient(to bottom, black 80%, transparent 100%)' }} />
             </div>
           </div>
         </div>
