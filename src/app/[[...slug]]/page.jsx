@@ -296,7 +296,7 @@ export default function App() {
         <div className="hidden md:block absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-electric/20 rounded-full blur-[120px] animate-pulse mix-blend-multiply dark:mix-blend-screen pointer-events-none"></div>
         <div className="hidden md:block absolute bottom-1/4 left-1/4 w-[600px] h-[600px] bg-neon/10 rounded-full blur-[150px] animate-pulse delay-1000 mix-blend-multiply dark:mix-blend-screen pointer-events-none"></div>
         
-        <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-12 items-center w-full mt-6 md:mt-0 relative z-10">
+        <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-12 items-center lg:items-start w-full mt-6 md:mt-0 relative z-10">
           <div className="hero-reveal order-2 lg:order-1 text-center lg:text-left">
             <div className="inline-flex items-center gap-2 md:gap-3 px-4 py-2 md:px-6 md:py-2.5 rounded-full bg-white/60 dark:bg-slate-900/60 backdrop-blur-md border border-electric/30 shadow-[0_0_15px_rgba(14,165,233,0.1)] dark:shadow-[0_0_20px_rgba(14,165,233,0.2)] mx-auto lg:mx-0 mb-6 md:mb-10">
               <span className="relative flex h-2 w-2 md:h-3 md:w-3">
