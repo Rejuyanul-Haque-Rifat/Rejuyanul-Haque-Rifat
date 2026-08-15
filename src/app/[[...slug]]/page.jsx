@@ -70,6 +70,34 @@ export default function App() {
   }, [pathname]);
 
   useEffect(() => {
+    // Disable right click and devtools shortcuts to protect source code
+    const handleContextMenu = (e) => e.preventDefault();
+    const handleKeyDown = (e) => {
+      if (
+        e.key === 'F12' ||
+        (e.ctrlKey && e.shiftKey && (e.key === 'I' || e.key === 'i')) ||
+        (e.ctrlKey && e.shiftKey && (e.key === 'J' || e.key === 'j')) ||
+        (e.ctrlKey && e.shiftKey && (e.key === 'C' || e.key === 'c')) ||
+        (e.ctrlKey && (e.key === 'U' || e.key === 'u')) ||
+        (e.metaKey && e.altKey && (e.key === 'I' || e.key === 'i')) ||
+        (e.metaKey && e.altKey && (e.key === 'J' || e.key === 'j')) ||
+        (e.metaKey && e.altKey && (e.key === 'C' || e.key === 'c')) ||
+        (e.metaKey && e.shiftKey && (e.key === 'C' || e.key === 'c'))
+      ) {
+        e.preventDefault();
+      }
+    };
+    
+    document.addEventListener('contextmenu', handleContextMenu);
+    document.addEventListener('keydown', handleKeyDown);
+    
+    return () => {
+      document.removeEventListener('contextmenu', handleContextMenu);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
+  useEffect(() => {
     const html = document.documentElement;
     if (html.classList.contains('dark')) {
       setIsDark(true);
