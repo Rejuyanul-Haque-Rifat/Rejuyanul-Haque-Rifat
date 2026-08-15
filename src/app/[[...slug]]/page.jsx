@@ -32,9 +32,9 @@ const CONFIG = {
         { title: "ক্রিয়েটিভ", icon: "fa-camera-retro", color: "text-pink-500 dark:text-pink-400", items: ["Photography", "Editing", "Graphics"] }
     ],
     projects: [
-        { name: "BPI RCY BLOOD FINDER", link: "https://bpi-blood-finder.web.app", type: "Web App", icon: "fa-heartbeat", img: "https://i.ibb.co.com/Y4y2byvq/file-00000000187871fa99b356406bd7c294.png" },
-        { name: "SMART FISH BREEDER", link: "https://smart-fish-breeder-aqunar.vercel.app", type: "IoT & Web", icon: "fa-fish", img: "https://i.ibb.co.com/50XpMGr/file-00000000ffc4720bbce84ad22b633a41.png" },
-        { name: "SMART ENERGY METER", link: "https://smart-energy-meter-electro-ix.vercel.app", type: "Electrical & IoT", icon: "fa-tachometer-alt", img: "https://i.ibb.co.com/C3RdZ93w/Chat-GPT-Image-Jun-28-2026-12-02-13-PM.png" },
+        { name: "BPI RCY BLOOD FINDER", link: "https://bpi-blood-finder.web.app", type: "Web App", icon: "fa-heartbeat", img: "https://res.cloudinary.com/dghxevycq/image/upload/q_auto,f_auto/v1786817656/file-00000000187871fa99b356406bd7c294_flu9um.png" },
+        { name: "SMART FISH BREEDER", link: "https://smart-fish-breeder-aqunar.vercel.app", type: "IoT & Web", icon: "fa-fish", img: "https://res.cloudinary.com/dghxevycq/image/upload/q_auto,f_auto/v1786818097/file-00000000ffc4720bbce84ad22b633a41_r83hsq.png" },
+        { name: "SMART ENERGY METER", link: "https://smart-energy-meter-electro-ix.vercel.app", type: "Electrical & IoT", icon: "fa-tachometer-alt", img: "https://res.cloudinary.com/dghxevycq/image/upload/q_auto,f_auto/v1786817827/Chat-GPT-Image-Jun-28-2026-12-02-13-PM_mwablc.png" },
         { name: "SMART TRAFFIC SOLVING", link: "https://smart-traffic-solving.vercel.app", type: "Automation", icon: "fa-traffic-light" },
         { name: "SMART RAIL PASSENGER", link: "https://smart-rail-passenger.vercel.app", type: "Full System", icon: "fa-train" },
         { name: "SMART IRRIGATION", link: "https://smart-irrigation-system-srcb.vercel.app", type: "Agri-Tech", icon: "fa-seedling" },
@@ -477,7 +477,7 @@ export default function App() {
           </div>
           
           <a href="https://bpi-blood-finder.web.app" target="_blank" rel="noreferrer" className="block relative w-full rounded-3xl md:rounded-[3rem] overflow-hidden group gs-reveal shadow-[0_10px_30px_rgba(239,68,68,0.2)] dark:shadow-[0_10px_40px_rgba(239,68,68,0.3)] border-2 border-red-500/30 md:hover:border-red-500/60 transition-all duration-500 md:hover:-translate-y-2 md:hover:scale-[1.02]">
-            <img src="https://i.ibb.co.com/xKJ1snhQ/image.png" alt="BPI RCY BLOOD FINDER Launch" className="w-full h-auto object-cover md:group-hover:scale-105 transition-transform duration-700" />
+            <img src="https://res.cloudinary.com/dghxevycq/image/upload/q_auto,f_auto/v1786817714/image_vaj7l7.png" alt="BPI RCY BLOOD FINDER Launch" className="w-full h-auto object-cover md:group-hover:scale-105 transition-transform duration-700" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex flex-col justify-end items-start p-6 md:p-10">
               <div className="inline-flex items-center justify-center w-fit px-6 py-3 md:px-8 md:py-4 bg-red-500/20 backdrop-blur-md border border-red-500/50 rounded-2xl text-white font-black text-sm md:text-base uppercase tracking-widest group-hover:bg-red-500 group-hover:shadow-[0_0_20px_rgba(239,68,68,0.5)] transition-all">
                 Explore App <i className="fas fa-external-link-alt ml-2 md:group-hover:translate-x-1 md:group-hover:-translate-y-1 transition-transform"></i>
