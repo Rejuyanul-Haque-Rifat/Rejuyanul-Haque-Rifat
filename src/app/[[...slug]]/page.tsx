@@ -45,36 +45,65 @@ const CONFIG = {
 
 const FloatingBackgroundIcons = () => {
   const icons = [
-    'fa-bolt', 'fa-microchip', 'fa-robot', 'fa-code', 'fa-camera-retro', 'fa-video', 
-    'fa-laptop-code', 'fa-server', 'fa-satellite-dish', 'fa-plug', 'fa-cogs', 'fa-mobile-alt'
+    // Electrical & Electronics
+    "fa-bolt", "fa-microchip", "fa-plug", "fa-memory", "fa-car-battery", "fa-fan", "fa-lightbulb", "fa-charging-station", "fa-solar-panel", "fa-broadcast-tower",
+    // Robotics & Automation
+    "fa-robot", "fa-cogs", "fa-network-wired", "fa-satellite", "fa-server", "fa-wifi", "fa-brain", "fa-project-diagram",
+    // Web App & Development
+    "fa-laptop-code", "fa-code", "fa-globe", "fa-database", "fa-terminal", "fa-mobile-alt", "fa-keyboard", "fa-bug",
+    // Camera & Editing
+    "fa-camera-retro", "fa-video", "fa-photo-video", "fa-film", "fa-images", "fa-desktop"
   ];
   
-  const positions = [
-    { top: '10%', left: '15%', animationDuration: '15s', animationDelay: '0s', fontSize: '2rem' },
-    { top: '25%', left: '80%', animationDuration: '20s', animationDelay: '2s', fontSize: '3rem' },
-    { top: '50%', left: '5%', animationDuration: '18s', animationDelay: '5s', fontSize: '2.5rem' },
-    { top: '70%', left: '85%', animationDuration: '22s', animationDelay: '1s', fontSize: '2rem' },
-    { top: '85%', left: '20%', animationDuration: '16s', animationDelay: '4s', fontSize: '3.5rem' },
-    { top: '15%', left: '60%', animationDuration: '19s', animationDelay: '3s', fontSize: '2rem' },
-    { top: '40%', left: '70%', animationDuration: '17s', animationDelay: '6s', fontSize: '2.5rem' },
-    { top: '65%', left: '30%', animationDuration: '21s', animationDelay: '2s', fontSize: '3rem' },
-    { top: '90%', left: '65%', animationDuration: '20s', animationDelay: '7s', fontSize: '2.5rem' },
-    { top: '30%', left: '40%', animationDuration: '18s', animationDelay: '1s', fontSize: '4rem' },
-    { top: '80%', left: '50%', animationDuration: '25s', animationDelay: '5s', fontSize: '2rem' },
-    { top: '5%', left: '90%', animationDuration: '16s', animationDelay: '0s', fontSize: '2.5rem' },
+  const floatingElements = [
+    { icon: icons[0], left: "10%", top: "80%", delay: "0s", duration: "25s", size: "text-4xl" },
+    { icon: icons[1], left: "85%", top: "70%", delay: "2s", duration: "28s", size: "text-5xl" },
+    { icon: icons[2], left: "15%", top: "40%", delay: "5s", duration: "22s", size: "text-6xl" },
+    { icon: icons[3], left: "75%", top: "20%", delay: "1s", duration: "26s", size: "text-3xl" },
+    { icon: icons[4], left: "25%", top: "15%", delay: "7s", duration: "30s", size: "text-5xl" },
+    { icon: icons[5], left: "90%", top: "85%", delay: "4s", duration: "24s", size: "text-4xl" },
+    { icon: icons[6], left: "5%", top: "50%", delay: "9s", duration: "29s", size: "text-6xl" },
+    { icon: icons[7], left: "80%", top: "50%", delay: "3s", duration: "25s", size: "text-4xl" },
+    { icon: icons[8], left: "40%", top: "90%", delay: "8s", duration: "27s", size: "text-5xl" },
+    { icon: icons[9], left: "60%", top: "10%", delay: "6s", duration: "23s", size: "text-4xl" },
+    { icon: icons[10], left: "30%", top: "60%", delay: "11s", duration: "32s", size: "text-5xl" },
+    { icon: icons[11], left: "70%", top: "80%", delay: "10s", duration: "21s", size: "text-6xl" },
+    
+    // Additional elements for a denser background
+    { icon: icons[12], left: "50%", top: "35%", delay: "12s", duration: "26s", size: "text-4xl" },
+    { icon: icons[13], left: "20%", top: "95%", delay: "14s", duration: "29s", size: "text-3xl" },
+    { icon: icons[14], left: "95%", top: "30%", delay: "1s", duration: "24s", size: "text-5xl" },
+    { icon: icons[15], left: "45%", top: "75%", delay: "15s", duration: "30s", size: "text-6xl" },
+    { icon: icons[16], left: "10%", top: "20%", delay: "8s", duration: "22s", size: "text-4xl" },
+    { icon: icons[17], left: "85%", top: "10%", delay: "5s", duration: "27s", size: "text-3xl" },
+    { icon: icons[18], left: "35%", top: "5%", delay: "13s", duration: "25s", size: "text-5xl" },
+    { icon: icons[19], left: "65%", top: "95%", delay: "16s", duration: "28s", size: "text-4xl" },
+    { icon: icons[20], left: "55%", top: "55%", delay: "3s", duration: "20s", size: "text-5xl" },
+    { icon: icons[21], left: "8%", top: "65%", delay: "17s", duration: "31s", size: "text-3xl" },
+    { icon: icons[22], left: "92%", top: "60%", delay: "7s", duration: "23s", size: "text-6xl" },
+    { icon: icons[23], left: "28%", top: "85%", delay: "2s", duration: "26s", size: "text-4xl" },
+    { icon: icons[24], left: "78%", top: "35%", delay: "9s", duration: "29s", size: "text-5xl" },
+    { icon: icons[25], left: "42%", top: "25%", delay: "11s", duration: "24s", size: "text-4xl" },
+    { icon: icons[26], left: "68%", top: "45%", delay: "14s", duration: "27s", size: "text-3xl" },
+    { icon: icons[27], left: "22%", top: "50%", delay: "4s", duration: "22s", size: "text-5xl" },
+    { icon: icons[28], left: "58%", top: "75%", delay: "18s", duration: "30s", size: "text-6xl" },
+    { icon: icons[29], left: "38%", top: "40%", delay: "6s", duration: "25s", size: "text-4xl" },
+    { icon: icons[30], left: "82%", top: "90%", delay: "12s", duration: "28s", size: "text-3xl" },
+    { icon: icons[31], left: "12%", top: "10%", delay: "10s", duration: "21s", size: "text-5xl" }
   ];
 
   return (
-    <div className="fixed inset-0 overflow-hidden pointer-events-none z-[0]">
-      {icons.map((icon, i) => (
+    <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden opacity-30 dark:opacity-20">
+      {floatingElements.map((el, i) => (
         <i 
           key={i} 
-          className={`fas ${icon} absolute text-electric dark:text-cyan-500 opacity-20`}
-          style={{
-            top: positions[i].top,
-            left: positions[i].left,
-            fontSize: positions[i].fontSize,
-            animation: `floatIcon ${positions[i].animationDuration} infinite ease-in-out ${positions[i].animationDelay}`
+          className={`fas ${el.icon} ${el.size} text-electric dark:text-neon absolute animate-float-icon`}
+          style={{ 
+            left: el.left, 
+            top: el.top, 
+            animationDelay: el.delay, 
+            animationDuration: el.duration,
+            opacity: 0
           }}
         ></i>
       ))}
@@ -83,15 +112,15 @@ const FloatingBackgroundIcons = () => {
 };
 
 export default function App() {
-  const [isDark, setIsDark] = useState(true);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const [toasts, setToasts] = useState([]);
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [showScrollTop, setShowScrollTop] = useState(false);
+  const [isDark, setIsDark] = useState<boolean>(true);
+  const [menuOpen, setMenuOpen] = useState<boolean>(false);
+  const [toasts, setToasts] = useState<{ id: number; msg: string; type: string }[]>([]);
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [showScrollTop, setShowScrollTop] = useState<boolean>(false);
 
-  const cursorRef = useRef(null);
-  const cursorRingRef = useRef(null);
-  const typedRef = useRef(null);
+  const cursorRef = useRef<HTMLDivElement>(null);
+  const cursorRingRef = useRef<HTMLDivElement>(null);
+  const typedRef = useRef<any>(null);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -265,7 +294,7 @@ export default function App() {
     setIsDark(html.classList.contains('dark'));
   };
 
-  const showToast = (msg, type = 'success') => {
+  const showToast = (msg: string, type: string = 'success') => {
     const id = Date.now();
     setToasts(prev => [...prev, { id, msg, type }]);
     setTimeout(() => {
@@ -273,12 +302,12 @@ export default function App() {
     }, 4000);
   };
 
-  const handleFormSubmit = async (e) => {
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const formData = new FormData(e.target);
-    const name = formData.get('senderName').trim();
-    const phone = formData.get('senderPhone').trim();
-    const msg = formData.get('senderMsg').trim();
+    const formData = new FormData(e.currentTarget);
+    const name = (formData.get('senderName') as string)?.trim();
+    const phone = (formData.get('senderPhone') as string)?.trim();
+    const msg = (formData.get('senderMsg') as string)?.trim();
 
     if (!name) return showToast('Identity [Name] is required!', 'warning');
     if (!phone) return showToast('Ping Address [Phone] is required!', 'warning');
@@ -297,7 +326,7 @@ export default function App() {
         body: JSON.stringify({ chat_id: CONFIG.telegram.chatId, text: text, parse_mode: 'Markdown' })
       });
       showToast('Data Transmitted Successfully!', 'success');
-      e.target.reset();
+      (e.target as HTMLFormElement).reset();
     } catch (err) {
       showToast('Transmission Failed!', 'error');
     }

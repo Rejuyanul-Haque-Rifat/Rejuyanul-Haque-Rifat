@@ -139,12 +139,6 @@ body {
 ::-webkit-scrollbar-thumb { background: #06b6d4; border-radius: 10px; border: 2px solid #00020a; }
 .light ::-webkit-scrollbar-thumb { border-color: #f4f7fb; }
 
-@keyframes floatIcon {
-  0% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
-  50% { transform: translateY(-20px) rotate(10deg); opacity: 0.6; }
-  100% { transform: translateY(0) rotate(0deg); opacity: 0.2; }
-}
-
 @keyframes toastSlide {
   0% { transform: translateX(120%); }
   10% { transform: translateX(0); }
@@ -153,4 +147,14 @@ body {
 }
 .animate-toast-slide {
   animation: toastSlide 4s ease-in-out forwards;
+}
+
+@keyframes floatIcon {
+  0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0; }
+  10% { opacity: 0.15; }
+  90% { opacity: 0.15; }
+  100% { transform: translateY(-20vh) translateX(50px) rotate(20deg); opacity: 0; }
+}
+.animate-float-icon {
+  animation: floatIcon 25s linear infinite;
 }

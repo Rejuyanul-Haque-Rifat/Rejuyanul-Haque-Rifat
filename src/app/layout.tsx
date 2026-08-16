@@ -1,3 +1,4 @@
+import { ReactNode } from 'react';
 import './globals.css';
 import Script from 'next/script';
 
@@ -37,7 +38,7 @@ export const metadata = {
   },
 };
 
-export default function RootLayout({ children }) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="bn" dir="ltr" className="dark scroll-smooth">
       <head>
