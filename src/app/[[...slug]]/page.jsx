@@ -43,6 +43,45 @@ const CONFIG = {
     ]
 };
 
+const FloatingBackgroundIcons = () => {
+  const icons = [
+    'fa-bolt', 'fa-microchip', 'fa-robot', 'fa-code', 'fa-camera-retro', 'fa-video', 
+    'fa-laptop-code', 'fa-server', 'fa-satellite-dish', 'fa-plug', 'fa-cogs', 'fa-mobile-alt'
+  ];
+  
+  const positions = [
+    { top: '10%', left: '15%', animationDuration: '15s', animationDelay: '0s', fontSize: '2rem' },
+    { top: '25%', left: '80%', animationDuration: '20s', animationDelay: '2s', fontSize: '3rem' },
+    { top: '50%', left: '5%', animationDuration: '18s', animationDelay: '5s', fontSize: '2.5rem' },
+    { top: '70%', left: '85%', animationDuration: '22s', animationDelay: '1s', fontSize: '2rem' },
+    { top: '85%', left: '20%', animationDuration: '16s', animationDelay: '4s', fontSize: '3.5rem' },
+    { top: '15%', left: '60%', animationDuration: '19s', animationDelay: '3s', fontSize: '2rem' },
+    { top: '40%', left: '70%', animationDuration: '17s', animationDelay: '6s', fontSize: '2.5rem' },
+    { top: '65%', left: '30%', animationDuration: '21s', animationDelay: '2s', fontSize: '3rem' },
+    { top: '90%', left: '65%', animationDuration: '20s', animationDelay: '7s', fontSize: '2.5rem' },
+    { top: '30%', left: '40%', animationDuration: '18s', animationDelay: '1s', fontSize: '4rem' },
+    { top: '80%', left: '50%', animationDuration: '25s', animationDelay: '5s', fontSize: '2rem' },
+    { top: '5%', left: '90%', animationDuration: '16s', animationDelay: '0s', fontSize: '2.5rem' },
+  ];
+
+  return (
+    <div className="fixed inset-0 overflow-hidden pointer-events-none z-[0]">
+      {icons.map((icon, i) => (
+        <i 
+          key={i} 
+          className={`fas ${icon} absolute text-electric dark:text-cyan-500 opacity-20`}
+          style={{
+            top: positions[i].top,
+            left: positions[i].left,
+            fontSize: positions[i].fontSize,
+            animation: `floatIcon ${positions[i].animationDuration} infinite ease-in-out ${positions[i].animationDelay}`
+          }}
+        ></i>
+      ))}
+    </div>
+  );
+};
+
 export default function App() {
   const [isDark, setIsDark] = useState(true);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -271,6 +310,7 @@ export default function App() {
       <div id="cursor-ring" ref={cursorRingRef} className="hidden md:block"></div>
       <div className="bg-grid-pattern"></div>
       <div className="circuit-lines"></div>
+      <FloatingBackgroundIcons />
 
       <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[99999] flex flex-col gap-3 pointer-events-none">
         {toasts.map(toast => {
