@@ -7,22 +7,23 @@ export const viewport = {
 };
 
 export const metadata = {
+  metadataBase: new URL('https://www.rejuyanul-haque-rifat.bro.bd'),
   title: 'Rejuyanul Haque Rifat | Full-Stack Developer & IoT Innovator',
   description: 'Portfolio of Rejuyanul Haque Rifat, a Full-Stack Developer and IoT Innovator based in Bogura, Bangladesh, specializing in Embedded Systems, PWA, and Smart Automation.',
   keywords: 'Rejuyanul Haque Rifat, Web Developer Bogura, Full-Stack Developer Bangladesh, IoT Innovator, Embedded Systems, Robotics, PWA, Portfolio',
   authors: [{ name: 'Rejuyanul Haque Rifat' }],
   manifest: '/site.webmanifest',
   alternates: {
-    canonical: 'https://www.rejuyanul-haque-rifat.bro.bd/',
+    canonical: '/',
   },
   openGraph: {
     title: 'Rejuyanul Haque Rifat | Full-Stack Developer & IoT Innovator',
     description: 'Portfolio of Rejuyanul Haque Rifat, a Full-Stack Developer and IoT Innovator based in Bogura, Bangladesh, specializing in Embedded Systems, PWA, and Smart Automation.',
-    url: 'https://www.rejuyanul-haque-rifat.bro.bd/',
+    url: '/',
     siteName: 'Rejuyanul Haque Rifat Portfolio',
     images: [
       {
-        url: 'https://www.rejuyanul-haque-rifat.bro.bd/rifat.jpg',
+        url: '/rifat.jpg',
         width: 1200,
         height: 630,
       },
@@ -34,7 +35,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Rejuyanul Haque Rifat | Full-Stack Developer & IoT Innovator',
     description: 'Portfolio of Rejuyanul Haque Rifat, a Full-Stack Developer and IoT Innovator based in Bogura, Bangladesh, specializing in Embedded Systems, PWA, and Smart Automation.',
-    images: ['https://www.rejuyanul-haque-rifat.bro.bd/rifat.jpg'],
+    images: ['/rifat.jpg'],
   },
 };
 
