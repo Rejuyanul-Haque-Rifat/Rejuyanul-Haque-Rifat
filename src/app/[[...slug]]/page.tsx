@@ -32,9 +32,9 @@ const CONFIG = {
         { title: "ক্রিয়েটিভ", icon: "fa-camera-retro", color: "text-pink-500 dark:text-pink-400", items: ["Photography", "Editing", "Graphics"] }
     ],
     projects: [
-        { name: "BPI RCY BLOOD FINDER", link: "https://bpi-blood-finder.web.app", type: "Web App", icon: "fa-heartbeat", img: "https://res.cloudinary.com/dghxevycq/image/upload/q_auto,f_auto/v1786817656/file-00000000187871fa99b356406bd7c294_flu9um.png" },
-        { name: "SMART FISH BREEDER", link: "https://smart-fish-breeder-aqunar.vercel.app", type: "IoT & Web", icon: "fa-fish", img: "https://res.cloudinary.com/dghxevycq/image/upload/q_auto,f_auto/v1786818097/file-00000000ffc4720bbce84ad22b633a41_r83hsq.png" },
-        { name: "SMART ENERGY METER", link: "https://smart-energy-meter-electro-ix.vercel.app", type: "Electrical & IoT", icon: "fa-tachometer-alt", img: "https://res.cloudinary.com/dghxevycq/image/upload/q_auto,f_auto/v1786817827/Chat-GPT-Image-Jun-28-2026-12-02-13-PM_mwablc.png" },
+        { name: "BPI RCY BLOOD FINDER", link: "https://bpi-blood-finder.web.app", type: "Web App", icon: "fa-heartbeat" },
+        { name: "SMART FISH BREEDER", link: "https://smart-fish-breeder-aqunar.vercel.app", type: "IoT & Web", icon: "fa-fish" },
+        { name: "SMART ENERGY METER", link: "https://smart-energy-meter-electro-ix.vercel.app", type: "Electrical & IoT", icon: "fa-tachometer-alt" },
         { name: "SMART TRAFFIC SOLVING", link: "https://smart-traffic-solving.vercel.app", type: "Automation", icon: "fa-traffic-light" },
         { name: "SMART RAIL PASSENGER", link: "https://smart-rail-passenger.vercel.app", type: "Full System", icon: "fa-train" },
         { name: "SMART IRRIGATION", link: "https://smart-irrigation-system-srcb.vercel.app", type: "Agri-Tech", icon: "fa-seedling" },
@@ -43,71 +43,7 @@ const CONFIG = {
     ]
 };
 
-const FloatingBackgroundIcons = () => {
-  const icons = [
-    // Electrical & Electronics
-    "fa-bolt", "fa-microchip", "fa-plug", "fa-memory", "fa-car-battery", "fa-fan", "fa-lightbulb", "fa-charging-station", "fa-solar-panel", "fa-broadcast-tower",
-    // Robotics & Automation
-    "fa-robot", "fa-cogs", "fa-network-wired", "fa-satellite", "fa-server", "fa-wifi", "fa-brain", "fa-project-diagram",
-    // Web App & Development
-    "fa-laptop-code", "fa-code", "fa-globe", "fa-database", "fa-terminal", "fa-mobile-alt", "fa-keyboard", "fa-bug",
-    // Camera & Editing
-    "fa-camera-retro", "fa-video", "fa-photo-video", "fa-film", "fa-images", "fa-desktop"
-  ];
-  
-  const floatingElements = [
-    { icon: icons[0], left: "10%", top: "80%", delay: "0s", duration: "25s", size: "text-2xl md:text-3xl lg:text-4xl" },
-    { icon: icons[1], left: "85%", top: "70%", delay: "2s", duration: "28s", size: "text-3xl md:text-4xl lg:text-5xl" },
-    { icon: icons[2], left: "15%", top: "40%", delay: "5s", duration: "22s", size: "text-4xl md:text-5xl lg:text-6xl" },
-    { icon: icons[3], left: "75%", top: "20%", delay: "1s", duration: "26s", size: "text-xl md:text-2xl lg:text-3xl" },
-    { icon: icons[4], left: "25%", top: "15%", delay: "7s", duration: "30s", size: "text-3xl md:text-4xl lg:text-5xl" },
-    { icon: icons[5], left: "90%", top: "85%", delay: "4s", duration: "24s", size: "text-2xl md:text-3xl lg:text-4xl" },
-    { icon: icons[6], left: "5%", top: "50%", delay: "9s", duration: "29s", size: "text-4xl md:text-5xl lg:text-6xl" },
-    { icon: icons[7], left: "80%", top: "50%", delay: "3s", duration: "25s", size: "text-2xl md:text-3xl lg:text-4xl" },
-    { icon: icons[8], left: "40%", top: "90%", delay: "8s", duration: "27s", size: "text-3xl md:text-4xl lg:text-5xl" },
-    { icon: icons[9], left: "60%", top: "10%", delay: "6s", duration: "23s", size: "text-2xl md:text-3xl lg:text-4xl" },
-    { icon: icons[10], left: "30%", top: "60%", delay: "11s", duration: "32s", size: "text-3xl md:text-4xl lg:text-5xl" },
-    { icon: icons[11], left: "70%", top: "80%", delay: "10s", duration: "21s", size: "text-4xl md:text-5xl lg:text-6xl" },
-    { icon: icons[12], left: "50%", top: "35%", delay: "12s", duration: "26s", size: "text-2xl md:text-3xl lg:text-4xl" },
-    { icon: icons[13], left: "20%", top: "95%", delay: "14s", duration: "29s", size: "text-xl md:text-2xl lg:text-3xl" },
-    { icon: icons[14], left: "95%", top: "30%", delay: "1s", duration: "24s", size: "text-3xl md:text-4xl lg:text-5xl" },
-    { icon: icons[15], left: "45%", top: "75%", delay: "15s", duration: "30s", size: "text-4xl md:text-5xl lg:text-6xl" },
-    { icon: icons[16], left: "10%", top: "20%", delay: "8s", duration: "22s", size: "text-2xl md:text-3xl lg:text-4xl" },
-    { icon: icons[17], left: "85%", top: "10%", delay: "5s", duration: "27s", size: "text-xl md:text-2xl lg:text-3xl" },
-    { icon: icons[18], left: "35%", top: "5%", delay: "13s", duration: "25s", size: "text-3xl md:text-4xl lg:text-5xl" },
-    { icon: icons[19], left: "65%", top: "95%", delay: "16s", duration: "28s", size: "text-2xl md:text-3xl lg:text-4xl" },
-    { icon: icons[20], left: "55%", top: "55%", delay: "3s", duration: "20s", size: "text-3xl md:text-4xl lg:text-5xl" },
-    { icon: icons[21], left: "8%", top: "65%", delay: "17s", duration: "31s", size: "text-xl md:text-2xl lg:text-3xl" },
-    { icon: icons[22], left: "92%", top: "60%", delay: "7s", duration: "23s", size: "text-4xl md:text-5xl lg:text-6xl" },
-    { icon: icons[23], left: "28%", top: "85%", delay: "2s", duration: "26s", size: "text-2xl md:text-3xl lg:text-4xl" },
-    { icon: icons[24], left: "78%", top: "35%", delay: "9s", duration: "29s", size: "text-3xl md:text-4xl lg:text-5xl" },
-    { icon: icons[25], left: "42%", top: "25%", delay: "11s", duration: "24s", size: "text-2xl md:text-3xl lg:text-4xl" },
-    { icon: icons[26], left: "68%", top: "45%", delay: "14s", duration: "27s", size: "text-xl md:text-2xl lg:text-3xl" },
-    { icon: icons[27], left: "22%", top: "50%", delay: "4s", duration: "22s", size: "text-3xl md:text-4xl lg:text-5xl" },
-    { icon: icons[28], left: "58%", top: "75%", delay: "18s", duration: "30s", size: "text-4xl md:text-5xl lg:text-6xl" },
-    { icon: icons[29], left: "38%", top: "40%", delay: "6s", duration: "25s", size: "text-2xl md:text-3xl lg:text-4xl" },
-    { icon: icons[30], left: "82%", top: "90%", delay: "12s", duration: "28s", size: "text-xl md:text-2xl lg:text-3xl" },
-    { icon: icons[31], left: "12%", top: "10%", delay: "10s", duration: "21s", size: "text-3xl md:text-4xl lg:text-5xl" }
-  ];
 
-  return (
-    <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden opacity-[0.15] dark:opacity-[0.07]">
-      {floatingElements.map((el, i) => (
-        <i 
-          key={i} 
-          className={`fas ${el.icon} ${el.size} text-electric dark:text-neon absolute animate-float-icon drop-shadow-[0_0_8px_rgba(14,165,233,0.3)] dark:drop-shadow-[0_0_12px_rgba(6,182,212,0.3)]`}
-          style={{ 
-            left: el.left, 
-            top: el.top, 
-            animationDelay: el.delay, 
-            animationDuration: el.duration,
-            opacity: 0
-          }}
-        ></i>
-      ))}
-    </div>
-  );
-};
 
 export default function App() {
   const [isDark, setIsDark] = useState<boolean>(true);
@@ -337,7 +273,7 @@ export default function App() {
       <div id="cursor-ring" ref={cursorRingRef} className="hidden md:block"></div>
       <div className="bg-grid-pattern"></div>
       <div className="circuit-lines"></div>
-      <FloatingBackgroundIcons />
+
 
       <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[99999] flex flex-col gap-3 pointer-events-none">
         {toasts.map(toast => {
@@ -544,7 +480,9 @@ export default function App() {
           </div>
           
           <a href="https://bpi-blood-finder.web.app" target="_blank" rel="noreferrer" className="block relative w-full rounded-3xl md:rounded-[3rem] overflow-hidden group gs-reveal shadow-[0_10px_30px_rgba(239,68,68,0.2)] dark:shadow-[0_10px_40px_rgba(239,68,68,0.3)] border-2 border-red-500/30 md:hover:border-red-500/60 transition-all duration-500 md:hover:-translate-y-2 md:hover:scale-[1.02]">
-            <img src="https://res.cloudinary.com/dghxevycq/image/upload/q_auto,f_auto/v1786817714/image_vaj7l7.png" alt="BPI RCY BLOOD FINDER Launch" className="w-full h-auto object-cover md:group-hover:scale-105 transition-transform duration-700" />
+            <div className="w-full aspect-video md:aspect-[21/9] bg-gradient-to-br from-red-950 via-slate-900 to-black md:group-hover:scale-105 transition-transform duration-700 flex items-center justify-center">
+              <i className="fas fa-heartbeat text-7xl md:text-9xl text-red-500/20 md:group-hover:scale-110 transition-transform duration-500"></i>
+            </div>
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex flex-col justify-end items-start p-6 md:p-10">
               <div className="inline-flex items-center justify-center w-fit px-6 py-3 md:px-8 md:py-4 bg-red-500/20 backdrop-blur-md border border-red-500/50 rounded-2xl text-white font-black text-sm md:text-base uppercase tracking-widest group-hover:bg-red-500 group-hover:shadow-[0_0_20px_rgba(239,68,68,0.5)] transition-all">
                 Explore App <i className="fas fa-external-link-alt ml-2 md:group-hover:translate-x-1 md:group-hover:-translate-y-1 transition-transform"></i>

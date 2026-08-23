@@ -22,7 +22,7 @@ export const metadata = {
     siteName: 'Rejuyanul Haque Rifat Portfolio',
     images: [
       {
-        url: 'https://i.ibb.co.com/Q7mHDNC6/IMG-20260427-163628.jpg',
+        url: 'https://www.rejuyanul-haque-rifat.bro.bd/rifat.jpg',
         width: 1200,
         height: 630,
       },
@@ -34,7 +34,7 @@ export const metadata = {
     card: 'summary_large_image',
     title: 'Rejuyanul Haque Rifat | Full-Stack Developer & IoT Innovator',
     description: 'Portfolio of Rejuyanul Haque Rifat, a Full-Stack Developer and IoT Innovator based in Bogura, Bangladesh, specializing in Embedded Systems, PWA, and Smart Automation.',
-    images: ['https://i.ibb.co.com/Q7mHDNC6/IMG-20260427-163628.jpg'],
+    images: ['https://www.rejuyanul-haque-rifat.bro.bd/rifat.jpg'],
   },
 };
 
@@ -55,7 +55,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               "@type": "Person",
               "name": "Rejuyanul Haque Rifat",
               "url": "https://www.rejuyanul-haque-rifat.bro.bd/",
-              "image": "https://i.ibb.co.com/Q7mHDNC6/IMG-20260427-163628.jpg",
+              "image": "https://www.rejuyanul-haque-rifat.bro.bd/rifat.jpg",
               "jobTitle": "Full-Stack Developer & IoT Innovator",
               "address": {
                 "@type": "PostalAddress",
