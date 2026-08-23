@@ -56,48 +56,46 @@ const FloatingBackgroundIcons = () => {
   ];
   
   const floatingElements = [
-    { icon: icons[0], left: "10%", top: "80%", delay: "0s", duration: "25s", size: "text-4xl" },
-    { icon: icons[1], left: "85%", top: "70%", delay: "2s", duration: "28s", size: "text-5xl" },
-    { icon: icons[2], left: "15%", top: "40%", delay: "5s", duration: "22s", size: "text-6xl" },
-    { icon: icons[3], left: "75%", top: "20%", delay: "1s", duration: "26s", size: "text-3xl" },
-    { icon: icons[4], left: "25%", top: "15%", delay: "7s", duration: "30s", size: "text-5xl" },
-    { icon: icons[5], left: "90%", top: "85%", delay: "4s", duration: "24s", size: "text-4xl" },
-    { icon: icons[6], left: "5%", top: "50%", delay: "9s", duration: "29s", size: "text-6xl" },
-    { icon: icons[7], left: "80%", top: "50%", delay: "3s", duration: "25s", size: "text-4xl" },
-    { icon: icons[8], left: "40%", top: "90%", delay: "8s", duration: "27s", size: "text-5xl" },
-    { icon: icons[9], left: "60%", top: "10%", delay: "6s", duration: "23s", size: "text-4xl" },
-    { icon: icons[10], left: "30%", top: "60%", delay: "11s", duration: "32s", size: "text-5xl" },
-    { icon: icons[11], left: "70%", top: "80%", delay: "10s", duration: "21s", size: "text-6xl" },
-    
-    // Additional elements for a denser background
-    { icon: icons[12], left: "50%", top: "35%", delay: "12s", duration: "26s", size: "text-4xl" },
-    { icon: icons[13], left: "20%", top: "95%", delay: "14s", duration: "29s", size: "text-3xl" },
-    { icon: icons[14], left: "95%", top: "30%", delay: "1s", duration: "24s", size: "text-5xl" },
-    { icon: icons[15], left: "45%", top: "75%", delay: "15s", duration: "30s", size: "text-6xl" },
-    { icon: icons[16], left: "10%", top: "20%", delay: "8s", duration: "22s", size: "text-4xl" },
-    { icon: icons[17], left: "85%", top: "10%", delay: "5s", duration: "27s", size: "text-3xl" },
-    { icon: icons[18], left: "35%", top: "5%", delay: "13s", duration: "25s", size: "text-5xl" },
-    { icon: icons[19], left: "65%", top: "95%", delay: "16s", duration: "28s", size: "text-4xl" },
-    { icon: icons[20], left: "55%", top: "55%", delay: "3s", duration: "20s", size: "text-5xl" },
-    { icon: icons[21], left: "8%", top: "65%", delay: "17s", duration: "31s", size: "text-3xl" },
-    { icon: icons[22], left: "92%", top: "60%", delay: "7s", duration: "23s", size: "text-6xl" },
-    { icon: icons[23], left: "28%", top: "85%", delay: "2s", duration: "26s", size: "text-4xl" },
-    { icon: icons[24], left: "78%", top: "35%", delay: "9s", duration: "29s", size: "text-5xl" },
-    { icon: icons[25], left: "42%", top: "25%", delay: "11s", duration: "24s", size: "text-4xl" },
-    { icon: icons[26], left: "68%", top: "45%", delay: "14s", duration: "27s", size: "text-3xl" },
-    { icon: icons[27], left: "22%", top: "50%", delay: "4s", duration: "22s", size: "text-5xl" },
-    { icon: icons[28], left: "58%", top: "75%", delay: "18s", duration: "30s", size: "text-6xl" },
-    { icon: icons[29], left: "38%", top: "40%", delay: "6s", duration: "25s", size: "text-4xl" },
-    { icon: icons[30], left: "82%", top: "90%", delay: "12s", duration: "28s", size: "text-3xl" },
-    { icon: icons[31], left: "12%", top: "10%", delay: "10s", duration: "21s", size: "text-5xl" }
+    { icon: icons[0], left: "10%", top: "80%", delay: "0s", duration: "25s", size: "text-2xl md:text-3xl lg:text-4xl" },
+    { icon: icons[1], left: "85%", top: "70%", delay: "2s", duration: "28s", size: "text-3xl md:text-4xl lg:text-5xl" },
+    { icon: icons[2], left: "15%", top: "40%", delay: "5s", duration: "22s", size: "text-4xl md:text-5xl lg:text-6xl" },
+    { icon: icons[3], left: "75%", top: "20%", delay: "1s", duration: "26s", size: "text-xl md:text-2xl lg:text-3xl" },
+    { icon: icons[4], left: "25%", top: "15%", delay: "7s", duration: "30s", size: "text-3xl md:text-4xl lg:text-5xl" },
+    { icon: icons[5], left: "90%", top: "85%", delay: "4s", duration: "24s", size: "text-2xl md:text-3xl lg:text-4xl" },
+    { icon: icons[6], left: "5%", top: "50%", delay: "9s", duration: "29s", size: "text-4xl md:text-5xl lg:text-6xl" },
+    { icon: icons[7], left: "80%", top: "50%", delay: "3s", duration: "25s", size: "text-2xl md:text-3xl lg:text-4xl" },
+    { icon: icons[8], left: "40%", top: "90%", delay: "8s", duration: "27s", size: "text-3xl md:text-4xl lg:text-5xl" },
+    { icon: icons[9], left: "60%", top: "10%", delay: "6s", duration: "23s", size: "text-2xl md:text-3xl lg:text-4xl" },
+    { icon: icons[10], left: "30%", top: "60%", delay: "11s", duration: "32s", size: "text-3xl md:text-4xl lg:text-5xl" },
+    { icon: icons[11], left: "70%", top: "80%", delay: "10s", duration: "21s", size: "text-4xl md:text-5xl lg:text-6xl" },
+    { icon: icons[12], left: "50%", top: "35%", delay: "12s", duration: "26s", size: "text-2xl md:text-3xl lg:text-4xl" },
+    { icon: icons[13], left: "20%", top: "95%", delay: "14s", duration: "29s", size: "text-xl md:text-2xl lg:text-3xl" },
+    { icon: icons[14], left: "95%", top: "30%", delay: "1s", duration: "24s", size: "text-3xl md:text-4xl lg:text-5xl" },
+    { icon: icons[15], left: "45%", top: "75%", delay: "15s", duration: "30s", size: "text-4xl md:text-5xl lg:text-6xl" },
+    { icon: icons[16], left: "10%", top: "20%", delay: "8s", duration: "22s", size: "text-2xl md:text-3xl lg:text-4xl" },
+    { icon: icons[17], left: "85%", top: "10%", delay: "5s", duration: "27s", size: "text-xl md:text-2xl lg:text-3xl" },
+    { icon: icons[18], left: "35%", top: "5%", delay: "13s", duration: "25s", size: "text-3xl md:text-4xl lg:text-5xl" },
+    { icon: icons[19], left: "65%", top: "95%", delay: "16s", duration: "28s", size: "text-2xl md:text-3xl lg:text-4xl" },
+    { icon: icons[20], left: "55%", top: "55%", delay: "3s", duration: "20s", size: "text-3xl md:text-4xl lg:text-5xl" },
+    { icon: icons[21], left: "8%", top: "65%", delay: "17s", duration: "31s", size: "text-xl md:text-2xl lg:text-3xl" },
+    { icon: icons[22], left: "92%", top: "60%", delay: "7s", duration: "23s", size: "text-4xl md:text-5xl lg:text-6xl" },
+    { icon: icons[23], left: "28%", top: "85%", delay: "2s", duration: "26s", size: "text-2xl md:text-3xl lg:text-4xl" },
+    { icon: icons[24], left: "78%", top: "35%", delay: "9s", duration: "29s", size: "text-3xl md:text-4xl lg:text-5xl" },
+    { icon: icons[25], left: "42%", top: "25%", delay: "11s", duration: "24s", size: "text-2xl md:text-3xl lg:text-4xl" },
+    { icon: icons[26], left: "68%", top: "45%", delay: "14s", duration: "27s", size: "text-xl md:text-2xl lg:text-3xl" },
+    { icon: icons[27], left: "22%", top: "50%", delay: "4s", duration: "22s", size: "text-3xl md:text-4xl lg:text-5xl" },
+    { icon: icons[28], left: "58%", top: "75%", delay: "18s", duration: "30s", size: "text-4xl md:text-5xl lg:text-6xl" },
+    { icon: icons[29], left: "38%", top: "40%", delay: "6s", duration: "25s", size: "text-2xl md:text-3xl lg:text-4xl" },
+    { icon: icons[30], left: "82%", top: "90%", delay: "12s", duration: "28s", size: "text-xl md:text-2xl lg:text-3xl" },
+    { icon: icons[31], left: "12%", top: "10%", delay: "10s", duration: "21s", size: "text-3xl md:text-4xl lg:text-5xl" }
   ];
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden opacity-30 dark:opacity-20">
+    <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden opacity-[0.15] dark:opacity-[0.07]">
       {floatingElements.map((el, i) => (
         <i 
           key={i} 
-          className={`fas ${el.icon} ${el.size} text-electric dark:text-neon absolute animate-float-icon`}
+          className={`fas ${el.icon} ${el.size} text-electric dark:text-neon absolute animate-float-icon drop-shadow-[0_0_8px_rgba(14,165,233,0.3)] dark:drop-shadow-[0_0_12px_rgba(6,182,212,0.3)]`}
           style={{ 
             left: el.left, 
             top: el.top, 
