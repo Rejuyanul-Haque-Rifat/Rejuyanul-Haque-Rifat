@@ -4,6 +4,14 @@ import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
+declare global {
+  interface Window {
+    Typed: any;
+    gsap: any;
+    ScrollTrigger: any;
+  }
+}
+
 const CONFIG = {
     telegram: {
         botToken: "8863449813:AAEGCyv77o9_2erL_rnb3d6ddkdkJ_ZnDkA",
@@ -678,7 +686,7 @@ export default function App() {
                 </div>
                 <div>
                   <label className="block text-[10px] md:text-xs font-black uppercase tracking-widest text-slate-500 dark:text-slate-400 mb-2 md:mb-3">Payload [Message]</label>
-                  <textarea name="senderMsg" id="senderMsg" rows="4" className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg md:rounded-xl px-4 md:px-5 py-3 md:py-4 outline-none focus:border-electric focus:ring-1 focus:ring-electric transition-all text-sm md:text-base text-slate-900 dark:text-white font-medium resize-none shadow-sm"></textarea>
+                  <textarea name="senderMsg" id="senderMsg" rows={4} className="w-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg md:rounded-xl px-4 md:px-5 py-3 md:py-4 outline-none focus:border-electric focus:ring-1 focus:ring-electric transition-all text-sm md:text-base text-slate-900 dark:text-white font-medium resize-none shadow-sm"></textarea>
                 </div>
                 <button type="submit" disabled={isSubmitting} className="w-full py-4 md:py-5 bg-gradient-to-r from-electric to-neon text-white dark:text-black rounded-lg md:rounded-xl font-black text-base md:text-xl md:hover:shadow-[0_10px_20px_rgba(6,182,212,0.3)] md:dark:hover:shadow-[0_0_30px_rgba(6,182,212,0.5)] md:hover:-translate-y-1 md:hover:scale-[1.01] transition-all active:scale-95 uppercase tracking-widest mt-2 md:mt-4 disabled:opacity-50 disabled:hover:translate-y-0 disabled:hover:scale-100 disabled:cursor-not-allowed">
                   {isSubmitting ? (
