@@ -32,9 +32,9 @@ const CONFIG = {
         { title: "ক্রিয়েটিভ", icon: "fa-camera-retro", color: "text-pink-500 dark:text-pink-400", items: ["Photography", "Editing", "Graphics"] }
     ],
     projects: [
-        { name: "BPI RCY BLOOD FINDER", link: "https://bpi-blood-finder.web.app", type: "Web App", icon: "fa-heartbeat" },
-        { name: "SMART FISH BREEDER", link: "https://smart-fish-breeder-aqunar.vercel.app", type: "IoT & Web", icon: "fa-fish" },
-        { name: "SMART ENERGY METER", link: "https://smart-energy-meter-electro-ix.vercel.app", type: "Electrical & IoT", icon: "fa-tachometer-alt" },
+        { name: "BPI RCY BLOOD FINDER", link: "https://bpi-blood-finder.web.app", type: "Web App", icon: "fa-heartbeat", img: "https://res.cloudinary.com/dghxevycq/image/upload/q_auto,f_auto/v1786817656/file-00000000187871fa99b356406bd7c294_flu9um.png" },
+        { name: "SMART FISH BREEDER", link: "https://smart-fish-breeder-aqunar.vercel.app", type: "IoT & Web", icon: "fa-fish", img: "https://res.cloudinary.com/dghxevycq/image/upload/q_auto,f_auto/v1786818097/file-00000000ffc4720bbce84ad22b633a41_r83hsq.png" },
+        { name: "SMART ENERGY METER", link: "https://smart-energy-meter-electro-ix.vercel.app", type: "Electrical & IoT", icon: "fa-tachometer-alt", img: "https://res.cloudinary.com/dghxevycq/image/upload/q_auto,f_auto/v1786817827/Chat-GPT-Image-Jun-28-2026-12-02-13-PM_mwablc.png" },
         { name: "SMART TRAFFIC SOLVING", link: "https://smart-traffic-solving.vercel.app", type: "Automation", icon: "fa-traffic-light" },
         { name: "SMART RAIL PASSENGER", link: "https://smart-rail-passenger.vercel.app", type: "Full System", icon: "fa-train" },
         { name: "SMART IRRIGATION", link: "https://smart-irrigation-system-srcb.vercel.app", type: "Agri-Tech", icon: "fa-seedling" },
@@ -43,7 +43,48 @@ const CONFIG = {
     ]
 };
 
+const FloatingBackgroundIcons = () => {
+  const elements = [
+    { icon: "fa-bolt", left: "10%", top: "70%", delay: "0s", duration: "25s", size: "text-2xl md:text-3xl lg:text-4xl", color: "text-electric", blur: "blur-none", anim: "animate-float-1" },
+    { icon: "fa-microchip", left: "85%", top: "60%", delay: "2s", duration: "30s", size: "text-3xl md:text-4xl lg:text-5xl", color: "text-neon", blur: "blur-[2px]", anim: "animate-float-2" },
+    { icon: "fa-network-wired", left: "20%", top: "30%", delay: "5s", duration: "22s", size: "text-4xl md:text-5xl lg:text-6xl", color: "text-purple-500", blur: "blur-sm", anim: "animate-float-1" },
+    { icon: "fa-satellite", left: "75%", top: "20%", delay: "1s", duration: "28s", size: "text-xl md:text-2xl lg:text-3xl", color: "text-blue-400", blur: "blur-[1px]", anim: "animate-float-2" },
+    { icon: "fa-server", left: "35%", top: "15%", delay: "8s", duration: "32s", size: "text-2xl md:text-3xl", color: "text-cyan-500", blur: "blur-none", anim: "animate-float-1" },
+    { icon: "fa-laptop-code", left: "90%", top: "80%", delay: "4s", duration: "26s", size: "text-4xl md:text-5xl lg:text-6xl", color: "text-electric", blur: "blur-[2px]", anim: "animate-float-2" },
+    { icon: "fa-globe", left: "5%", top: "50%", delay: "10s", duration: "35s", size: "text-3xl md:text-4xl lg:text-5xl", color: "text-neon", blur: "blur-none", anim: "animate-float-1" },
+    { icon: "fa-database", left: "80%", top: "45%", delay: "3s", duration: "24s", size: "text-xl md:text-2xl", color: "text-purple-400", blur: "blur-sm", anim: "animate-float-2" },
+    { icon: "fa-camera-retro", left: "45%", top: "85%", delay: "7s", duration: "29s", size: "text-3xl md:text-4xl", color: "text-electric", blur: "blur-[1px]", anim: "animate-float-1" },
+    { icon: "fa-film", left: "60%", top: "10%", delay: "6s", duration: "23s", size: "text-2xl md:text-3xl lg:text-4xl", color: "text-blue-500", blur: "blur-none", anim: "animate-float-2" },
+    { icon: "fa-memory", left: "30%", top: "65%", delay: "11s", duration: "33s", size: "text-4xl md:text-5xl", color: "text-neon", blur: "blur-[2px]", anim: "animate-float-1" },
+    { icon: "fa-cogs", left: "70%", top: "85%", delay: "9s", duration: "21s", size: "text-3xl md:text-4xl", color: "text-purple-500", blur: "blur-none", anim: "animate-float-2" },
+    { icon: "fa-robot", left: "50%", top: "35%", delay: "13s", duration: "27s", size: "text-2xl md:text-3xl lg:text-4xl", color: "text-cyan-400", blur: "blur-[1px]", anim: "animate-float-1" },
+    { icon: "fa-brain", left: "15%", top: "90%", delay: "15s", duration: "31s", size: "text-xl md:text-2xl", color: "text-electric", blur: "blur-sm", anim: "animate-float-2" },
+    { icon: "fa-project-diagram", left: "95%", top: "30%", delay: "2s", duration: "25s", size: "text-3xl md:text-4xl", color: "text-neon", blur: "blur-[2px]", anim: "animate-float-1" },
+    { icon: "fa-code", left: "40%", top: "55%", delay: "14s", duration: "28s", size: "text-4xl md:text-5xl lg:text-6xl", color: "text-blue-500", blur: "blur-none", anim: "animate-float-2" },
+    { icon: "fa-plug", left: "12%", top: "25%", delay: "12s", duration: "24s", size: "text-2xl md:text-3xl", color: "text-purple-400", blur: "blur-[1px]", anim: "animate-float-1" },
+    { icon: "fa-broadcast-tower", left: "82%", top: "15%", delay: "16s", duration: "34s", size: "text-xl md:text-2xl lg:text-3xl", color: "text-electric", blur: "blur-sm", anim: "animate-float-2" },
+    { icon: "fa-solar-panel", left: "28%", top: "10%", delay: "18s", duration: "26s", size: "text-3xl md:text-4xl lg:text-5xl", color: "text-cyan-500", blur: "blur-none", anim: "animate-float-1" },
+    { icon: "fa-desktop", left: "65%", top: "95%", delay: "17s", duration: "29s", size: "text-2xl md:text-3xl", color: "text-neon", blur: "blur-[2px]", anim: "animate-float-2" }
+  ];
 
+  return (
+    <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden opacity-40 dark:opacity-[0.25]">
+      {elements.map((el, i) => (
+        <i 
+          key={i} 
+          className={`fas ${el.icon} ${el.size} ${el.color} ${el.blur} ${el.anim} absolute drop-shadow-[0_0_15px_currentColor]`}
+          style={{ 
+            left: el.left, 
+            top: el.top, 
+            animationDelay: el.delay, 
+            animationDuration: el.duration,
+            opacity: 0
+          }}
+        ></i>
+      ))}
+    </div>
+  );
+};
 
 export default function App() {
   const [isDark, setIsDark] = useState<boolean>(true);
@@ -273,7 +314,7 @@ export default function App() {
       <div id="cursor-ring" ref={cursorRingRef} className="hidden md:block"></div>
       <div className="bg-grid-pattern"></div>
       <div className="circuit-lines"></div>
-
+      <FloatingBackgroundIcons />
 
       <div className="fixed bottom-4 right-4 md:bottom-6 md:right-6 z-[99999] flex flex-col gap-3 pointer-events-none">
         {toasts.map(toast => {
@@ -480,9 +521,7 @@ export default function App() {
           </div>
           
           <a href="https://bpi-blood-finder.web.app" target="_blank" rel="noreferrer" className="block relative w-full rounded-3xl md:rounded-[3rem] overflow-hidden group gs-reveal shadow-[0_10px_30px_rgba(239,68,68,0.2)] dark:shadow-[0_10px_40px_rgba(239,68,68,0.3)] border-2 border-red-500/30 md:hover:border-red-500/60 transition-all duration-500 md:hover:-translate-y-2 md:hover:scale-[1.02]">
-            <div className="w-full aspect-video md:aspect-[21/9] bg-gradient-to-br from-red-950 via-slate-900 to-black md:group-hover:scale-105 transition-transform duration-700 flex items-center justify-center">
-              <i className="fas fa-heartbeat text-7xl md:text-9xl text-red-500/20 md:group-hover:scale-110 transition-transform duration-500"></i>
-            </div>
+            <img src="https://res.cloudinary.com/dghxevycq/image/upload/q_auto,f_auto/v1786817714/image_vaj7l7.png" alt="BPI RCY BLOOD FINDER Launch" className="w-full h-auto object-cover md:group-hover:scale-105 transition-transform duration-700" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex flex-col justify-end items-start p-6 md:p-10">
               <div className="inline-flex items-center justify-center w-fit px-6 py-3 md:px-8 md:py-4 bg-red-500/20 backdrop-blur-md border border-red-500/50 rounded-2xl text-white font-black text-sm md:text-base uppercase tracking-widest group-hover:bg-red-500 group-hover:shadow-[0_0_20px_rgba(239,68,68,0.5)] transition-all">
                 Explore App <i className="fas fa-external-link-alt ml-2 md:group-hover:translate-x-1 md:group-hover:-translate-y-1 transition-transform"></i>
