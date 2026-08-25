@@ -21,15 +21,14 @@ body {
 }
 
 .bg-grid-pattern {
-  position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
+  position: absolute;
+  top: 0; left: 0; width: 100%; height: 100%;
   z-index: -2;
   background-size: 50px 50px;
   background-image: 
     linear-gradient(to right, rgba(6, 182, 212, 0.15) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(6, 182, 212, 0.15) 1px, transparent 1px);
-  -webkit-mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
-  mask-image: radial-gradient(circle at center, black 40%, transparent 90%);
+  /* Mask removed to ensure grid is visible across the entire scrollable area */
   animation: gridMove 30s linear infinite;
 }
 
@@ -55,16 +54,14 @@ body {
 }
 
 .neo-glass {
-  background: rgba(4, 9, 26, 0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  background: rgba(4, 9, 26, 0.95);
   border: 1px solid rgba(14, 165, 233, 0.15);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5), inset 0 0 20px rgba(14, 165, 233, 0.05);
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .light .neo-glass {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.95);
   border: 1px solid rgba(14, 165, 233, 0.1);
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05), inset 0 0 20px rgba(14, 165, 233, 0.02);
 }

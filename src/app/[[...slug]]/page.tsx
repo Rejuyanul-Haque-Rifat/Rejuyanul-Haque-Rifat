@@ -66,29 +66,27 @@ const FloatingBackgroundIcons = () => {
     { icon: "fa-memory", left: "30%", top: "65%", delay: "11s", duration: "33s", size: "text-4xl md:text-5xl", color: "text-neon", blur: "blur-[2px]", anim: "animate-float-1" },
     { icon: "fa-cogs", left: "70%", top: "85%", delay: "9s", duration: "21s", size: "text-3xl md:text-4xl", color: "text-purple-500", blur: "blur-none", anim: "animate-float-2" },
     { icon: "fa-robot", left: "50%", top: "35%", delay: "13s", duration: "27s", size: "text-2xl md:text-3xl lg:text-4xl", color: "text-cyan-400", blur: "blur-[1px]", anim: "animate-float-1" },
-    { icon: "fa-brain", left: "15%", top: "90%", delay: "15s", duration: "31s", size: "text-xl md:text-2xl", color: "text-electric", blur: "blur-sm", anim: "animate-float-2" },
-    { icon: "fa-project-diagram", left: "95%", top: "30%", delay: "2s", duration: "25s", size: "text-3xl md:text-4xl", color: "text-neon", blur: "blur-[2px]", anim: "animate-float-1" },
-    { icon: "fa-code", left: "40%", top: "55%", delay: "14s", duration: "28s", size: "text-4xl md:text-5xl lg:text-6xl", color: "text-blue-500", blur: "blur-none", anim: "animate-float-2" },
-    { icon: "fa-plug", left: "12%", top: "25%", delay: "12s", duration: "24s", size: "text-2xl md:text-3xl", color: "text-purple-400", blur: "blur-[1px]", anim: "animate-float-1" },
-    { icon: "fa-broadcast-tower", left: "82%", top: "15%", delay: "16s", duration: "34s", size: "text-xl md:text-2xl lg:text-3xl", color: "text-electric", blur: "blur-sm", anim: "animate-float-2" },
-    { icon: "fa-solar-panel", left: "28%", top: "10%", delay: "18s", duration: "26s", size: "text-3xl md:text-4xl lg:text-5xl", color: "text-cyan-500", blur: "blur-none", anim: "animate-float-1" },
-    { icon: "fa-desktop", left: "65%", top: "95%", delay: "17s", duration: "29s", size: "text-2xl md:text-3xl", color: "text-neon", blur: "blur-[2px]", anim: "animate-float-2" }
+    { icon: "fa-brain", left: "15%", top: "90%", delay: "15s", duration: "31s", size: "text-xl md:text-2xl", color: "text-electric", blur: "blur-sm", anim: "animate-float-2" }
   ];
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-[-1] overflow-hidden opacity-40 dark:opacity-[0.25]">
-      {elements.map((el, i) => (
-        <i 
-          key={i} 
-          className={`fas ${el.icon} ${el.size} ${el.color} ${el.blur} ${el.anim} absolute drop-shadow-[0_0_15px_currentColor]`}
-          style={{ 
-            left: el.left, 
-            top: el.top, 
-            animationDelay: el.delay, 
-            animationDuration: el.duration,
-            opacity: 0
-          }}
-        ></i>
+    <div className="absolute inset-0 h-full w-full pointer-events-none z-[-1] overflow-hidden opacity-40 dark:opacity-[0.25]">
+      {[0, 1, 2, 3, 4, 5, 6].map(sectionIndex => (
+        <div key={sectionIndex} className="absolute w-full h-[100vh]" style={{ top: `${sectionIndex * 100}vh` }}>
+          {elements.map((el, i) => (
+            <i 
+              key={i} 
+              className={`fas ${el.icon} ${el.size} ${el.color} ${el.blur} ${el.anim} absolute drop-shadow-[0_0_15px_currentColor]`}
+              style={{ 
+                left: el.left, 
+                top: el.top, 
+                animationDelay: el.delay, 
+                animationDuration: el.duration,
+                opacity: 0
+              }}
+            ></i>
+          ))}
+        </div>
       ))}
     </div>
   );
@@ -345,7 +343,7 @@ export default function App() {
       </div>
 
       <nav className="fixed top-0 w-full z-50 px-4 py-4 transition-all duration-500" id="navbar">
-        <div className="max-w-5xl mx-auto bg-white/80 dark:bg-[#04091a]/80 backdrop-blur-md md:backdrop-blur-2xl rounded-2xl md:rounded-[2rem] px-4 md:px-8 py-3 md:py-4 flex justify-between items-center relative border border-slate-200/50 dark:border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.05)] dark:shadow-[0_10px_40px_rgba(0,0,0,0.5)] transition-all duration-500">
+        <div className="max-w-5xl mx-auto bg-white dark:bg-[#04091a] rounded-2xl md:rounded-[2rem] px-4 md:px-8 py-3 md:py-4 flex justify-between items-center relative border border-slate-200/50 dark:border-white/10 shadow-[0_10px_30px_rgba(0,0,0,0.05)] dark:shadow-[0_10px_40px_rgba(0,0,0,0.5)] transition-all duration-500">
           <Link href="/" onClick={scrollToTop} className="nav-link text-xl md:text-3xl font-black flex items-center gap-2 md:gap-3 group tracking-tighter">
             <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-electric/10 border border-electric/30 flex items-center justify-center group-hover:bg-electric/20 group-hover:shadow-[0_0_15px_rgba(14,165,233,0.2)] dark:group-hover:shadow-[0_0_15px_rgba(14,165,233,0.5)] transition-all">
                <i className="fas fa-microchip text-electric group-hover:rotate-180 transition-transform duration-700"></i>
@@ -353,7 +351,7 @@ export default function App() {
             <span className="text-slate-900 dark:text-white">RIFAT<span className="text-neon animate-pulse">_</span></span>
           </Link>
           
-          <div className={`absolute top-full left-0 mt-4 w-full bg-white/95 dark:bg-[#04091a]/95 backdrop-blur-xl rounded-3xl flex flex-col p-6 gap-6 md:static md:w-auto md:bg-transparent md:border-none md:p-0 md:flex md:flex-row items-center md:gap-10 text-xs md:text-sm font-black tracking-widest uppercase transition-all duration-300 shadow-2xl md:shadow-none border border-slate-200/50 dark:border-white/5 md:border-none z-50 ${menuOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible md:opacity-100 md:visible translate-y-4 md:translate-y-0'}`}>
+          <div className={`absolute top-full left-0 mt-4 w-full bg-white dark:bg-[#04091a] rounded-3xl flex flex-col p-6 gap-6 md:static md:w-auto md:bg-transparent md:border-none md:p-0 md:flex md:flex-row items-center md:gap-10 text-xs md:text-sm font-black tracking-widest uppercase transition-all duration-300 shadow-2xl md:shadow-none border border-slate-200/50 dark:border-white/5 md:border-none z-50 ${menuOpen ? 'opacity-100 visible translate-y-0' : 'opacity-0 invisible md:opacity-100 md:visible translate-y-4 md:translate-y-0'}`}>
             <Link href="/about" className="nav-link text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors relative after:absolute after:-bottom-2 md:after:-bottom-3 after:left-0 after:w-0 after:h-1 after:bg-neon hover:after:w-full after:transition-all after:duration-300 w-fit dark:hover:drop-shadow-[0_0_10px_rgba(6,182,212,0.8)] hover:-translate-y-0.5 inline-block" onClick={() => setMenuOpen(false)}>ABOUT</Link>
             <Link href="/skills" className="nav-link text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors relative after:absolute after:-bottom-2 md:after:-bottom-3 after:left-0 after:w-0 after:h-1 after:bg-electric hover:after:w-full after:transition-all after:duration-300 w-fit dark:hover:drop-shadow-[0_0_10px_rgba(14,165,233,0.8)] hover:-translate-y-0.5 inline-block" onClick={() => setMenuOpen(false)}>SKILLS</Link>
             <Link href="/projects" className="nav-link text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white transition-colors relative after:absolute after:-bottom-2 md:after:-bottom-3 after:left-0 after:w-0 after:h-1 after:bg-energy hover:after:w-full after:transition-all after:duration-300 w-fit dark:hover:drop-shadow-[0_0_10px_rgba(234,179,8,0.8)] hover:-translate-y-0.5 inline-block" onClick={() => setMenuOpen(false)}>PROJECTS</Link>
@@ -364,7 +362,7 @@ export default function App() {
             <button onClick={toggleTheme} className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-white/10 flex items-center justify-center hover:text-energy hover:rotate-12 hover:scale-110 transition-all text-slate-700 dark:text-white">
                 <i className={`fas ${isDark ? 'fa-sun' : 'fa-moon'}`}></i>
             </button>
-            <Link href="/contact" className="nav-link hidden md:flex px-8 py-3 bg-transparent border-2 border-electric dark:border-white/20 hover:border-neon text-electric dark:text-white rounded-xl font-black hover:bg-neon hover:text-white dark:hover:text-black hover:shadow-[0_5px_20px_rgba(6,182,212,0.3)] dark:hover:shadow-[0_0_20px_rgba(6,182,212,0.6)] hover:-translate-y-1 hover:scale-105 transition-all uppercase tracking-widest text-sm">INIT.COMMS</Link>
+            <Link href="/contact" className="nav-link hidden md:flex px-8 py-3 bg-transparent border-2 border-electric dark:border-white/20 hover:border-neon text-electric dark:text-white rounded-xl font-black hover:bg-neon hover:text-white dark:hover:text-black hover:shadow-[0_5px_20px_rgba(6,182,212,0.3)] dark:hover:shadow-[0_0_20px_rgba(6,182,212,0.6)] hover:-translate-y-1 hover:scale-105 transition-all uppercase tracking-widest text-sm">CONTACT ME</Link>
             <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden text-xl w-10 h-10 rounded-xl bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-white/10 flex items-center justify-center focus:outline-none text-slate-700 dark:text-white hover:text-neon transition-colors">
                 <i className={`fas transition-transform duration-300 ${menuOpen ? 'fa-times rotate-90' : 'fa-bars'}`}></i>
             </button>
@@ -378,7 +376,7 @@ export default function App() {
         
         <div className="max-w-5xl mx-auto grid lg:grid-cols-2 gap-10 lg:gap-12 items-center lg:items-start w-full mt-6 md:mt-0 relative z-10">
           <div className="hero-reveal order-2 lg:order-1 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 md:gap-3 px-4 py-2 md:px-6 md:py-2.5 rounded-full bg-white/60 dark:bg-slate-900/60 backdrop-blur-md border border-electric/30 shadow-[0_0_15px_rgba(14,165,233,0.1)] dark:shadow-[0_0_20px_rgba(14,165,233,0.2)] mx-auto lg:mx-0 mb-6 md:mb-10">
+            <div className="inline-flex items-center gap-2 md:gap-3 px-4 py-2 md:px-6 md:py-2.5 rounded-full bg-white/60 dark:bg-slate-900/60  border border-electric/30 shadow-[0_0_15px_rgba(14,165,233,0.1)] dark:shadow-[0_0_20px_rgba(14,165,233,0.2)] mx-auto lg:mx-0 mb-6 md:mb-10">
               <span className="relative flex h-2 w-2 md:h-3 md:w-3">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-energy opacity-75"></span>
                 <span className="relative inline-flex rounded-full h-2 w-2 md:h-3 md:w-3 bg-energy shadow-[0_0_10px_rgba(234,179,8,1)]"></span>
@@ -405,8 +403,10 @@ export default function App() {
               <Link href="/projects" className="nav-link px-6 py-4 md:px-10 md:py-5 bg-transparent border-2 border-neon text-neon rounded-2xl font-black flex items-center justify-center gap-3 hover:bg-neon hover:text-white dark:hover:text-black transition-all duration-300 hover:shadow-[0_0_30px_rgba(6,182,212,0.4)] md:hover:-translate-y-1 md:hover:scale-105 uppercase tracking-wider relative overflow-hidden group text-sm md:text-base">
                 <span className="relative z-10 flex items-center gap-2">Explore Work <i className="fas fa-arrow-right md:group-hover:translate-x-1 transition-transform"></i></span>
               </Link>
-              <Link href="/contact" className="nav-link px-6 py-4 md:px-10 md:py-5 neo-glass rounded-2xl font-black transition-all duration-300 md:hover:hover-glow flex items-center justify-center gap-3 text-slate-900 dark:text-white uppercase tracking-wider text-sm md:text-base">
-                <i className="fas fa-satellite-dish text-electric animate-pulse"></i> Connect
+              <Link href="/contact" className="nav-link px-6 py-4 md:px-10 md:py-5 relative overflow-hidden rounded-2xl font-black transition-all duration-500 flex items-center justify-center gap-3 text-slate-900 dark:text-white uppercase tracking-wider text-sm md:text-base group border border-slate-300 dark:border-white/10 bg-white/50 dark:bg-slate-900/50  md:hover:border-electric/50 md:hover:shadow-[0_0_25px_rgba(14,165,233,0.2)] md:hover:-translate-y-1 md:hover:scale-105">
+                <div className="absolute inset-0 bg-gradient-to-r from-electric to-neon opacity-0 md:group-hover:opacity-10 transition-opacity duration-500 blur-md"></div>
+                <i className="fas fa-satellite-dish text-electric md:group-hover:rotate-12 md:group-hover:scale-110 transition-transform duration-300 relative z-10"></i> 
+                <span className="relative z-10">Connect</span>
               </Link>
             </div>
             
@@ -491,7 +491,7 @@ export default function App() {
       </section>
 
       <section id="skills" className="py-20 md:py-32 px-4 md:px-6 relative z-10">
-        <div className="absolute inset-0 bg-slate-100/30 dark:bg-slate-900/30 backdrop-blur-sm md:backdrop-blur-md skew-y-3 origin-top-left -z-10 border-y border-slate-200 dark:border-white/5"></div>
+        <div className="absolute inset-0 bg-slate-100/30 dark:bg-slate-900/30   skew-y-3 origin-top-left -z-10 border-y border-slate-200 dark:border-white/5"></div>
         <div className="max-w-5xl mx-auto">
           <div className="mb-12 md:mb-20 gs-reveal flex flex-col md:flex-row items-end justify-between">
             <div>
@@ -531,7 +531,7 @@ export default function App() {
           <a href="https://bpi-blood-finder.web.app" target="_blank" rel="noreferrer" className="block relative w-full rounded-3xl md:rounded-[3rem] overflow-hidden group gs-reveal shadow-[0_10px_30px_rgba(239,68,68,0.2)] dark:shadow-[0_10px_40px_rgba(239,68,68,0.3)] border-2 border-red-500/30 md:hover:border-red-500/60 transition-all duration-500 md:hover:-translate-y-2 md:hover:scale-[1.02]">
             <img src="https://res.cloudinary.com/dghxevycq/image/upload/q_auto,f_auto/v1786817714/image_vaj7l7.png" alt="BPI RCY BLOOD FINDER Launch" className="w-full h-auto object-cover md:group-hover:scale-105 transition-transform duration-700" />
             <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent flex flex-col justify-end items-start p-6 md:p-10">
-              <div className="inline-flex items-center justify-center w-fit px-6 py-3 md:px-8 md:py-4 bg-red-500/20 backdrop-blur-md border border-red-500/50 rounded-2xl text-white font-black text-sm md:text-base uppercase tracking-widest group-hover:bg-red-500 group-hover:shadow-[0_0_20px_rgba(239,68,68,0.5)] transition-all">
+              <div className="inline-flex items-center justify-center w-fit px-6 py-3 md:px-8 md:py-4 bg-red-500/20  border border-red-500/50 rounded-2xl text-white font-black text-sm md:text-base uppercase tracking-widest group-hover:bg-red-500 group-hover:shadow-[0_0_20px_rgba(239,68,68,0.5)] transition-all">
                 Explore App <i className="fas fa-external-link-alt ml-2 md:group-hover:translate-x-1 md:group-hover:-translate-y-1 transition-transform"></i>
               </div>
             </div>
@@ -589,7 +589,7 @@ export default function App() {
       </section>
 
       <section id="achievements" className="py-20 md:py-32 px-4 md:px-6 relative z-10">
-        <div className="absolute inset-0 bg-slate-100/40 dark:bg-slate-900/40 backdrop-blur-sm md:backdrop-blur-lg -skew-y-2 origin-bottom-right -z-10 border-y border-slate-200 dark:border-white/10"></div>
+        <div className="absolute inset-0 bg-slate-100/40 dark:bg-slate-900/40   -skew-y-2 origin-bottom-right -z-10 border-y border-slate-200 dark:border-white/10"></div>
         <div className="max-w-5xl mx-auto gs-reveal text-center">
           <h2 className="text-3xl md:text-5xl lg:text-7xl font-black mb-12 md:mb-20 tracking-tighter text-slate-900 dark:text-white">IMPACT & <span className="text-electric">AWARDS</span></h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
@@ -627,7 +627,7 @@ export default function App() {
 
       <section id="contact" className="py-20 md:py-32 px-4 md:px-6 relative z-10">
         <div className="max-w-5xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-10 md:gap-16 bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl md:backdrop-blur-2xl rounded-3xl md:rounded-[3rem] p-6 md:p-16 shadow-[0_10px_30px_rgba(0,0,0,0.05)] dark:shadow-[0_0_40px_rgba(0,0,0,0.6)] border border-slate-200 dark:border-white/10 gs-reveal relative overflow-hidden">
+          <div className="grid lg:grid-cols-2 gap-10 md:gap-16 bg-white/90 dark:bg-slate-900/90   rounded-3xl md:rounded-[3rem] p-6 md:p-16 shadow-[0_10px_30px_rgba(0,0,0,0.05)] dark:shadow-[0_0_40px_rgba(0,0,0,0.6)] border border-slate-200 dark:border-white/10 gs-reveal relative overflow-hidden">
             <div className="hidden md:block absolute top-0 right-0 w-[500px] h-[500px] bg-electric/10 dark:bg-electric/20 rounded-full blur-[100px] pointer-events-none"></div>
             <div className="hidden md:block absolute bottom-0 left-0 w-[300px] h-[300px] bg-neon/5 dark:bg-neon/10 rounded-full blur-[80px] pointer-events-none"></div>
             
