@@ -10,8 +10,14 @@ export const metadata = {
   title: 'Rejuyanul Haque Rifat | Full-Stack Developer & IoT Innovator',
   description: 'Portfolio of Rejuyanul Haque Rifat, a Full-Stack Developer and IoT Innovator based in Bogura, Bangladesh, specializing in Embedded Systems, PWA, and Smart Automation.',
   icons: {
-    icon: '/favicon.png',
-    apple: '/favicon.png',
+    icon: [
+      { url: '/icon-48.png', sizes: '48x48', type: 'image/png' },
+      { url: '/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/icon-512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/apple-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
   },
   keywords: 'Rejuyanul Haque Rifat, Web Developer Bogura, Full-Stack Developer Bangladesh, IoT Innovator, Embedded Systems, Robotics, PWA, Portfolio',
   authors: [{ name: 'Rejuyanul Haque Rifat' }],
