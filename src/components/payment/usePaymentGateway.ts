@@ -1,8 +1,8 @@
+import { useAlert } from '../../contexts/AlertContext';
 import { useState, useEffect, useMemo, useCallback } from 'react';
 import { useRouter, useParams, usePathname as useLocation } from 'next/navigation';
 import { ref, get, onValue, off } from 'firebase/database';
 import { db } from '../../lib/firebase';
-const useAlert = () => ({ showAlert: (m,t) => alert(m) });
 const useAuth = () => ({ currentUser: null });
 const useDonor = () => ({ donorData: null });
 import { hapticFeedback } from '../../utils/haptics';
@@ -79,12 +79,12 @@ export function usePaymentGateway(options: UsePaymentGatewayOptions = {}) {
     params = {};
   }
 
-  let showAlert = (msg: string, _type?: string, _duration?: number) => {
+  let showCustomAlert = (msg: string, _type?: string, _duration?: number) => {
     if (typeof window !== 'undefined') alert(msg);
   };
   try {
     const alertCtx = useAlert();
-    if (alertCtx?.showAlert) showAlert = alertCtx.showAlert;
+    const { showCustomAlert } = alertCtx;
   } catch {}
 
   let currentUser: any = null;
@@ -188,22 +188,22 @@ export function usePaymentGateway(options: UsePaymentGatewayOptions = {}) {
     if (routeCategory === 'mobile-banking' && routeMethodId) {
       const methodCfg = settings.methods?.[routeMethodId];
       if (methodCfg && methodCfg.isActive === false) {
-        showAlert(`${methodCfg.name || 'পেমেন্ট মাধ্যম'} বর্তমানে সক্রিয় নেই`, 'warning');
+        showCustomAlert(`${methodCfg.name || 'পেমেন্ট মাধ্যম'} বর্তমানে সক্রিয় নেই`, 'warning');
         navigate(baseRoute, { replace: true });
       }
     } else if (routeCategory === 'bank' && routeMethodId) {
       const bankCfg = settings.banks?.[routeMethodId as BankId];
       if (bankCfg && bankCfg.isActive === false) {
-        showAlert(`${bankCfg.name || 'ব্যাংক একাউন্ট'} বর্তমানে সক্রিয় নেই`, 'warning');
+        showCustomAlert(`${bankCfg.name || 'ব্যাংক একাউন্ট'} বর্তমানে সক্রিয় নেই`, 'warning');
         navigate(baseRoute, { replace: true });
       }
     } else if (routeCategory === 'bangla-qr') {
       if (!settings.banglaQrUrl) {
-        showAlert('বাংলা কিউআর বর্তমানে সক্রিয় নেই', 'warning');
+        showCustomAlert('বাংলা কিউআর বর্তমানে সক্রিয় নেই', 'warning');
         navigate(baseRoute, { replace: true });
       }
     }
-  }, [isRoutedMode, isSettingsLoaded, isPayStep, isTrxnStep, routeCategory, routeMethodId, settings, baseRoute, navigate, showAlert]);
+  }, [isRoutedMode, isSettingsLoaded, isPayStep, isTrxnStep, routeCategory, routeMethodId, settings, baseRoute, navigate, showCustomAlert]);
 
   useEffect(() => {
     setChannelError('');
@@ -421,7 +421,7 @@ export function usePaymentGateway(options: UsePaymentGatewayOptions = {}) {
     try {
       await navigator.clipboard.writeText(text);
       setCopiedKey(key);
-      showAlert(`${label} কপি করা হয়েছে`, 'success');
+      showCustomAlert(`${label} কপি করা হয়েছে`, 'success');
       setTimeout(() => setCopiedKey(null), 2000);
       if (key === 'mfs_num' || key === 'bank_acc') {
         setHasCopiedNumber(true);
@@ -430,9 +430,9 @@ export function usePaymentGateway(options: UsePaymentGatewayOptions = {}) {
         setHasCopiedAmount(true);
       }
     } catch {
-      showAlert('কপি করা সম্ভব হয়নি', 'error');
+      showCustomAlert('কপি করা সম্ভব হয়নি', 'error');
     }
-  }, [showAlert]);
+  }, [showCustomAlert]);
 
   const handleSelectChannel = useCallback((id: string) => {
     hapticFeedback.selection();
@@ -447,7 +447,7 @@ export function usePaymentGateway(options: UsePaymentGatewayOptions = {}) {
       hapticFeedback.error();
       const msg = 'অনুগ্রহ করে একটি পেমেন্ট মাধ্যম নির্বাচন করুন';
       setChannelError(msg);
-      showAlert(msg, 'error');
+      showCustomAlert(msg, 'error');
       setIsPayShaking(true);
       setIsChannelShaking(true);
       setTimeout(() => {
@@ -462,7 +462,7 @@ export function usePaymentGateway(options: UsePaymentGatewayOptions = {}) {
         hapticFeedback.warning();
         const msg = 'এই পেমেন্ট মাধ্যমটি বর্তমানে সক্রিয় নেই';
         setChannelError(msg);
-        showAlert(msg, 'warning');
+        showCustomAlert(msg, 'warning');
         setIsPayShaking(true);
         setIsChannelShaking(true);
         setTimeout(() => {
@@ -477,7 +477,7 @@ export function usePaymentGateway(options: UsePaymentGatewayOptions = {}) {
         hapticFeedback.warning();
         const msg = 'এই ব্যাংক একাউন্টটি বর্তমানে সক্রিয় নেই';
         setChannelError(msg);
-        showAlert(msg, 'warning');
+        showCustomAlert(msg, 'warning');
         setIsPayShaking(true);
         setIsChannelShaking(true);
         setTimeout(() => {
@@ -491,7 +491,7 @@ export function usePaymentGateway(options: UsePaymentGatewayOptions = {}) {
         hapticFeedback.warning();
         const msg = 'বাংলা কিউআর পেমেন্ট বর্তমানে সক্রিয় নেই';
         setChannelError(msg);
-        showAlert(msg, 'warning');
+        showCustomAlert(msg, 'warning');
         setIsPayShaking(true);
         setIsChannelShaking(true);
         setTimeout(() => {
@@ -517,7 +517,7 @@ export function usePaymentGateway(options: UsePaymentGatewayOptions = {}) {
       setSelectedChannelId(effectiveChannelId);
       setStepperStep('pay');
     }
-  }, [activeTab, selectedChannelId, settings, showAlert, isRoutedMode, navigate, baseRoute, invoiceRef]);
+  }, [activeTab, selectedChannelId, settings, showCustomAlert, isRoutedMode, navigate, baseRoute, invoiceRef]);
 
   const handleConfirmPay = useCallback(() => {
     if (!isPayReady) {
@@ -527,16 +527,16 @@ export function usePaymentGateway(options: UsePaymentGatewayOptions = {}) {
 
       if (isBanglaQr) {
         if (!hasCopiedAmount) {
-          showAlert('পরবর্তী ধাপে যেতে অনুগ্রহ করে টাকার পরিমাণ কপি করুন', 'warning');
+          showCustomAlert('পরবর্তী ধাপে যেতে অনুগ্রহ করে টাকার পরিমাণ কপি করুন', 'warning');
         }
       } else if (!hasCopiedNumber && !hasCopiedAmount) {
         const numLabel = (isRoutedMode ? routeCategory : activeTab) === 'bank' ? 'একাউন্ট নম্বর' : 'নম্বর';
-        showAlert(`পরবর্তী ধাপে যেতে অনুগ্রহ করে ${numLabel} ও টাকার পরিমাণ কপি করুন`, 'warning');
+        showCustomAlert(`পরবর্তী ধাপে যেতে অনুগ্রহ করে ${numLabel} ও টাকার পরিমাণ কপি করুন`, 'warning');
       } else if (!hasCopiedNumber) {
         const typeStr = (isRoutedMode ? routeCategory : activeTab) === 'bank' ? 'ব্যাংক একাউন্ট নম্বরটি' : `${currentMethodConfig?.name || ''} নম্বরটি`;
-        showAlert(`পরবর্তী ধাপে যেতে অনুগ্রহ করে ${typeStr} কপি করুন`, 'warning');
+        showCustomAlert(`পরবর্তী ধাপে যেতে অনুগ্রহ করে ${typeStr} কপি করুন`, 'warning');
       } else if (!hasCopiedAmount) {
-        showAlert('পরবর্তী ধাপে যেতে অনুগ্রহ করে টাকার পরিমাণ কপি করুন', 'warning');
+        showCustomAlert('পরবর্তী ধাপে যেতে অনুগ্রহ করে টাকার পরিমাণ কপি করুন', 'warning');
       }
       return;
     }
@@ -562,7 +562,7 @@ export function usePaymentGateway(options: UsePaymentGatewayOptions = {}) {
     activeTab,
     routeMethodId,
     selectedChannelId,
-    showAlert,
+    showCustomAlert,
     currentMethodConfig?.name,
     navigate,
     baseRoute,
@@ -594,14 +594,14 @@ export function usePaymentGateway(options: UsePaymentGatewayOptions = {}) {
     hapticFeedback.medium();
 
     if (orderValidity === 'invalid' || orderValidity === 'expired') {
-      showAlert('অকার্যকর বা মেয়াদোত্তীর্ণ পেমেন্ট লিংক!', 'error');
+      showCustomAlert('অকার্যকর বা মেয়াদোত্তীর্ণ পেমেন্ট লিংক!', 'error');
       return;
     }
 
     const cleanTrx = trxId.trim().toUpperCase();
     if (!cleanTrx) {
       setTrxError('অনুগ্রহ করে TRXN ID প্রদান করুন');
-      showAlert('অনুগ্রহ করে TRXN ID প্রদান করুন', 'error');
+      showCustomAlert('অনুগ্রহ করে TRXN ID প্রদান করুন', 'error');
       hapticFeedback.error();
       const inputEl = document.getElementById('trxIdInput');
       if (inputEl) inputEl.focus();
@@ -609,7 +609,7 @@ export function usePaymentGateway(options: UsePaymentGatewayOptions = {}) {
     }
     if (cleanTrx.length < 4) {
       setTrxError('সঠিক ও পূর্ণাঙ্গ TRXN ID প্রদান করুন');
-      showAlert('সঠিক TRXN ID প্রদান করুন', 'error');
+      showCustomAlert('সঠিক TRXN ID প্রদান করুন', 'error');
       hapticFeedback.error();
       const inputEl = document.getElementById('trxIdInput');
       if (inputEl) inputEl.focus();
@@ -672,14 +672,14 @@ export function usePaymentGateway(options: UsePaymentGatewayOptions = {}) {
         onSuccess(paymentId);
       }
     } catch (err: any) {
-      showAlert(`পেমেন্ট সম্পন্ন করতে সমস্যা হয়েছে: ${err?.message || 'অজানা ত্রুটি'}`, 'error');
+      showCustomAlert(`পেমেন্ট সম্পন্ন করতে সমস্যা হয়েছে: ${err?.message || 'অজানা ত্রুটি'}`, 'error');
     } finally {
       setIsSubmitting(false);
     }
   }, [
     trxId,
     orderValidity,
-    showAlert,
+    showCustomAlert,
     isRoutedMode,
     routeCategory,
     activeTab,
@@ -768,6 +768,9 @@ export function usePaymentGateway(options: UsePaymentGatewayOptions = {}) {
     onCancel
   };
 }
+
+
+
 
 
 

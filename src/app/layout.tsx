@@ -48,6 +48,8 @@ export const metadata = {
   },
 };
 
+import { AlertProvider } from '../contexts/AlertContext';
+
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="bn" dir="ltr" className="dark scroll-smooth">
@@ -82,11 +84,14 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         />
       </head>
       <body className="bg-slate-50 dark:bg-[#00020a] text-slate-900 dark:text-slate-100 antialiased selection:bg-neon selection:text-white dark:selection:text-black font-sans overflow-x-hidden transition-colors duration-500">
+        <AlertProvider>
         {children}
         <Script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" strategy="beforeInteractive" />
         <Script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" strategy="beforeInteractive" />
         <Script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js" strategy="beforeInteractive" />
+              </AlertProvider>
       </body>
     </html>
   );
 }
+
