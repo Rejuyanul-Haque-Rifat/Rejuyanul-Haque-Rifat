@@ -232,7 +232,7 @@ export function usePaymentGateway(options: UsePaymentGatewayOptions = {}) {
     }
 
     setIsOrderValidating(true);
-    const orderRef = ref(db, `payment_orders/${refId}`);
+    const orderRef = ref(db, `payment_links/${refId}`);
     get(orderRef).then((orderSnap) => {
       if (orderSnap.exists()) {
         const val = orderSnap.val();
@@ -264,27 +264,16 @@ export function usePaymentGateway(options: UsePaymentGatewayOptions = {}) {
       const cleanRef = refId.replace(/^HK-/, '');
       const checkServiceItem = async () => {
         try {
-          let itemSnap = null;
-          if (service === 'lost_and_found') {
-            itemSnap = await get(ref(db, `directory_services/lost_and_found/${cleanRef}`));
-            if (!itemSnap.exists()) {
-              itemSnap = await get(ref(db, `lost_and_found/${cleanRef}`));
-            }
-          } else {
-            itemSnap = await get(ref(db, `directory_services/house_rent/${cleanRef}`));
-            if (!itemSnap.exists()) {
-              itemSnap = await get(ref(db, `house_rent/${cleanRef}`));
-            }
-          }
+          const itemSnap = await get(ref(db, `payment_links/${refId}`));
 
-          if (itemSnap && itemSnap.exists()) {
+            if (itemSnap && itemSnap.exists()) {
             const itemVal = itemSnap.val();
             if (itemVal.planId) setSelectedPlanId(itemVal.planId);
-            if (itemVal.paymentStatus === 'verified' || itemVal.status === 'approved') {
+            if (itemVal.status === 'verified' || itemVal.status === 'approved') {
               setOrderValidity('verified');
               setLivePaymentStatus('verified');
               setIsSubmitted(true);
-            } else if (itemVal.paymentStatus === 'pending_verification') {
+            } else if (itemVal.status === 'pending_verification') {
               setOrderValidity('pending_verification');
               setLivePaymentStatus('pending');
               setIsSubmitted(true);
@@ -320,7 +309,7 @@ export function usePaymentGateway(options: UsePaymentGatewayOptions = {}) {
 
     let unsubRef: any = null;
     if (submittedPaymentId) {
-      const pRef = ref(db, `payments/${submittedPaymentId}`);
+      const pRef = ref(db, `payment_links/${submittedPaymentId}`);
       unsubRef = pRef;
       onValue(pRef, (snap) => {
         if (snap.exists()) {
@@ -332,7 +321,7 @@ export function usePaymentGateway(options: UsePaymentGatewayOptions = {}) {
         }
       });
     } else if (refId) {
-      const oRef = ref(db, `payment_orders/${refId}`);
+      const oRef = ref(db, `payment_links/${refId}`);
       unsubRef = oRef;
       onValue(oRef, (snap) => {
         if (snap.exists()) {
@@ -779,6 +768,8 @@ export function usePaymentGateway(options: UsePaymentGatewayOptions = {}) {
     onCancel
   };
 }
+
+
 
 
 
