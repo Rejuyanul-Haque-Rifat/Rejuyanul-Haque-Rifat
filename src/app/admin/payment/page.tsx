@@ -175,13 +175,17 @@ export default function AdminPaymentPage() {
                       <p className="font-black text-xl text-white">৳{pay.amount}</p>
                     </div>
                     <div>
-                      {pay.status === 'completed' ? (
+                      {pay.status === 'verified' || pay.status === 'completed' ? (
                         <span className="px-3 py-1 bg-emerald-500/20 text-emerald-400 border border-emerald-500/30 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1">
                           <i className="fas fa-check"></i> Paid
                         </span>
-                      ) : pay.status === 'processing' ? (
+                      ) : pay.status === 'pending_verification' ? (
                         <span className="px-3 py-1 bg-amber-500/20 text-amber-400 border border-amber-500/30 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1">
-                          <i className="fas fa-spinner fa-spin"></i> Processing
+                          <i className="fas fa-spinner fa-spin"></i> Checking
+                        </span>
+                      ) : pay.status === 'rejected' ? (
+                        <span className="px-3 py-1 bg-rose-500/20 text-rose-400 border border-rose-500/30 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1" title={pay.rejectionReason}>
+                          <i className="fas fa-times"></i> Rejected
                         </span>
                       ) : (
                         <span className="px-3 py-1 bg-slate-500/20 text-slate-400 border border-slate-500/30 rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1">
@@ -189,23 +193,40 @@ export default function AdminPaymentPage() {
                         </span>
                       )}
                     </div>
-                    {pay.status === 'processing' && pay.trxId && (
-                       <div className="text-right">
-                         <p className="text-xs text-slate-400">TrxID: <span className="text-white font-mono">{pay.trxId}</span></p>
-                         <p className="text-xs text-slate-400">From: <span className="text-white">{pay.senderNumber}</span></p>
-                         <button 
-                            onClick={() => {
-                              // Verify Payment Logic
-                              if(confirm(`Mark payment of ৳${pay.amount} from ${pay.clientName} as completed?`)) {
-                                import('firebase/database').then(({ref, update}) => {
-                                  update(ref(db, `payment_links/${pay.id}`), { status: 'completed' });
-                                })
-                              }
-                            }}
-                            className="mt-2 text-xs bg-emerald-600 px-2 py-1 rounded text-white"
-                         >
-                           Verify & Accept
-                         </button>
+                    {pay.status === 'pending_verification' && pay.paymentDetails && (
+                       <div className="text-right ml-4 border-l border-white/10 pl-4">
+                         <p className="text-xs text-slate-400">TrxID: <span className="text-white font-mono">{pay.paymentDetails.trxId}</span></p>
+                         <p className="text-xs text-slate-400">From: <span className="text-white">{pay.paymentDetails.senderNumber}</span> ({pay.paymentDetails.method})</p>
+                         <div className="mt-3 flex items-center justify-end gap-2">
+                           <button 
+                              onClick={() => {
+                                const reason = prompt('Reason for rejection? (e.g. Invalid TrxID)');
+                                if(reason) {
+                                  import('firebase/database').then(({ref, update}) => {
+                                    update(ref(db, `payment_links/${pay.id}`), { 
+                                      status: 'rejected',
+                                      rejectionReason: reason
+                                    });
+                                  })
+                                }
+                              }}
+                              className="text-xs bg-rose-500/20 text-rose-400 hover:bg-rose-500 hover:text-white px-3 py-1.5 rounded font-bold border border-rose-500/30 transition-all"
+                           >
+                             Reject
+                           </button>
+                           <button 
+                              onClick={() => {
+                                if(confirm('Mark payment of ৳' + pay.amount + ' from ' + pay.clientName + ' as verified?')) {
+                                  import('firebase/database').then(({ref, update}) => {
+                                    update(ref(db, `payment_links/${pay.id}`), { status: 'verified' });
+                                  })
+                                }
+                              }}
+                              className="text-xs bg-emerald-600 hover:bg-emerald-500 px-3 py-1.5 rounded text-white font-bold transition-all shadow-lg shadow-emerald-500/20"
+                           >
+                             Verify & Accept
+                           </button>
+                         </div>
                        </div>
                     )}
                   </div>
