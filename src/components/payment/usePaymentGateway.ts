@@ -118,7 +118,7 @@ export function usePaymentGateway(options: UsePaymentGatewayOptions = {}) {
   const [settings, setSettings] = useState<FullPaymentSettings>(
     cachedSettings || {
       plans: PAYMENT_PLANS,
-      methods: DEFAULT_PAYMENT_METHODS,
+      methods: DEFAULT_PAYMENT_METHODS as any,
       banks: DEFAULT_BANK_ACCOUNTS,
       banglaQrUrl: ''
     }
@@ -768,6 +768,7 @@ export function usePaymentGateway(options: UsePaymentGatewayOptions = {}) {
     onCancel
   };
 }
+
 
 
 

@@ -110,6 +110,11 @@ export interface FullPaymentSettings {
   plans: PaymentPlan[];
 }
 
+import { ref, onValue, get } from 'firebase/database';
+import { db } from '../lib/firebase';
+
+let cachedSettings: FullPaymentSettings | null = null;
+
 export const paymentService = {
   getServicePlans: (key: string) => [] as PaymentPlan[],
   subscribeServicePlans: (key: string, cb: any) => { return () => {} },
@@ -117,8 +122,26 @@ export const paymentService = {
   updateServicePlan: async (key: string, id: string, partial: any) => {},
   getPlans: () => [] as PaymentPlan[],
   subscribePlans: (cb: any) => { return () => {} },
-  subscribeSettings: (cb: any) => { return () => {} },
-  getSettings: async () => ({} as FullPaymentSettings),
+  
+  subscribeSettings: (cb: (settings: FullPaymentSettings | null) => void) => {
+    const settingsRef = ref(db, 'payment_settings');
+    const unsubscribe = onValue(settingsRef, (snapshot) => {
+      if (snapshot.exists()) {
+        const data = snapshot.val() as FullPaymentSettings;
+        cachedSettings = data;
+        cb(data);
+      } else {
+        cb(null);
+      }
+    });
+    return unsubscribe;
+  },
+  getSettings: async () => {
+    const snap = await get(ref(db, 'payment_settings'));
+    return snap.exists() ? snap.val() as FullPaymentSettings : ({} as FullPaymentSettings);
+  },
+  getCachedSettings: () => cachedSettings || (PAYMENT_SETTINGS_DATA as unknown as FullPaymentSettings),
+  
   saveSettings: async (settings: any) => {},
   savePlans: async (plans: any) => {},
   updatePlan: async (id: string, partial: any) => {},
@@ -126,7 +149,7 @@ export const paymentService = {
   updateBank: async (id: BankId, partial: any) => {},
   createPaymentOrder: async (data: any) => ({ refId: '', amount: 0, planId: '' }),
   submitPayment: async (data: any) => '',
-  findRealUserKey: async () => null, getCachedSettings: () => ({} as any)
+  findRealUserKey: async () => null
 };
 export const PAYMENT_PLANS = [];
 export const DEFAULT_PAYMENT_METHODS = {
@@ -134,6 +157,8 @@ export const DEFAULT_PAYMENT_METHODS = {
   nagad: { id: 'nagad', name: 'Nagad', number: '01869389270', type: 'Personal', logo: '', isDefault: true }
 };
 export const DEFAULT_BANK_ACCOUNTS: any = {};
+
+
 
 
 
