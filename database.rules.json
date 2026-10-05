@@ -1,0 +1,13 @@
+{
+  "rules": {
+    ".read": "now < 1735689600000",
+    ".write": "now < 1735689600000",
+    "payment_links": {
+      ".read": true,
+      ".write": "auth != null && auth.uid == 'JxJ2utUHsve05zs9Kjhmnb1lipl2'",
+      "$paymentId": {
+        ".write": "newData.child('status').val() == 'pending_verification' || (auth != null && auth.uid == 'JxJ2utUHsve05zs9Kjhmnb1lipl2')"
+      }
+    }
+  }
+}
